@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const URI = "mongodb+srv://criptoadviseradmin:criptoadviser123@criptoadviser.ycgqj.mongodb.net/CriptoADVISER?retryWrites=true&w=majority";
+const URI = "mongodb://localhost:27017/criptoadviserdb?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
 
 try {
     // Connect to the MongoDB cluster

@@ -6,7 +6,7 @@ const {protect} = require("../midlewares/auth")
 const Freelancers = require("../models/model_freelancers")
 
 const storage = multer.diskStorage({
-    destination: "./public/img",
+    destination: "./public/media",
     filename: (req, file, cb ) => {
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
@@ -16,11 +16,11 @@ const upload = multer({
     storage: storage
 })
 
-router.post("/img",upload.single("img"), (req,res) => {
+router.post("/file",upload.single("file"), (req,res) => {
     
     res.json({
         status: "upload complete",
-        path: `https://criptoadviser-rest-api.herokuapp.com/img/${req.file.filename}`
+        path: `https://criptoadviser.com/media/${req.file.filename}`
     })
 })
 

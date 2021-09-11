@@ -1,8 +1,28 @@
 const express = require("express");
 const router = express.Router();
+const multer = require("multer");
 const path = require("path");
 const {protect} = require("../midlewares/auth")
 const TransaccionsMC = require("../models/model_transaccionesmc")
+
+const storage = multer.diskStorage({
+    destination: "./public/media",
+    filename: (req, file, cb ) => {
+        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
+    }
+})
+
+const upload = multer({
+    storage: storage
+})
+
+router.post("/file",upload.single("file"), (req,res) => {
+    
+    res.json({
+        status: "upload complete",
+        path: `https://criptoadviser.com/media/${req.file.filename}`
+    })
+})
 
 router.get("/", async (req,res) => {
     const clases = await TransaccionsMC.find();

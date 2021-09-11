@@ -20,7 +20,7 @@ router.post("/file",upload.single("file"), (req,res) => {
     
     res.json({
         status: "upload complete",
-        path: `https://criptoadviser-rest-api.herokuapp.com/media/${req.file.filename}`
+        path: `https://criptoadviser.com/media/${req.file.filename}`
     })
 })
 
