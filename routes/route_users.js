@@ -157,7 +157,7 @@ router.post("/", async (req,res) => {
                     subject: 'Confirm Account',
                     html: ` <div>
                     <h1>Por favor ingrese al siguiente link si usted no se a registrado en CriptoAVISER simplemente ignore este correo.</h1>
-                    <a href="https://criptoadviser-rest-api.herokuapp.com/api/users/register/${usuario._id}">https://criptoadviser-rest-api.herokuapp.com/api/users/register/${usuario._id}</a>
+                    <a href="https://criptoadviser.com/api/users/register/${usuario._id}">https://criptoadviser.com/api/users/register/${usuario._id}</a>
                     
                             </div>`
                   };
