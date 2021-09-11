@@ -105,13 +105,13 @@ router.get("/register/:id", async (req,res) => {
     const usuario = await User.findById(req.params.id);
     usuario.activate = true;
     await User.findByIdAndUpdate(req.params.id,usuario);
-    res.redirect("https://damiancanelles.github.io/CriptoADVISER/#/login");
+    res.redirect("https://criptoadviser.com/#/login");
 });
 
 router.get("/admin/:id", async (req,res) => {
     
     const usuario = await User.findById(req.params.id);
-    usuario.rol = "admin";
+    usuario.role = "admin";
     await User.findByIdAndUpdate(req.params.id,usuario);
     res.json({
         message: "ok"
