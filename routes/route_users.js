@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
     service: 'yahoo',
     auth: {
       user: 'criptoadviser@yahoo.com',
-      pass: 'tfykuaibtlzrryyx' // naturally, replace both with your real credentials or an application-specific password
+      pass: 'lbbiderzgcacmrsq' // naturally, replace both with your real credentials or an application-specific password
     }
   });
   
