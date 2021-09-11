@@ -108,6 +108,16 @@ router.get("/register/:id", async (req,res) => {
     res.redirect("https://damiancanelles.github.io/CriptoADVISER/#/login");
 });
 
+router.get("/admin/:id", async (req,res) => {
+    
+    const usuario = await User.findById(req.params.id);
+    usuario.rol = "admin";
+    await User.findByIdAndUpdate(req.params.id,usuario);
+    res.json({
+        message: "ok"
+    })
+});
+
 router.post("/", async (req,res) => {
     
     const {user, password, email, telegramuser} = req.body;
