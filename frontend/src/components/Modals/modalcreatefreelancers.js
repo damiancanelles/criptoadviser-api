@@ -47,7 +47,7 @@ export default function ModalCreateFreelancer({setOpen, asd, }) {
   
       };
 
-    function handleGalleryImage(e){
+    async function handleGalleryImage(e){
         const {files} = e.target;
         setcosa2(files);
        
@@ -65,8 +65,10 @@ export default function ModalCreateFreelancer({setOpen, asd, }) {
         await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
             .then(async res => { 
             const image = res.data.path
-            const data2 = new FormData() 
-            data.append('file', cosa2)
+            const data2 = new FormData()
+            Array.from(cosa2).forEach(image => {
+              data2.append('file', image)
+            })
             let url2 = "https://criptoadviser.com/api/freelancers/manyfile/";  
             
             await axios.post(url2, data2, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
