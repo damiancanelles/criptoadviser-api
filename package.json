@@ -4,7 +4,10 @@
   "description": "asd",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js "
+    "start": "node ./index.js ",
+    "client_install": "npm install --prefix frontend",
+    "client": "npm start --prefix frontend",
+    "build": "npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",

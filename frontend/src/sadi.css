@@ -1,0 +1,81 @@
+@font-face {
+    font-family: CriptoAdviserItalic;
+    src: url(assets/fonts/Futura\ Bold\ Italic\ font.ttf);
+}
+@font-face {
+    font-family: CriptoAdviserBold;
+    src: url(assets/fonts/Futura\ Bold\ font.ttf);
+}
+@font-face {
+    font-family: CriptoAdviserBook;
+    src: url(assets/fonts/Futura\ Book\ font.ttf);
+}
+
+body {
+    background-color: white !important;
+}
+
+
+#paper {
+    border-top-left-radius: 3%;
+    border-top-right-radius: 3%;
+    z-index: 2;
+   
+}
+ #caja{
+     border-top-left-radius: 24px;
+     border-top-right-radius: 24px;
+     background-color: white;
+     
+ }
+
+ .card{
+     border: hidden;
+     height: 380px;
+     margin-bottom: 10px;
+    
+ 
+   
+ }
+ .card:hover{
+    box-shadow:5px 10px 20px 1px rgba(26, 21, 21, 0.452) !important;
+    transition: all 0.7s linear;
+
+ 
+ }
+
+ .card-body{
+     padding: 2rem 0 !important ;
+     height: 180px;
+
+ }
+ .card-text{
+    
+     font-size: 1rem ;
+     font-family: CriptoAdviserBold;
+ }
+ .overflow{
+     overflow: scroll;
+ }
+ .card-img-top{
+     height: 200px;
+     transition: all 0.9s ease-in-out;
+
+
+ }
+ .card-img-top:hover{
+     transform:scale(1.8);
+     
+}
+
+
+#osmel{
+    background-image: url('assets/img/lending.jpg')
+}
+
+
+#card-services{
+    margin-left: 30px;
+    margin-right: 30px;
+    background: black;
+}

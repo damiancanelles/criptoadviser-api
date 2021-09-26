@@ -10,7 +10,7 @@ const {mongoose} = require("./database");
 
 app.use(cookieparser());
 app.use(cors());
-app.use(express.static("./public"));
+app.use(express.static("./frontend/build"));
 app.use(morgan('dev'));
 app.use(express.json());
 
