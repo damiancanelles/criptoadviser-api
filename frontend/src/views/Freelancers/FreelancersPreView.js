@@ -14,6 +14,7 @@ import useFreelancer from 'context/usefreelancer';
 import { useHistory } from 'react-router';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { Helmet } from 'react-helmet';
+import ButtonV from './ButtonView';
 
 const useStyles = makeStyles((theme) => ({
   
@@ -44,6 +45,16 @@ const useStyles = makeStyles((theme) => ({
             paddingBottom: 0,
           },
     },
+    grid2: {
+      padding: 40,
+      paddingTop: 0,
+      [theme.breakpoints.down('sm')]: {
+          paddingLeft: 10,
+          paddingRight: 10,
+          paddingTop: 0,
+          paddingBottom: 10,
+        },
+  },
     footer:{
         position: 'fixed',
         bottom: 0,
@@ -124,7 +135,9 @@ const FreelancersPreView = (props)=> {
              </Grid> 
          </Grid>
          </Hidden>
-       
+        <Grid className={classes.grid2}>
+        <ButtonV></ButtonV>
+        </Grid>
          <LandingFooter className={classes.footer}></LandingFooter>
          </>
         

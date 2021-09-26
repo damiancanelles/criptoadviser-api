@@ -24,7 +24,7 @@ router.post("/file",upload.single("file"), (req,res) => {
     })
 })
 
-router.post("/manyfile",upload.array("file"), async (req,res) => {
+router.post("/manyfile",upload.array("file",9), async (req,res) => {
     const rutes = []
     await req.files.map((file) => {
         rutes.push(`https://criptoadviser.com/media/${file.filename}`)
