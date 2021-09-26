@@ -7,7 +7,7 @@ const FreelancersSchema = new Schema(
     image: {type: String, require: true},
     date:{type: Date, default:Date.now},
     contactinfo:{type: Object, require: true},
-   
+    gallery:{type: Array, require: true},
     
 
     }

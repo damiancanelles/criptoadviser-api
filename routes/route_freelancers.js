@@ -24,6 +24,17 @@ router.post("/file",upload.single("file"), (req,res) => {
     })
 })
 
+router.post("/manyfile",upload.array("file"), async (req,res) => {
+    const rutes = []
+    await req.files.map((file) => {
+        rutes.push(`https://criptoadviser.com/media/${file.filename}`)
+    })
+    res.json({
+        status: "upload complete",
+        rutes: rutes
+    })
+})
+
 router.get("/", async (req,res) => {
     const clases = await Freelancers.find();
     console.log(clases);
@@ -37,8 +48,8 @@ router.get("/:id", async (req,res) => {
 
 router.post("/", async (req,res) => {
     console.log(req.body);
-    const {titulo, descripcion, image, date,contactinfo} = req.body;
-    const clase = new Freelancers({titulo, descripcion, image, date,contactinfo});
+    const {titulo, descripcion, image, date,contactinfo, gallery} = req.body;
+    const clase = new Freelancers({titulo, descripcion, image, date,contactinfo, gallery});
     await clase.save();
     res.json({
         message: "null"
@@ -47,8 +58,8 @@ router.post("/", async (req,res) => {
 
 router.put("/:id", async (req,res) => {
     console.log(req.params.id);
-    const {titulo, descripcion, image, date,contactinfo} = req.body;
-    const newclase = {titulo, descripcion, image, date,contactinfo};
+    const {titulo, descripcion, image, date,contactinfo, gallery} = req.body;
+    const newclase = {titulo, descripcion, image, date,contactinfo, gallery};
     await Freelancers.findByIdAndUpdate(req.params.id,newclase);
     res.json({
         message: "null"

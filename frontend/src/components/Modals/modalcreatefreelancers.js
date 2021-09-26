@@ -26,12 +26,14 @@ import {
 export default function ModalCreateFreelancer({setOpen, asd, }) {
     const [titulo,settitulo] = React.useState("");
     const [descripcion,setdescripcion] = React.useState("");
+    const [gallery,setgallery] = React.useState("");
     const [numero,setnumero] = React.useState("");
     const [ubicacion,setubicacion] = React.useState("");
     const [facebook,setfacebook] = React.useState("");
     const [instagram,setinstagram] = React.useState("");
     const [twitter,settwitter] = React.useState("");
     const [cosa,setcosa] = React.useState("");
+    const [cosa2,setcosa2] = React.useState("");
     const [whatsapp,setwhatsapp] = React.useState("");
     const [telegram,settelegram] = React.useState("");
     const [error,seterror] = React.useState(false)
@@ -45,6 +47,13 @@ export default function ModalCreateFreelancer({setOpen, asd, }) {
   
       };
 
+    function handleGalleryImage(e){
+        const {files} = e.target;
+        setcosa2(files);
+       
+  
+      };  
+
     async function register(e) {
         e.preventDefault();
         setstop(true);
@@ -54,8 +63,15 @@ export default function ModalCreateFreelancer({setOpen, asd, }) {
         let url = "https://criptoadviser.com/api/freelancers/file/";
 
         await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
-            .then(res => { 
-            const info = {
+            .then(async res => { 
+            const image = res.data.path
+            const data2 = new FormData() 
+            data.append('file', cosa2)
+            let url2 = "https://criptoadviser.com/api/freelancers/manyfile/";  
+            
+            await axios.post(url2, data2, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+            .then(res => {
+              const info = {
                 titulo: titulo,
                 descripcion: descripcion,
                 contactinfo: {
@@ -67,7 +83,8 @@ export default function ModalCreateFreelancer({setOpen, asd, }) {
                     twitter: twitter,
                     ubicacion: ubicacion,
                 },
-                image: res.data.path,
+                image: image,
+                gallery: res.data.rutes
                 
               };
           
@@ -90,7 +107,10 @@ export default function ModalCreateFreelancer({setOpen, asd, }) {
                   
                 }
               });
-            })
+            })  
+
+            
+          })
 
 
         
@@ -256,7 +276,22 @@ export default function ModalCreateFreelancer({setOpen, asd, }) {
         <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
           Subir Imagen
         </Button>
-      </label></Grid>        
+      </label></Grid> 
+
+      <Grid item md={6} xs={12}>
+             <input
+        onChange={(e) => {handleGalleryImage(e)}}
+        accept="imagen/*"
+        id="contained-button-image"
+        style={{display:"none"}}
+        multiple='multiple'
+        type="file"
+      />
+      <label htmlFor="contained-button-image">
+        <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
+          Subir Imagenes de la Galeria
+        </Button>
+      </label></Grid>       
                   
               </Grid>
             </Grid>

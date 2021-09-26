@@ -16,6 +16,17 @@ const upload = multer({
     storage: storage
 })
 
+router.post("/manyfile",upload.array("file"), async (req,res) => {
+    const rutes = []
+    await req.files.map((file) => {
+        rutes.push(`https://criptoadviser.com/media/${file.filename}`)
+    })
+    res.json({
+        status: "upload complete",
+        rutes: rutes
+    })
+})
+
 router.post("/file",upload.single("file"), (req,res) => {
     
     res.json({
@@ -37,8 +48,8 @@ router.get("/:id", async (req,res) => {
 
 router.post("/", async (req,res) => {
     console.log(req.body);
-    const {titulo, descripcion, media, image, price, contactinfo} = req.body;
-    const noticia = new Servicios({titulo, descripcion, media, image, price, contactinfo});
+    const {titulo, descripcion, image, date,contactinfo, gallery, type} = req.body;
+    const noticia = new Servicios({titulo, descripcion, image, date,contactinfo, gallery, type});
     await noticia.save();
     res.json({
         message: "null"
@@ -47,8 +58,8 @@ router.post("/", async (req,res) => {
 
 router.put("/:id", async (req,res) => {
     console.log(req.params.id);
-    const {titulo, descripcion, media, image, price, contactinfo} = req.body;
-    const newnoticia = {titulo, descripcion, media, image, price, contactinfo};
+    const {titulo, descripcion, image, date,contactinfo, gallery, type} = req.body;
+    const newnoticia = {titulo, descripcion, image, date,contactinfo, gallery, type};
     await Servicios.findByIdAndUpdate(req.params.id,newnoticia);
     res.json({
         message: "null"
