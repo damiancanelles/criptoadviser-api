@@ -6,7 +6,7 @@ const {protect} = require("../midlewares/auth")
 const Servicios = require("../models/model_servicios")
 
 const storage = multer.diskStorage({
-    destination: "./public/media",
+    destination: "./frontend/build/media",
     filename: (req, file, cb ) => {
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`)
     }
