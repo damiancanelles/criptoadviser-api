@@ -24,6 +24,7 @@ import {
 
 export default function ModalEditFreelancer({setOpen, asd, object}) {
     const [titulo,settitulo] = React.useState(object.titulo);
+    const [gallery,setgallery] = React.useState(object.gallery);
     const [descripcion,setdescripcion] = React.useState(object.descripcion);
     const [numero,setnumero] = React.useState(object.contactinfo.numero);
     const [facebook,setfacebook] = React.useState(object.contactinfo.facebook);
@@ -66,7 +67,7 @@ export default function ModalEditFreelancer({setOpen, asd, object}) {
                     ubicacion: ubicacion
                 },
                 image: object.image,
-                
+                gallery: gallery
               };
           
               axios.put(`https://criptoadviser.com/api/freelancers/${object._id}`,info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
@@ -105,6 +106,7 @@ export default function ModalEditFreelancer({setOpen, asd, object}) {
                     ubicacion: ubicacion
                 },
                 image: res.data.path,
+                gallery: gallery
                 
               };
           

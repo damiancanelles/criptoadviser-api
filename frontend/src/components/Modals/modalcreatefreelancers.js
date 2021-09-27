@@ -26,7 +26,6 @@ import {
 export default function ModalCreateFreelancer({setOpen, asd, }) {
     const [titulo,settitulo] = React.useState("");
     const [descripcion,setdescripcion] = React.useState("");
-    const [gallery,setgallery] = React.useState("");
     const [numero,setnumero] = React.useState("");
     const [ubicacion,setubicacion] = React.useState("");
     const [facebook,setfacebook] = React.useState("");

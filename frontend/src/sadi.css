@@ -10,6 +10,17 @@
     font-family: CriptoAdviserBook;
     src: url(assets/fonts/Futura\ Book\ font.ttf);
 }
+@font-face {
+    font-family: CriptoAdviserAceSans;
+    src: url(assets/fonts/AceSans-Demo.otf);
+}
+
+h1, h2 {
+    font-family: CriptoAdviserAceSans !important;
+}
+h3, h4, p, button{
+    font-family: CriptoAdviserBook !important;
+}
 
 body {
     background-color: white !important;

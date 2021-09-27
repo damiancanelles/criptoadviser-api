@@ -65,7 +65,8 @@ const useStyles = makeStyles((theme) => ({
         },
       },
       buttom:{
-        "paddingLeft":"30px",
+
+        "paddingLeft":"4%",
         [theme.breakpoints.down('xs')]: {
           "paddingLeft":"0px",
         },
@@ -158,9 +159,9 @@ function LandingBody() {
       </Grid>
           </Grid>
       <Grid container justifyContent="flex-start" className={classes.buttom}>
-      <Button disabled={index === 0} style={{"marginLeft":"30px","marginRight":"30px"}} onClick={() => setindex(0)}>Curso de Traiding</Button>
-      <Button disabled={index === 2} style={{"marginLeft":"30px","marginRight":"30px"}} onClick={() => setindex(2)}>Señales</Button> 
-      <Button disabled={index === 1} style={{"marginLeft":"30px","marginRight":"30px"}} onClick={() => setindex(1)}>Servicio de Lending</Button> 
+      <Button variant={ index === 0 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}} onClick={() => setindex(0)}>Curso de Traiding</Button>
+      <Button variant={ index === 2 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}} onClick={() => setindex(2)}>Señales</Button> 
+      <Button variant={ index === 1 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}} onClick={() => setindex(1)}>Servicio de Lending</Button> 
       </Grid>
       <Collapse in={index === 0}>
       <CursoButton></CursoButton>

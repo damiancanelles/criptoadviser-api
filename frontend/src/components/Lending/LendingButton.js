@@ -25,27 +25,38 @@ const useStyles = makeStyles((theme) => ({
       },
       grid: {
         padding: 5,
+        paddingLeft: "4%",
+        paddingRight: "4%",
         [theme.breakpoints.down('xs')]: {
-            padding: 0,
+            padding: "0",
             paddingBottom: 15  ,
           },
       },
+
       image2: {
-        height: '310px',
-        margin: `5%`,
-        [theme.breakpoints.down('xs')]: {
-          width: '100%',
+        borderRadius: 24,
+        width: "90%",
+        [theme.breakpoints.down('sm')]: {
+        padding: 10,
+        borderRadius: 0,
+        width: '100%',
         margin: 0,
         },
       },
    
       text: {
           margin: 0,
+          
+      },
+      gridtext: {
+        padding: 0,
+        [theme.breakpoints.down('xs')]: {
+          padding: 10,
+        },
       },
       buttom: {
-        [theme.breakpoints.down('xs')]: {
         margin: 10,
-        },
+        
       },
    
 }))
@@ -87,22 +98,26 @@ export default function LendingButton() {
           </div>
         </Fade>
       </Modal>
-        <Grid style={{"paddingLeft":"4%","paddingRight":"4%","paddingBottom":"4%"}}
+        <Grid className={classes.gridtext}
         item 
         md={6}
-        xs={12}>
+        sm={12}>
+          <Grid container  alignItems="center" justifyContent="center">
           <h1 style={{marginBottom:"10px"}} className={classes.text}>Servicios de Lending</h1>
           <h4 className={classes.text}>Las compras P2P ofrecen la posibilidad de comprar y vender bitcoin y otras criptomonedas entre particulares de una forma segura. La gran ventaja es la multitud de diferentes métodos de pago disponibles, todo ello, con la seguridad que ofrece Binance.</h4>
           <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={()=>{handleOpen()}} variant="contained" color="primary">Contactenos</Button></Grid>
+          </Grid>
         </Grid>
-        <Grid 
-        item 
+        <Grid item 
         md={6}
-        xs={12}>
-          <img   alt="img"
-                 className={classes.image2}
-                 src={require(`assets/img/lending.jpg`)}
-               ></img>
+        sm={12}>
+              <Grid container justifyContent="center">
+               
+              <img   
+              alt="img"
+              className={classes.image2}
+              src={require(`assets/img/lending.jpg`)}></img>
+              </Grid>
           </Grid>
       </Grid>
     )
