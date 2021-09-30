@@ -6,7 +6,7 @@ import React from 'react'
 
 const useStyles = makeStyles((theme) => ({
       root:{
-          backgroundImage: `url(${require("assets/img/tienda2.jpg")})`,
+          backgroundImage: `url(${require("assets/img/lending.jpg")})`,
           backgroundPosition: 'center',
           backgroundSize:'cover',
           height:'200px',
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
           height: 100,
           marginLeft: 40,
           [theme.breakpoints.down('xs')]: {
-            height: 60,
+            height: 80,
             marginLeft: 0,
           },
       },
@@ -56,17 +56,17 @@ function LendingHeader() {
            alignItems="center">
                 
                 <Hidden xsDown>
-                <Grid  item xl={8} xs={12} className={classes.caja}>
+                <Grid  item xs={12} className={classes.caja}>
                     <Grid container className={classes.logocontainer} >
-                    <img className={classes.logo} alt="logo" src={require("assets/img/logonegro.png")}/>
+                    <img className={classes.logo} alt="logo" src={require("assets/img/Logo3.png")}/>
                     </Grid>
                     
                 </Grid>
                 </Hidden>
                 <Hidden smUp>
-                <Grid  item xl={8} xs={12} className={classes.caja}>
+                <Grid  item  xs={12} className={classes.caja}>
                     <Grid container className={classes.logocontainer} >
-                    <img className={classes.logo} alt="logo" src={require("assets/img/logoblanco.png")}/>
+                    <img className={classes.logo} alt="logo" src={require("assets/img/Logo3.png")}/>
                     </Grid>
                     
                 </Grid>

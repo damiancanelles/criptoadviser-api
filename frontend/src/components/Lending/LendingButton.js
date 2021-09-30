@@ -116,7 +116,7 @@ export default function LendingButton() {
               <img   
               alt="img"
               className={classes.image2}
-              src={require(`assets/img/lending.jpg`)}></img>
+              src={require(`assets/img/lending1.jpg`)}></img>
               </Grid>
           </Grid>
       </Grid>
