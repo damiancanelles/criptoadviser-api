@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Alert, Container } from 'reactstrap';
+import Collapse from '@material-ui/core/Collapse';
+import Alert from '@material-ui/lab/Alert';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import {
     Box,
     Button,
@@ -11,72 +14,203 @@ import {
     Grid,
     TextField
   } from '@material-ui/core';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import IconButton from '@material-ui/core/IconButton';
-
-  const acceslevels = [
-    {
-      value: '1',
-      label: 'Freelancers'
-    },
-    {
-      value: '2',
-      label: 'Curso de Traiding'
-    },
-    {
-      value: '3',
-      label: 'Todo'
-    }
-  ];
-
-export default function ModalEditService({setOpen, asd, info}) {
-    
- 
-    const [name,setname] = React.useState(info.name);
-    const [caracteristicas,setcaracteristicas] = React.useState("");
-    const [caracteristicaslist,setlist] = React.useState(info.caracteristicas);
-    const [descripcion,setdescripcion] = React.useState(info.descripcion);
-    const [acceslevel,setacceslevel] = React.useState(info.acceslevel);
-
-    const [price,setprice] = React.useState(info.price);
-    const [error,seterror] = React.useState(false);
-    const [texterror,settexterror] = React.useState(" ");
-    
-    
-    
-    
+  import BlockUi from 'react-block-ui';
+  import { Loader } from 'react-loaders';
+  import 'react-block-ui/style.css';
+  import 'loaders.css/loaders.min.css';
   
+
+  
+
+export default function ModalEditNoticias({setOpen, asd, object}) {
+    const [titulo,settitulo] = React.useState(object.titulo);
+    const [descripcion,setdescripcion] = React.useState(object.descripcion);
+    const [cosa1,setcosa1] = React.useState(object.media);
+    const [cosa,setcosa] = React.useState(object.image);
+    const [error,seterror] = React.useState(false)
+    const [texterror,settexterror] = React.useState(" ")
+    const [stop,setstop] = React.useState(false);
+    
+    function handleImage(e){
+        const {files} = e.target;
+        setcosa(files[0]);
+       
+  
+      };
+      function handleMedia(e){
+        const {files} = e.target;
+        setcosa1(files[0]);
+       
+  
+      };
+
     async function register(e) {
         e.preventDefault();
-        
-        
+        setstop(true);
        
-        const cosa = {
-            name: name,
-            descripcion: descripcion,
-            price: price,
-            acceslevel: acceslevel,
-            caracteristicas: caracteristicaslist
-        };
-    
-    
-       axios.put(`https://criptoadviser.com/api/products/${info._id}`,cosa,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.message == null) {
-            asd();
-            setOpen(false);
+        const data = new FormData() 
+        data.append('file', cosa)
+        let url = "https://criptoadviser.com/api/noticias/file/";
+
+        if (cosa === object.image && cosa1 === object.media) {
+            const info = {
+                titulo: titulo,
+                descripcion: descripcion,
+                media: cosa1,
+                image: cosa,
+                
+              };
+          
+              axios.put(`https://criptoadviser.com/api/noticias/${object._id}`,info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+              .then((res) => {
+                console.log(res.data);
+                if (res.data.message === "null") {
+                  asd();
+                  setstop(false);
+                  setOpen(false);
+                  
+                  
+              
+                  
+                } 
+                else {
+                  settexterror(res.data.message)
+                  setstop(false);
+                  seterror(true);
+                  
+                }
+              });
+        }
+        else {
+            if (cosa1 === object.media) {
+                await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+            .then(async res => { 
+                const info = {
+                    titulo: titulo,
+                    descripcion: descripcion,
+                    media: cosa1,
+                    image: res.data.path,
+                    
+                  };
+              
+                  axios.put(`https://criptoadviser.com/api/noticias/${object._id}`,info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+                  .then((res) => {
+                    console.log(res.data);
+                    if (res.data.message === "null") {
+                      asd();
+                      setstop(false);
+                      setOpen(false);
+                      
+                      
+                  
+                      
+                    } 
+                    else {
+                      settexterror(res.data.message)
+                      setstop(false);
+                      seterror(true);
+                      
+                    }
+                  });
             
             
+            
+            
+            
+            })
+            }
+            else {
+                if(cosa === object.image) {
+                const data1 = new FormData() 
+                data1.append('file', cosa1)
+                let url = "https://criptoadviser.com/api/noticias/file/";
+
+                
+                    
+                await axios.post(url, data1, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+                .then(async res => {
+                    const info = {
+                        titulo: titulo,
+                        descripcion: descripcion,
+                        media: res.data.path,
+                        image: cosa,
+                        
+                      };
+                  
+                      axios.put(`https://criptoadviser.com/api/noticias//${object._id}`,info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+                      .then((res) => {
+                        console.log(res.data);
+                        if (res.data.message === "null") {
+                          asd();
+                          setstop(false);
+                          setOpen(false);
+                          
+                          
+                      
+                          
+                        } 
+                        else {
+                          settexterror(res.data.message)
+                          setstop(false);
+                          seterror(true);
+                          
+                        }
+                      });
+                })
+                }
+                else {
+                    
+                await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+                .then(async res => { 
+                const image = res.data.path;
+                
+                const data1 = new FormData() 
+                data1.append('file', cosa1)
+                let url = "https://criptoadviser.com/api/noticias/file/";
+                
+                await axios.post(url, data1, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+                .then(res => {
+                    const info = {
+                        titulo: titulo,
+                        descripcion: descripcion,
+                        media: res.data.path,
+                        image: image,
+                        
+                      };
+                  
+                      axios.put(`https://criptoadviser.com/api/noticias/${object._id}`,info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+                      .then((res) => {
+                        console.log(res.data);
+                        if (res.data.message === "null") {
+                          asd();
+                          setstop(false);
+                          setOpen(false);
+                          
+                          
+                      
+                          
+                        } 
+                        else {
+                          settexterror(res.data.message)
+                          setstop(false);
+                          seterror(true);
+                          
+                        }
+                      });
+    
+                })
+                
+                
+                
+                
+                
+                })
+                }
+            }
+        }
+
+
         
-            
-          } 
-          else {
-            settexterror(res.data.message)
-            seterror(true);
-            
-          }
-        });
     }
 
     return(
@@ -85,7 +219,7 @@ export default function ModalEditService({setOpen, asd, info}) {
         <CardHeader
           align="center"
           subheader="Rellene la informacion necesaria"
-          title="Editar Usuario"
+          title="Agregar Noticia"
         />
         <Divider />
         <CardContent>
@@ -93,74 +227,73 @@ export default function ModalEditService({setOpen, asd, info}) {
             container
             spacing={3}
           >
-            
-        
-           
             <Grid
               item
-              md={4}
+              md={6}
               xs={12}
             >
               <TextField
                 fullWidth
-                label="Name"
-                name="name"
-                onChange={(e) => {setname(e.target.value)}}
+                label="Titulo"
+                name="titulo"
+                onChange={(e) => {settitulo(e.target.value)}}
                 required
-                value={name}
+                value={titulo}
                 variant="outlined"
               />
-            </Grid>
-            
-            <Grid
+              <Grid
               item
-              md={4}
+              md={6}
               xs={12}
             >
-              <TextField
-                fullWidth
-                label="Precio en USDT"
-                name="price"
-                onChange={(e) => {setprice(e.target.value)}}
-                required
-                value={price}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Nivel de acceso"
-                name="acceslevel"
-                onChange={(e) => {setacceslevel(e.target.value)}}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={acceslevel}
-                variant="outlined"
-              >
-               {acceslevels.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-              
-            </Grid>
-            <Grid
+              <Grid
               item
               md={12}
               xs={12}
             >
+              <Grid container >
+              
+             <Grid item md={6} xs={12}>
+             <input
+        onChange={(e) => {handleImage(e)}}
+        accept="imagen/*"
+        id="contained-button-file"
+        style={{display:"none"}}
+        multiple
+        type="file"
+      />
+      <label htmlFor="contained-button-file">
+        <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
+          Subir Imagen
+        </Button>
+      </label></Grid> 
+      <Grid item md={6} xs={12}>
+             <input
+        onChange={(e) => {handleMedia(e)}}
+        id="contained-button-file2"
+        style={{display:"none"}}
+        multiple
+        type="file"
+      />
+      <label htmlFor="contained-button-file2">
+        <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
+          Subir Media
+        </Button>
+      </label></Grid>       
+                  
+              </Grid>
+            </Grid>
+            </Grid>
+            </Grid>
+            
+            
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
               <TextField
-                fullWidth
+              fullWidth
                 label="Descripcion"
                 name="descripcion"
                 onChange={(e) => {setdescripcion(e.target.value)}}
@@ -169,97 +302,38 @@ export default function ModalEditService({setOpen, asd, info}) {
                 required
                 value={descripcion}
                 variant="outlined"
-              >
-             
-              </TextField>
-              
-            </Grid>
-
-            
-            
-            <Grid
-              item
-              md={3}
-              xs={12}
-            >
-              <TextField
-                
-                fullWidth="100%"
-                label="Caracteristicas"
-                name="caracteristicas"
-                onChange={(e) => {setcaracteristicas(e.target.value)}}
-                required
-                value={caracteristicas}
-                variant="outlined"
               />
               
-            </Grid>
-            <Grid
-              item
-              md={1}
-              xs={12}
-            >
-
-            <IconButton 
-            style={{"margin-left":"-15px"}}
-            aria-label="add"
-            onClick={(e)=> {
-                 const list = caracteristicaslist;
-                 list == "" ? setlist(caracteristicas) :
-                 setlist(`${list}_${caracteristicas}`);
-                 console.log(caracteristicaslist);
-             }}
-            >
-              <AddCircleOutlineIcon fontSize="large"/>
-            </IconButton>
-                
+              
             </Grid>
             
+           
+           
+           
             <Grid 
               item
-              md={8}
+              md={6}
               xs={12}>
-            {caracteristicaslist == "" ? null : caracteristicaslist.split("_").map((car,index)=>(
-            <Button
-            style={{"margin":"3px"}}
-             color="primary"
-             variant="contained"
-             size="small"
-             onClick={(e) => {
-                 const lista = caracteristicaslist.split("_");
-                 const i = lista.findIndex((element) => element == car);
-                 lista.splice(i,1);
-                 const list = lista.join("_");
-                 setlist(list);
-             }}
-             
-             >
-             {car}
-           </Button>
-           ))}
-            </Grid>
-
-            <Grid 
-              item
-              md={12}
-              xs={12}>
-            <Alert color="danger" isOpen={error}>
-          <Container>
-            <div className="alert-icon">
-              <i className="now-ui-icons travel_info"></i>
-            </div>
-            <strong>{texterror}</strong>
-            <button
-              type="button"
-              className="close"
-              onClick={() => seterror(false)}
+            <Collapse in={error}>
+        <Alert severity="error"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                seterror(false);
+              }}
             >
-              <span aria-hidden="true">
-                <i className="now-ui-icons ui-1_simple-remove"></i>
-              </span>
-            </button>
-          </Container>
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+        >
+         
+            <strong>{texterror}</strong>
+            
         </Alert>
+      </Collapse>
             </Grid>
           </Grid>
         </CardContent>

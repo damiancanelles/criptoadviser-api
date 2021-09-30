@@ -1,19 +1,19 @@
 import { Grid, makeStyles} from '@material-ui/core'
 import React from 'react'
-
+import { Hidden } from '@material-ui/core'
 import { whiteColor } from 'assets/jss/material-dashboard-react'
 
 
 
 const useStyles = makeStyles((theme) => ({
       root:{
-          backgroundImage: `url(${require("assets/img/landingadrian.jpg")})`,
+          backgroundImage: `url(${require("assets/img/landing.jpg")})`,
           backgroundPosition: 'center',
           backgroundSize:'cover',
           height:'300px',
           marginBottom: '-20px',
           [theme.breakpoints.down('sm')]: {
-            backgroundImage: `url(${require("assets/img/landingmoviladrian.jpg")})`,
+            backgroundImage: `url(${require("assets/img/landingm.jpg")})`,
           },
           [theme.breakpoints.down('xs')]: {
             marginBottom: '-20px',
@@ -22,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
       },
       logo: {
           margin: 10,
-        height: 150,
+        height: 250,
         [theme.breakpoints.down('sm')]: {
             height: 100,
           },
         [theme.breakpoints.down('xs')]: {
-          height: 60,
+          height: 80,
         },
     },
     logocontainer: {
@@ -62,8 +62,26 @@ return (
            direction="row"
            justifyContent="center"
            alignItems="center">
-
-           
+                 
+                 <Hidden xsDown>
+                <Grid  item  xs={12} className={classes.caja}>
+                    <Grid container className={classes.logocontainer} >
+                    <img className={classes.logo} alt="logo" src={require("assets/img/Logo3.png")}/>
+               
+                    </Grid>
+                    
+                </Grid>
+                </Hidden>
+                <Hidden smUp>
+                <Grid  item xs={12} className={classes.caja}>
+                    <Grid container className={classes.logocontainer} >
+                    <img className={classes.logo}  alt="logo" src={require("assets/img/Logo3.png")}/>
+               
+                    
+                    </Grid>
+                    
+                </Grid>
+                </Hidden>
                 
                
                

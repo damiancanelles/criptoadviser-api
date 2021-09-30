@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
             height: 100,
           },
         [theme.breakpoints.down('xs')]: {
-          height: 60,
+          height: 80,
         },
     },
     logocontainer: {
@@ -58,9 +58,7 @@ function NosotrosHeader() {
            
                 <Grid  item xl={8} xs={12} className={classes.caja}>
                     <Grid container className={classes.logocontainer} >
-                    <img className={classes.logo} alt="logo" src={require("assets/img/Logo.png")}/>
-                   
-                    <img className={classes.logo} alt="logo" src={require("assets/img/logonegro.png")}/>
+                    <img className={classes.logo} alt="logo" src={require("assets/img/Logo3.png")}/>
                     </Grid>
                     
                 </Grid>

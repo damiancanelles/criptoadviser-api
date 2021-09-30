@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
           height: 120,
           marginLeft: 40,
           [theme.breakpoints.down('xs')]: {
-            height: 60,
+            height: 80,
             marginLeft: 0,
           },
       },
@@ -56,7 +56,7 @@ function TiendaHeader() {
            alignItems="center">
                 
                 <Hidden xsDown>
-                <Grid  item xl={8} xs={12} className={classes.caja}>
+                <Grid  item xs={12} className={classes.caja}>
                     <Grid container className={classes.logocontainer} >
                     <img className={classes.logo} alt="logo" src={require("assets/img/tienda/logo.png")}/>
                     </Grid>
@@ -64,7 +64,7 @@ function TiendaHeader() {
                 </Grid>
                 </Hidden>
                 <Hidden smUp>
-                <Grid  item xl={8} xs={12} className={classes.caja}>
+                <Grid  item xs={12} className={classes.caja}>
                     <Grid container className={classes.logocontainer} >
                     <img className={classes.logo} alt="logo" src={require("assets/img/tienda/logo.png")}/>
                     </Grid>

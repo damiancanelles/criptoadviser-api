@@ -8,12 +8,18 @@ const useStyles = makeStyles((theme) => ({
       root:{
           backgroundImage: `url(${require("assets/img/freelancers4.jpg")})`,
           backgroundPosition: 'center',
+     
           backgroundSize:'cover',
+          backgroundRepeat:'no-repeat',
+    
+    
           height:'200px',
           marginBottom: '-20px',
           
           [theme.breakpoints.down('xs')]: {
             marginBottom: '-20px',
+       
+            
           },
       
       },
@@ -21,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
           height: 100,
           marginLeft: 40,
           [theme.breakpoints.down('xs')]: {
-            height: 60,
+            height: 80,
             marginLeft: 0,
           },
       },
@@ -50,23 +56,27 @@ function FreelancersHeader() {
 
     return (
            <Grid container 
+           style={{backgroundClip: 'content-box'}}
            className={classes.root}
            direction="row"
            justifyContent="center"
            alignItems="center">
                 
                 <Hidden xsDown>
-                <Grid  item xl={8} xs={12} className={classes.caja}>
+                <Grid  item  xs={12} className={classes.caja}>
                     <Grid container className={classes.logocontainer} >
-                    <img className={classes.logo} alt="logo" src={require("assets/img/logoblanco.png")}/>
+                    <img className={classes.logo} alt="logo" src={require("assets/img/Logo3.png")}/>
+               
                     </Grid>
                     
                 </Grid>
                 </Hidden>
                 <Hidden smUp>
-                <Grid  item xl={8} xs={12} className={classes.caja}>
+                <Grid  item xs={12} className={classes.caja}>
                     <Grid container className={classes.logocontainer} >
-                    <img className={classes.logo} alt="logo" src={require("assets/img/logoblanco.png")}/>
+                    <img className={classes.logo} style={{paddingRight:'10px'}} alt="logo" src={require("assets/img/Logo3.png")}/>
+               
+                    
                     </Grid>
                     
                 </Grid>
