@@ -55,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
 
   },
   image: {
-    
-    backgroundImage: `url(${require("assets/img/freelancers2.jpg")})`,
+    height:'100vh',
+    backgroundImage: `url(${require("assets/img/Login.jpg")})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -176,7 +176,7 @@ export default function Register() {
         </Fade>
       </Modal>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} style={{height:h}} className={classes.image} />
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper1}>
          

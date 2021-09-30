@@ -21,6 +21,7 @@ import { Loader } from 'react-loaders';
 import 'react-block-ui/style.css';
 import 'loaders.css/loaders.min.css';
 import {Helmet} from "react-helmet"
+import { ImportantDevices } from '@material-ui/icons';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -36,6 +37,8 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: '100vh',
+    overflow: 'auto'
   },
   logo:{
       height: 80,
@@ -44,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
   image: {
     
-    backgroundImage: `url(${require("assets/img/freelancers2.jpg")})`,
+    backgroundImage: `url(${require("assets/img/Login.jpg")})`,
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -122,7 +125,7 @@ export default function Login() {
             </Helmet>
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} style={{height:h}} className={classes.image} />
+      <Grid item xs={false} sm={4} md={7}  className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} square>
         <Grid container alignItems="center" justifyContent="center">
         <Grid item className={classes.paper}>
