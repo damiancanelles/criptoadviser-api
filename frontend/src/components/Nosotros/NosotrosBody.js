@@ -22,6 +22,7 @@ import { grayColor } from 'assets/jss/material-dashboard-react';
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel';
 import { Hidden } from '@material-ui/core';
+import CarouselUsuarios from './CarouselUsuarios';
 
 
 
@@ -190,115 +191,7 @@ function NosotrosBody() {
           )
         })}
       </Carousel>
-      </Grid>
-      <h2 className={classes.text} style={{textAlign:"center",padding:10}}>Nuestro equipo</h2>
-      <Grid container className={classes.gridquestions} justifyContent="center" alignItems="center">
-        <Grid item md={3} sm={12} xs={12}>
-        <Grid style={{"marginBottom":"10px"}} direction="column" container alignItems="center" justifyContent="center">
-                <img className={classes.instructor} alt="instructor" src={require("assets/img/contacto.png")}></img>
-                <h4 className={classes.text}>Adrian Lopez</h4>
-                <h4 className={classes.text}>Director Creativo</h4>
-                <Hidden mdUp>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero de Telefono:</h4>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>+5355188776</h4>
-                <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
-                <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
-                </h4>
-                <h4 className={classes.text}>
-                <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
-                <IconButton className={classes.text}><InstagramIcon style={{color:"black"}}></InstagramIcon></IconButton>
-                <IconButton className={classes.text}><TwitterIcon style={{color:"black"}}></TwitterIcon></IconButton></h4>     
-                </Hidden>
-                <Hidden smDown>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero: +5355188776</h4>
-                <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
-        <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
-        <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
-        <IconButton className={classes.text}><InstagramIcon style={{color:"black"}}></InstagramIcon></IconButton>
-        <IconButton className={classes.text}><TwitterIcon style={{color:"black"}}></TwitterIcon></IconButton></h4>
-                </Hidden>
-                </Grid>
-        </Grid>
-        <Grid item md={3} sm={12} xs={12}>
-        <Grid style={{"marginBottom":"10px"}} direction="column" container alignItems="center" justifyContent="center">
-                <img className={classes.instructor} alt="instructor" src={require("assets/img/contacto.png")}></img>
-                <h4 className={classes.text}>Adrian Lopez</h4>
-                <h4 className={classes.text}>Director Creativo</h4>
-                <Hidden mdUp>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero de Telefono:</h4>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>+5355188776</h4>
-                <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
-                <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
-                </h4>
-                <h4 className={classes.text}>
-                <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
-                <IconButton className={classes.text}><InstagramIcon style={{color:"black"}}></InstagramIcon></IconButton>
-                <IconButton className={classes.text}><TwitterIcon style={{color:"black"}}></TwitterIcon></IconButton></h4>     
-                </Hidden>
-                <Hidden smDown>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero: +5355188776</h4>
-                <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
-        <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
-        <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
-        <IconButton className={classes.text}><InstagramIcon style={{color:"black"}}></InstagramIcon></IconButton>
-        <IconButton className={classes.text}><TwitterIcon style={{color:"black"}}></TwitterIcon></IconButton></h4>
-                </Hidden>
-                </Grid>
-        </Grid>
-        <Grid item md={3} sm={12} xs={12}>
-        <Grid style={{"marginBottom":"10px"}} direction="column" container alignItems="center" justifyContent="center">
-                <img className={classes.instructor} alt="instructor" src={require("assets/img/contacto.png")}></img>
-                <h4 className={classes.text}>Adrian Lopez</h4>
-                <h4 className={classes.text}>Director Creativo</h4>
-                <Hidden mdUp>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero de Telefono:</h4>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>+5355188776</h4>
-                <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
-                <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
-                </h4>
-                <h4 className={classes.text}>
-                <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
-                <IconButton className={classes.text}><InstagramIcon style={{color:"black"}}></InstagramIcon></IconButton>
-                <IconButton className={classes.text}><TwitterIcon style={{color:"black"}}></TwitterIcon></IconButton></h4>     
-                </Hidden>
-                <Hidden smDown>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero: +5355188776</h4>
-                <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
-        <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
-        <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
-        <IconButton className={classes.text}><InstagramIcon style={{color:"black"}}></InstagramIcon></IconButton>
-        <IconButton className={classes.text}><TwitterIcon style={{color:"black"}}></TwitterIcon></IconButton></h4>
-                </Hidden>
-                </Grid>
-        </Grid>
-        <Grid item md={3} sm={12} xs={12}>
-        <Grid style={{"marginBottom":"10px"}} direction="column" container alignItems="center" justifyContent="center">
-                <img className={classes.instructor} alt="instructor" src={require("assets/img/contacto.png")}></img>
-                <h4 className={classes.text}>Adrian Lopez</h4>
-                <h4 className={classes.text}>Director Creativo</h4>
-                <Hidden mdUp>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero de Telefono:</h4>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>+5355188776</h4>
-                <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
-                <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
-                </h4>
-                <h4 className={classes.text}>
-                <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
-                <IconButton className={classes.text}><InstagramIcon style={{color:"black"}}></InstagramIcon></IconButton>
-                <IconButton className={classes.text}><TwitterIcon style={{color:"black"}}></TwitterIcon></IconButton></h4>     
-                </Hidden>
-                <Hidden smDown>
-                <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero: +5355188776</h4>
-                <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
-        <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
-        <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
-        <IconButton className={classes.text}><InstagramIcon style={{color:"black"}}></InstagramIcon></IconButton>
-        <IconButton className={classes.text}><TwitterIcon style={{color:"black"}}></TwitterIcon></IconButton></h4>
-                </Hidden>
-                </Grid>
-        </Grid>
-      </Grid>
-      <Grid >
+      <CarouselUsuarios></CarouselUsuarios>
       <h1 style={{margin:"0px",textAlign:"center"}} >FAQ</h1>
       </Grid>
       <Grid className={classes.gridquestions} container direction="row" justifyContent="center">
