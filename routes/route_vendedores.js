@@ -21,13 +21,15 @@ router.post("/", async (req,res) => {
     check = await Vendedores.findOne({username});
     if (check) {
         res.json({
-            mesage: "Ya usted esta registrado como vendedor"
+            mesage: "Ya usted esta registrado como vendedor",
+            update: "no"
         });
     }
     else {
         await clase.save();
         res.json({
-            mesage: "Usted se ha registrado correctamente"
+            mesage: "Usted se ha registrado correctamente",
+            update: "si"
         });
     }
 });
