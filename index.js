@@ -27,6 +27,7 @@ app.use("/api/notificaciones",require("./routes/route_notificaciones"));
 app.use("/api/servicios",require("./routes/route_servicios"));
 app.use("/api/transaccionsmc",require("./routes/route_transaccionsmc"));
 app.use("/api/tarjetas",require("./routes/route_tarjetas"));
+app.use("/api/botvendedores",require("./routes/route_vendedores"));
 
 //config
 let port = process.env.PORT || 3000;
