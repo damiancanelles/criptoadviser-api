@@ -10,7 +10,7 @@ router.get("/", async (req,res) => {
 });
 
 router.get("/:id", async (req,res) => {
-    const clases = await Vendedores.findOne({ussername: req.params.id});
+    const clases = await Vendedores.findOne({username: req.params.id});
     res.json(clases);
 });
 
@@ -51,7 +51,8 @@ router.post("/like/:id", async (req,res) => {
     const check = wallet.users.find(element => element === username);
     if (check) {
         res.json({
-            mesage: "Usted ya le ha dado su like a este vendedor"
+            mesage: "Usted ya le ha dado su like a este vendedor",
+            update: "no"
         }); 
     }
     else {
@@ -59,7 +60,8 @@ router.post("/like/:id", async (req,res) => {
         wallet.users.push(username);
         await Vendedores.findByIdAndUpdate(wallet._id,wallet);
         res.json({
-            mesage: "ok"
+            mesage: "ok",
+            update: "si"
         });
     }
     
