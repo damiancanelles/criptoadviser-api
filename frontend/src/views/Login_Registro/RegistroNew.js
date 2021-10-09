@@ -32,6 +32,7 @@ import { Loader } from 'react-loaders';
 import 'react-block-ui/style.css';
 import 'loaders.css/loaders.min.css';
 import {Helmet} from 'react-helmet';
+import ModalRegistro from 'components/Modals/modal_registro';
 
 function Copyright() {
   return (
@@ -111,8 +112,15 @@ export default function Register() {
   const [tusername, settusername] = React.useState("");
   const [stop, setstop] = React.useState(false);
   const [open, setOpen] = React.useState(false);
- 
- 
+  const [ipon , set_Open] = React.useState(false);
+
+  const handle_Open = ()=>{
+     set_Open(true);
+  }
+  const handle_Close =()=>{
+    set_Open(false)
+    history.push("/login")
+  }
   const handleOpen = () => {
     setOpen(true);
   };
@@ -136,10 +144,10 @@ export default function Register() {
     await axios.post("https://criptoadviser.com/api/users/",info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
     .then((res) => {
       if (res.data.message === "null") {
-        setalert(true)
+        setalert(true)   
         settextalert("Usuario creado correctamente")
         setstop(false);
-        history.push("/login")
+        handle_Open()
       }
       else {
         seterror(true);
@@ -173,6 +181,21 @@ export default function Register() {
         <ModalInfoBot  ></ModalInfoBot>
     
           </div>
+        </Fade>
+      </Modal>
+      <Modal
+       aria-labelledby="transition-modal-title"
+       aria-describedby="transition-modal-description"
+       className={classes.modal}
+       open={ipon}
+       onClose={handle_Close}
+
+      >
+         <Fade in={ipon}>
+         <div className={classes.paper}>
+         <ModalRegistro/>
+         </div>
+        
         </Fade>
       </Modal>
       <CssBaseline />
@@ -301,6 +324,7 @@ export default function Register() {
           >
             Registrar
           </Button>
+      
           <Grid container justifyContent="center">
             <Grid item>
               <Link style={{color:"black"}} to="/login">
