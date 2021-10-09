@@ -20,13 +20,24 @@ router.get("/userid/:id", async (req,res) => {
 });
 
 router.get("/referencebyid/:id", async (req,res) => {
-    const clases = await Vendedores.findOne({userid: req.params.id});
-    res.json(clases.usersreference);
+    const clases = await Vendedores.findOne({username: req.params.id});
+    if (clases == null) {
+        res.json(clases);
+    }
+    else {
+        res.json(clases.usersreference);
+    }
 });
 
 router.get("/reference/:id", async (req,res) => {
     const clases = await Vendedores.findOne({username: req.params.id});
-    res.json(clases.usersreference);
+    if (clases == null) {
+        res.json(clases);
+    }
+    else {
+        res.json(clases.usersreference);
+    }
+    
 });
 
 router.post("/", async (req,res) => {
