@@ -1,16 +1,13 @@
 import { Grid, makeStyles, Paper, Button, TextField } from '@material-ui/core';
 import React from 'react'
-import AccountProfile from './Account/AccountProfile';
-import AccountProfileDetails from './Account/AccountProfileDetails';
+import { AccountBotInfo } from './AccountBotInfo';
+import AccountProfile from './AccountProfile';
+import AccountProfileDetails from './AccountProfileDetails';
 
 
 const useStyles = makeStyles((theme) => ({
     grid: {
-    
-        padding: theme.spacing(1),
-   
-
-        
+        padding: theme.spacing(1),       
     },
   
     text: {
@@ -23,12 +20,15 @@ const useStyles = makeStyles((theme) => ({
 const VistaUser = () => {
     const classes = useStyles()
     return (
-        <Grid container >
-            <Grid item xs={12} xl={3} className={classes.grid}>
+        <Grid container style={{marginTop:'10px', marginBottom:'10px'}}>
+            <Grid item xs={12} xl={4} className={classes.grid}>
                <AccountProfile/>
             </Grid>
-            <Grid item xs={12} xl={9} className={classes.grid}>
+            <Grid item xs={12} xl={4} className={classes.grid}>
                 <AccountProfileDetails/>
+            </Grid>
+            <Grid item xs={12} xl={4} className={classes.grid}>
+                <AccountBotInfo/>
             </Grid>
         </Grid>
 

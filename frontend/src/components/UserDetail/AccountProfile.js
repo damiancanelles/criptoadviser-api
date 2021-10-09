@@ -1,4 +1,4 @@
-
+import React from 'react'
 import {
   Avatar,
   Box,
@@ -8,8 +8,11 @@ import {
   CardContent,
   Divider,
   Typography,
-  Grid
+  Grid,
+  makeStyles
 } from '@material-ui/core';
+
+
 
 
 const user = {
@@ -22,9 +25,9 @@ const user = {
 };
 
 const AccountProfile = (props) => (
-  <Grid container justify='center' alignItems='center' alignContent='center'>
-  <Card {...props}>
-    <CardContent>
+  <Grid container justifyContent='center' alignItems='center' alignContent='center'>
+  <Card {...props} elevation={3}>
+    <CardContent >
       <Grid item
         sx={{
           
@@ -32,8 +35,9 @@ const AccountProfile = (props) => (
           display: 'flex',
           flexDirection: 'column'
         }}
-      > <Grid container direction='column' justify='center' alignItems='center' alignContent='center'>
+      > <Grid container direction='column' justifyContent='center' alignItems='center' alignContent='center'>
         <Avatar
+          style={{height:'100px', width:'100px'}}
           src={user.avatar}
           sx={{
             height: 100,

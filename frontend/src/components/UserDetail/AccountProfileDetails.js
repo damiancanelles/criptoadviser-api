@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react'
 import {
   Box,
   Button,
@@ -10,45 +11,13 @@ import {
   TextField
 } from '@material-ui/core';
 
-const states = [
-  {
-    value: 'Cienfuegos',
-    label: 'Cienfuegos'
-  },
-  {
-    value: 'Villa_Clara',
-    label: 'Villa Clara'
-  },
-  {
-    value: 'Matanzas',
-    label: 'Matanzas'
-  },
-  {
-    value: 'La_Habana',
-    label: 'La Habana'
-  },
-  {
-    value: 'Artemisa',
-    label: 'Artemisa'
-  },
-  {
-    value: 'Mayabeque',
-    label: 'Mayabeque'
-  },
-  {
-    value: 'Pinar_del_Rio',
-    label: 'Pinar del Rio'
-  },
-];
+
 
 const AccountProfileDetails = (props) => {
   const [values, setValues] = useState({
     firstName: 'Osmel',
     telegram: 'Dark_Crow',
     email: 'osmel2419@gmail.com',
-    phone: '55715873',
-    state: 'Cienfuegos',
-    country: 'Cuba'
   });
 
   const handleChange = (event) => {
@@ -59,14 +28,14 @@ const AccountProfileDetails = (props) => {
   };
 
   return (
-    <Grid container justify='center' alignItems='center' alignContent='center'>
+    <Grid container justifyContent='center' alignItems='center' alignContent='center'>
     <form
       style={{boxShadow:'initial'}}
       autoComplete="off"
       noValidate
       {...props}
     >
-      <Card>
+      <Card elevation={3}>
         <CardHeader
           subheader="La informacion del usuario"
           title="Perfil"
@@ -110,7 +79,7 @@ const AccountProfileDetails = (props) => {
             </Grid>
             <Grid
               item
-              md={6}
+              md={12}
               xs={12}
             >
               <TextField
@@ -124,66 +93,11 @@ const AccountProfileDetails = (props) => {
                 disabled
               />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Número de teléfono"
-                name="phone"
-                onChange={handleChange}
-                type="number"
-                value={values.phone}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="País"
-                name="country"
-                onChange={handleChange}
-                required
-                value={values.country}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Ciudad"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-              >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
+    
           </Grid>
         </CardContent>
         <Divider />
-        <Grid container justify='center' style={{marginTop: '5px' }} alignContent='center' alignItems='center'>
+        <Grid container justifyContent='center' style={{marginTop: '10px', marginBottom: '10px' }} alignContent='center' alignItems='center'>
           <Button
             
             color="primary"

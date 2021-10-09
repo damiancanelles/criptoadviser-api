@@ -38,6 +38,7 @@ import {AuthProvider} from "auth/authprovider";
 import { HashRouter } from "react-router-dom";
 import {FreelancerProvider} from "context/freelancersprovider"
 import Servicios from "views/Servicios_Independientes/Servivios";
+import { UserView } from "views/Usuarios/UserView";
 
 
 
@@ -57,7 +58,8 @@ ReactDOM.render(
     <Route path="/curso" component={CursoView} />
     <Route path="/freelancersview" component={FreelancersPreView} />
     <Route path="/servicios" component={Servicios} />
-      <Route path="/admin" component={Admin} />
+    <Route path="/user" component={UserView}/>
+    <Route path="/admin" component={Admin} />
       <Redirect from="/" to="/inicio"></Redirect>
       
     </Switch>
