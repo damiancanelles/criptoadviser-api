@@ -45,7 +45,11 @@ const useStyles = makeStyles((theme) => ({
       },
    
       text: {
+          textAlign:'none',
           margin: 0,
+          [theme.breakpoints.down('sm')]: {
+            fontSize: '35px',
+          },
           
       },
       gridtext: {
@@ -104,7 +108,10 @@ export default function LendingButton() {
         sm={12}>
           <Grid container  alignItems="center" justifyContent="center">
           <h1 style={{marginBottom:"10px"}} className={classes.text}>Servicios de Lending</h1>
-          <h4 className={classes.text}>Las compras P2P ofrecen la posibilidad de comprar y vender bitcoin y otras criptomonedas entre particulares de una forma segura. La gran ventaja es la multitud de diferentes métodos de pago disponibles, todo ello, con la seguridad que ofrece Binance.</h4>
+          <h4 style={{margin: 0}}>Nuestro servicio de lending consiste en un contrato de préstamo
+           a nuestro grupo de traders, por el cual usted recibe mensualmente un 20% de su inversión, 
+           los contratos se procesan hasta el día 10 del mes y los pagos se efectúa el día 12 de cada mes.
+            Este servicio incluye un Contrato legal además de identificación por KYC, permitiendo asegurar 100% la inversión de nuestros miembros.</h4>
           <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={()=>{handleOpen()}} variant="contained" color="primary">Contactenos</Button></Grid>
           </Grid>
         </Grid>

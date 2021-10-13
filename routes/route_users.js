@@ -78,6 +78,7 @@ router.post("/login", async (req,res) => {
         subscription: usuario.subscription,
         role: usuario.role,
         telegramuser: usuario.telegramuser,
+        email: usuario.email,
         }
 
     })

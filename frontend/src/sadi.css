@@ -17,10 +17,17 @@
 
 h1, h2 {
     font-family: CriptoAdviserAceSans !important;
+
 }
 h3, h4, p, button{
+
     font-family: CriptoAdviserBook !important;
 }
+h3, h4, p{
+    text-align: justify;
+   
+}
+
 
 body {
     background-color: white !important;

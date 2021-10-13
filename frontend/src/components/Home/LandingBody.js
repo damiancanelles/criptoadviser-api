@@ -151,15 +151,18 @@ function LandingBody() {
          <CarouselServicios/>
          <div className={classes.root2}>
       <Grid style={{"paddingLeft":"4%","paddingRight":"4%"}} container >
-          <Grid item md={12}
+          <Grid item md={12} 
       xs={12} >
-        <h1 style={{'margin':'0px'}} >Servicios Independientes</h1>
-          <p>Las compras P2P ofrecen la posibilidad de comprar y vender bitcoin y otras criptomonedas entre particulares de una forma segura. La gran ventaja es la multitud de diferentes métodos de pago disponibles, todo ello, con la seguridad que ofrece Binance.</p>
+        <h2 style={{'margin':'0px'}} >Servicios Independientes</h2>
+          <p>Ofertamos una serie de servicios con el objetivo de formar traders
+             y brindar soporte durante su operatoria. Para mayor comodidad hemos 
+             dispuesto todos estos servicios por un pago conjunto de 10 USDT, que 
+             validará su membresía durante todo un mes fiscal.</p>
         
       </Grid>
           </Grid>
       <Grid container justifyContent="flex-start" className={classes.buttom}>
-      <Button variant={ index === 0 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}} onClick={() => setindex(0)}>Curso de Traiding</Button>
+      <Button variant={ index === 0 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}}  onClick={() => setindex(0)}>Curso de Trading</Button>
       <Button variant={ index === 2 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}} onClick={() => setindex(2)}>Señales</Button> 
       <Button variant={ index === 1 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}} onClick={() => setindex(1)}>Servicio de Lending</Button> 
       </Grid>

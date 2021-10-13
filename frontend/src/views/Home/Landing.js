@@ -263,7 +263,7 @@ export default function Landing() {
           <p>Las compras P2P ofrecen la posibilidad de comprar y vender bitcoin y otras criptomonedas entre particulares de una forma segura. La gran ventaja es la multitud de diferentes métodos de pago disponibles, todo ello, con la seguridad que ofrece Binance.</p>
         </Grid>
       <Grid container justifyContent="flex-start" className={classes.buttom}>
-      <Button disabled={index == 0} style={{"margin-left":"30px","margin-right":"30px"}} onClick={() => setindex(0)}>Curso de Traiding</Button>
+      <Button disabled={index == 0} style={{"margin-left":"30px","margin-right":"30px"}} onClick={() => setindex(0)}>Curso de Trading</Button>
       <Button disabled={index == 2} style={{"margin-left":"30px","margin-right":"30px"}} onClick={() => setindex(2)}>Señales</Button> 
       <Button disabled={index == 1} style={{"margin-left":"30px","margin-right":"30px"}} onClick={() => setindex(1)}>Servicio de Lending</Button> 
       </Grid>
@@ -273,7 +273,7 @@ export default function Landing() {
         item 
         md={6}
         xs={12}>
-          <h1>Curso de Traiding</h1>
+          <h1>Curso de Trading</h1>
           <h3>Las compras P2P ofrecen la posibilidad de comprar y vender bitcoin y otras criptomonedas entre particulares de una forma segura. La gran ventaja es la multitud de diferentes métodos de pago disponibles, todo ello, con la seguridad que ofrece Binance.</h3>
         </Grid>
         <Grid 

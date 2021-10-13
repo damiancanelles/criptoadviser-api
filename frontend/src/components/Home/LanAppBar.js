@@ -15,7 +15,7 @@ import useAuth from 'auth/useauth';
 import SettingsIcon from '@material-ui/icons/Settings';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Notificaciones from './Notificaciones';
-
+import UserIcon from '@material-ui/icons/PersonOutlined'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -135,6 +135,11 @@ const useStyles = makeStyles((theme) => ({
           </ButtonGroup> : 
           <ButtonGroup className={classes.grupo}> 
           <Hidden smDown>
+            <Link to='/user'>
+            <IconButton color='inherit'>
+              <UserIcon  />
+            </IconButton>
+            </Link>
           <Notificaciones></Notificaciones>
           </Hidden>
            {user.role === "admin" ? <Link to="/admin/users">

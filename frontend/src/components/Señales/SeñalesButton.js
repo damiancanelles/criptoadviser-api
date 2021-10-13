@@ -55,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
 
   text: {
     margin: 0,
+   
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '35px',
+    },
+    
   },
   buttom: {
     [theme.breakpoints.down('xs')]: {
@@ -104,8 +109,10 @@ export default function SeñalesButton() {
         md={6}
         xs={12}>
            <Grid container  alignItems="center" justifyContent="center">
-        <h1 style={{ marginBottom: "10px" }} className={classes.text}>Señales</h1>
-        <h4 className={classes.text}>Las compras P2P ofrecen la posibilidad de comprar y vender bitcoin y otras criptomonedas entre particulares de una forma segura. La gran ventaja es la multitud de diferentes métodos de pago disponibles, todo ello, con la seguridad que ofrece Binance.</h4>
+        <h1  style={{ marginBottom: "10px",  textTransform: 'none', }} className={classes.text}>Señales</h1>
+        <h4 style={{margin: 0}}>Brindamos señales de más de 10 canales pagos,
+         reunidas en nuestro canal privado, durante todo el día. Tenemos un promedio 
+         de más de 50 señales al día.</h4>
         <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={() => { handleOpen() }} variant="contained" color="primary">Contactenos</Button></Grid>
            </Grid>
       </Grid>

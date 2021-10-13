@@ -129,8 +129,8 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     padding: "0 4%",
     [theme.breakpoints.down('xs')]: {
-      paddingLeft: 10,
-      paddingRight: 10,
+      paddingLeft: 15,
+      paddingRight: 15,
     },
   },
 }));
@@ -219,7 +219,13 @@ export default function CarouselServicios() {
               className={classes.subtitle}
               color="inherit"
             >
-             CriptoADVISER es un proyecto Fintech del tipo 3 pensada para facilitarle la vida a los criptoactivos debido a la cantidad de servicios que ofrecemos. Nos especializamos en la rama de la capacitación, el Trading con criptomonedas y la industria de los servicios. Tiene como objetivo principal dar a conocer el uso de las criptomonedas y mostrar la funcionalidad de las mismas, que poco a poco comienzan a abrirse paso en el mundo financiero, convirtiéndose en la principal estrategia económica de algunos países. Contamos con un excelente y preparado equipo de profesionales capaces de guiarlos por el camino del éxito para que alcancen la verdadera libertad financiera.
+             CriptoADVISER es un proyecto Fintech del tipo 3 pensada para facilitarle la vida 
+             a los criptoactivos debido a la cantidad de servicios que ofrecemos. Nos especializamos 
+             en la rama de la capacitación, el Trading con criptomonedas y la industria de los servicios. 
+             Tiene como objetivo principal dar a conocer el uso de las criptomonedas y mostrar la funcionalidad 
+             de las mismas, que poco a poco comienzan a abrirse paso en el mundo financiero, convirtiéndose en 
+             la principal estrategia económica de algunos países. Contamos con un excelente y preparado equipo 
+             de profesionales capaces de guiarlos por el camino del éxito para que alcancen la verdadera libertad financiera.
             </Typography>
     </Grid>
       

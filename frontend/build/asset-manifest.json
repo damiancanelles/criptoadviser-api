@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.cbd2d8c1.chunk.css",
-    "main.js": "/static/js/main.3c12f23c.chunk.js",
-    "main.js.map": "/static/js/main.3c12f23c.chunk.js.map",
+    "main.css": "/static/css/main.c5734efa.chunk.css",
+    "main.js": "/static/js/main.3b2c1453.chunk.js",
+    "main.js.map": "/static/js/main.3b2c1453.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.730ad540.js",
     "runtime-main.js.map": "/static/js/runtime-main.730ad540.js.map",
     "static/css/2.cc6799f7.chunk.css": "/static/css/2.cc6799f7.chunk.css",
-    "static/js/2.0055b642.chunk.js": "/static/js/2.0055b642.chunk.js",
-    "static/js/2.0055b642.chunk.js.map": "/static/js/2.0055b642.chunk.js.map",
+    "static/js/2.f2d944e4.chunk.js": "/static/js/2.f2d944e4.chunk.js",
+    "static/js/2.f2d944e4.chunk.js.map": "/static/js/2.f2d944e4.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.626718044a81bb8a5c137cfbf2f65249.js": "/precache-manifest.626718044a81bb8a5c137cfbf2f65249.js",
+    "precache-manifest.a9aa37d524d41f73fcdf03b73b96f046.js": "/precache-manifest.a9aa37d524d41f73fcdf03b73b96f046.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.cc6799f7.chunk.css.map": "/static/css/2.cc6799f7.chunk.css.map",
-    "static/css/main.cbd2d8c1.chunk.css.map": "/static/css/main.cbd2d8c1.chunk.css.map",
-    "static/js/2.0055b642.chunk.js.LICENSE.txt": "/static/js/2.0055b642.chunk.js.LICENSE.txt",
-    "static/js/main.3c12f23c.chunk.js.LICENSE.txt": "/static/js/main.3c12f23c.chunk.js.LICENSE.txt",
+    "static/css/main.c5734efa.chunk.css.map": "/static/css/main.c5734efa.chunk.css.map",
+    "static/js/2.f2d944e4.chunk.js.LICENSE.txt": "/static/js/2.f2d944e4.chunk.js.LICENSE.txt",
+    "static/js/main.3b2c1453.chunk.js.LICENSE.txt": "/static/js/main.3b2c1453.chunk.js.LICENSE.txt",
     "static/media/sadi.css": "/static/media/lending.f21e81d4.jpg",
     "static/media/Adrian.png": "/static/media/Adrian.ba9f5603.png",
     "static/media/Ernesto.png": "/static/media/Ernesto.c83bf6c2.png",
@@ -81,8 +81,8 @@
   "entrypoints": [
     "static/js/runtime-main.730ad540.js",
     "static/css/2.cc6799f7.chunk.css",
-    "static/js/2.0055b642.chunk.js",
-    "static/css/main.cbd2d8c1.chunk.css",
-    "static/js/main.3c12f23c.chunk.js"
+    "static/js/2.f2d944e4.chunk.js",
+    "static/css/main.c5734efa.chunk.css",
+    "static/js/main.3b2c1453.chunk.js"
   ]
 }

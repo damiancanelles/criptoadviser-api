@@ -50,6 +50,11 @@ const useStyles = makeStyles((theme) => ({
 
   text: {
     margin: 0,
+
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '35px',
+    },
+
   },
   gridtext: {
     padding: 0,
@@ -107,11 +112,15 @@ export default function CursoButton() {
         item
         md={6}
         xs={12}>
-           <Grid container  alignItems="center" justifyContent="center">
-        <h1 style={{ marginBottom: "10px" }} className={classes.text}>Curso de Traiding</h1>
-        <h4 className={classes.text}>Las compras P2P ofrecen la posibilidad de comprar y vender bitcoin y otras criptomonedas entre particulares de una forma segura. La gran ventaja es la multitud de diferentes métodos de pago disponibles, todo ello, con la seguridad que ofrece Binance.</h4>
-        <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={() => { handleOpen() }} variant="contained" color="primary">Suscribirse</Button></Grid>
-        </Grid>     
+        <Grid container alignItems="center" justifyContent="center">
+          <h1 style={{ marginBottom: "10px" }} className={classes.text}>Curso de Trading</h1>
+          <h4 style={{ margin: 0 }}>En nuestro curso le brindamos un acercamiento a los principios básicos
+            del análisis técnico y charlista, gestión de riesgo, acción del precio, trabajo en spot en Binance, 
+            Futuros en BingBong y trading semiautomático con los bots de Pionex. Las clases tienen una
+            duración de 2h y las damos con una frecuencia de 3 clases semanales.
+          </h4>
+          <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={() => { handleOpen() }} variant="contained" color="primary">Suscribirse</Button></Grid>
+        </Grid>
       </Grid>
       <Grid
         item
