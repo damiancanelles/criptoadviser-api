@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
           </ButtonGroup> : 
           <ButtonGroup className={classes.grupo}> 
           <Hidden smDown>
-            <Link to='/user'>
+            <Link to='/user' style={{color: 'white'}}>
             <IconButton color='inherit'>
               <UserIcon  />
             </IconButton>

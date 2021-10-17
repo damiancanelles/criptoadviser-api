@@ -1,4 +1,7 @@
 import { Grid, makeStyles, Paper, Button, TextField } from '@material-ui/core';
+import UserTrans from 'components/Table/transaccionusermc';
+
+
 import React from 'react'
 import { AccountBotInfo } from './AccountBotInfo';
 import AccountProfile from './AccountProfile';
@@ -29,6 +32,9 @@ const VistaUser = () => {
             </Grid>
             <Grid item xs={12} xl={4} className={classes.grid}>
                 <AccountBotInfo/>
+            </Grid>
+            <Grid item xs={12} className={classes.grid}>
+                <UserTrans/>
             </Grid>
         </Grid>
 

@@ -46,6 +46,7 @@ export default function AdminNavbarLinks() {
   const handleCloseProfile = () => {
     setOpenProfile(null);
   };
+  
   function logout(e) {
     e.preventDefault();
 
@@ -154,7 +155,7 @@ export default function AdminNavbarLinks() {
           aria-haspopup="true"
           onClick={handleClickProfile}
           className={classes.buttonLink}
-        >
+        > 
           <Person className={classes.icons} />
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Profile</p>
@@ -181,17 +182,7 @@ export default function AdminNavbarLinks() {
               }}
             >
               <Paper>
-                <ClickAwayListener onClickAway={handleCloseProfile}>
-                  <MenuList role="menu">
-                    
-                    <MenuItem
-                      onClick={(e) => {logout(e)}}
-                      className={classes.dropdownItem}
-                    >
-                      Logout
-                    </MenuItem>
-                  </MenuList>
-                </ClickAwayListener>
+            
               </Paper>
             </Grow>
           )}
