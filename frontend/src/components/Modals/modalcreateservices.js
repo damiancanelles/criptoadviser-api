@@ -1,7 +1,10 @@
 import React from 'react';
-import axios from 'axios';
 
-import { Alert, Container } from 'reactstrap';
+import axios from 'axios';
+import Collapse from '@material-ui/core/Collapse';
+import Alert from '@material-ui/lab/Alert';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import {
     Box,
     Button,
@@ -12,75 +15,126 @@ import {
     Grid,
     TextField
   } from '@material-ui/core';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import IconButton from '@material-ui/core/IconButton';
-
+  import BlockUi from 'react-block-ui';
+  import { Loader } from 'react-loaders';
+  import 'react-block-ui/style.css';
+  import 'loaders.css/loaders.min.css';
+  
   const acceslevels = [
     {
-      value: '1',
-      label: 'Freelancers'
+      value: 'principal',
+      label: 'Principal'
     },
     {
-      value: '2',
-      label: 'Curso de Traiding'
+      value: 'independiente',
+      label: 'Independiente'
     },
-    {
-      value: '3',
-      label: 'Todo'
-    }
   ];
+  
 
 export default function ModalCreateService({setOpen, asd, }) {
-    
-    const [name,setname] = React.useState("");
-    const [caracteristicas,setcaracteristicas] = React.useState("");
-    const [caracteristicaslist,setlist] = React.useState("");
+    const [type,settype] = React.useState("principal");
+    const [titulo,settitulo] = React.useState("");
     const [descripcion,setdescripcion] = React.useState("");
-    const [acceslevel,setacceslevel] = React.useState("1");
-    const [price,setprice] = React.useState("");
-    
+    const [numero,setnumero] = React.useState("");
+    const [ubicacion,setubicacion] = React.useState("");
+    const [facebook,setfacebook] = React.useState("");
+    const [instagram,setinstagram] = React.useState("");
+    const [twitter,settwitter] = React.useState("");
+    const [cosa,setcosa] = React.useState("");
+    const [cosa2,setcosa2] = React.useState("");
+    const [whatsapp,setwhatsapp] = React.useState("");
+    const [telegram,settelegram] = React.useState("");
     const [error,seterror] = React.useState(false)
     const [texterror,settexterror] = React.useState(" ")
-    
+    const [stop,setstop] = React.useState(false);
+
+    function handleImage(e){
+        const {files} = e.target;
+        setcosa(files[0]);
+       
+  
+      };
+
+    async function handleGalleryImage(e){
+        const {files} = e.target;
+        setcosa2(files);
+       
+  
+      };  
+
     async function register(e) {
         e.preventDefault();
-    
-        
+        setstop(true);
        
-        const info = {
-          name: name,
-          descripcion: descripcion,
-          price: price,
-          acceslevel: acceslevel,
-          caracteristicas: caracteristicaslist
-        };
-    
-    
-       axios.post("https://criptoadviser.com/api/products/",info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.message == null) {
-            asd();
-            setOpen(false);
+        const data = new FormData() 
+        data.append('file', cosa)
+        let url = "https://criptoadviser.com/api/servicios/file/";
+
+        await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+            .then(async res => { 
+            const image = res.data.path
+            const data2 = new FormData()
+            Array.from(cosa2).forEach(image => {
+              data2.append('file', image)
+            })
+            let url2 = "https://criptoadviser.com/api/servicios/manyfile/";  
             
+            await axios.post(url2, data2, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+            .then(res => {
+              const info = {
+                titulo: titulo,
+                descripcion: descripcion,
+                contactinfo: {
+                    numero: numero,
+                    whatsapp: whatsapp,
+                    telegram: telegram,
+                    facebook: facebook,
+                    instagram: instagram,
+                    twitter: twitter,
+                    ubicacion: ubicacion,
+                },
+                image: image,
+                gallery: res.data.rutes,
+                type: type,
+                
+              };
+          
+              axios.post("https://criptoadviser.com/api/servicios/",info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+              .then((res) => {
+                console.log(res.data);
+                if (res.data.message === "null") {
+                  asd();
+                  setstop(false);
+                  setOpen(false);
+                  
+                  
+              
+                  
+                } 
+                else {
+                  settexterror(res.data.message)
+                  setstop(false);
+                  seterror(true);
+                  
+                }
+              });
+            })  
+
             
+          })
+
+
         
-            
-          } 
-          else {
-            settexterror(res.data.message)
-            seterror(true);
-            
-          }
-        });
     }
 
     return(
+      <BlockUi tag="div" blocking={stop} loader={<Loader active type="line-scale" color="blue"/>}>
         <Card>
         <CardHeader
           align="center"
           subheader="Rellene la informacion necesaria"
-          title="Agregar Wallet"
+          title="Agregar Servicio"
         />
         <Divider />
         <CardContent>
@@ -90,49 +144,38 @@ export default function ModalCreateService({setOpen, asd, }) {
           >
             <Grid
               item
-              md={4}
+              md={6}
               xs={12}
             >
               <TextField
                 fullWidth
-                label="Name"
-                name="name"
-                onChange={(e) => {setname(e.target.value)}}
+                label="Titulo"
+                name="titulo"
+                onChange={(e) => {settitulo(e.target.value)}}
                 required
-                value={name}
+                value={titulo}
                 variant="outlined"
               />
             </Grid>
             
             <Grid
               item
-              md={4}
+              md={6}
               xs={12}
             >
-              <TextField
+              <Grid item md={12} xs={12}>
+                
+                  <Grid container>
+                  <Grid style={{paddingRight:20}} item md={3} xs={3}>
+                  <TextField
                 fullWidth
-                label="Precio en USDT"
-                name="price"
-                onChange={(e) => {setprice(e.target.value)}}
-                required
-                value={price}
-                variant="outlined"
-              />
-            </Grid>
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Nivel de acceso"
-                name="acceslevel"
-                onChange={(e) => {setacceslevel(e.target.value)}}
+                label="Tipo"
+                name="image"
+                onChange={(e) => {settype(e.target.value)}}
                 required
                 select
                 SelectProps={{ native: true }}
-                value={acceslevel}
+                value={type}
                 variant="outlined"
               >
                {acceslevels.map((option) => (
@@ -144,15 +187,50 @@ export default function ModalCreateService({setOpen, asd, }) {
                   </option>
                 ))}
               </TextField>
-              
+                      </Grid>
+                      <Grid style={{paddingRight:20}} item md={3} xs={3}>
+                      <TextField
+                fullWidth
+                label="Telefono"
+                name="numero"
+                onChange={(e) => {setnumero(e.target.value)}}
+                required
+                value={numero}
+                variant="outlined"
+              />
+                      </Grid>
+                      <Grid style={{paddingRight:10}} item md={3} xs={3}>
+                      <TextField
+                fullWidth
+                label="Telegram"
+                name="telegram"
+                onChange={(e) => {settelegram(e.target.value)}}
+                required
+                value={telegram}
+                variant="outlined"
+              />
+                      </Grid>
+                      <Grid style={{paddingLeft:10}} item md={3} xs={3}>
+                      <TextField
+                fullWidth
+                label="WhatsApp"
+                name="whatsapp"
+                onChange={(e) => {setwhatsapp(e.target.value)}}
+                required
+                value={whatsapp}
+                variant="outlined"
+              />
+                      </Grid>
+                  </Grid>
+              </Grid>
             </Grid>
             <Grid
               item
-              md={12}
+              md={6}
               xs={12}
             >
               <TextField
-                fullWidth
+              fullWidth
                 label="Descripcion"
                 name="descripcion"
                 onChange={(e) => {setdescripcion(e.target.value)}}
@@ -161,91 +239,125 @@ export default function ModalCreateService({setOpen, asd, }) {
                 required
                 value={descripcion}
                 variant="outlined"
-              >
-             
-              </TextField>
-              
-            </Grid>
-
-            
-            
-            <Grid
-              item
-              md={3}
-              xs={12}
-            >
-              <TextField
-                
-                fullWidth="100%"
-                label="Caracteristicas"
-                name="caracteristicas"
-                onChange={(e) => {setcaracteristicas(e.target.value)}}
-                required
-                value={caracteristicas}
-                variant="outlined"
               />
               
+              
             </Grid>
             <Grid
               item
-              md={1}
+              md={6}
               xs={12}
             >
-
-            <IconButton 
-            style={{"margin-left":"-15px"}}
-            aria-label="add"
-            onClick={(e)=> {
-                 const list = caracteristicaslist;
-                 list == "" ? setlist(caracteristicas) :
-                 setlist(`${list}_${caracteristicas}`);
-                 console.log(caracteristicaslist);
-             }}
-            >
-              <AddCircleOutlineIcon fontSize="large"/>
-            </IconButton>
-                
-            </Grid>
-            
-            <Grid 
-              item
-              md={8}
-              xs={12}>
-            {caracteristicaslist == "" ? null : caracteristicaslist.split("_").map((car,index)=>(
-            <Button
-            style={{"margin":"3px"}}
-             color="primary"
-             variant="contained"
-             size="small"
-            
-             
-             >
-             {car}
-           </Button>
-           ))}
-            </Grid>
-
-            <Grid 
+              <Grid
               item
               md={12}
-              xs={12}>
-            <Alert color="danger" isOpen={error}>
-          <Container>
-            <div className="alert-icon">
-              <i className="now-ui-icons travel_info"></i>
-            </div>
-            <strong>{texterror}</strong>
-            <button
-              type="button"
-              className="close"
-              onClick={() => seterror(false)}
+              xs={12}
             >
-              <span aria-hidden="true">
-                <i className="now-ui-icons ui-1_simple-remove"></i>
-              </span>
-            </button>
-          </Container>
+              <Grid container >
+              <Grid style={{paddingRight:20}} item md={3} xs={3}>
+                      <TextField
+                fullWidth
+                label="Facebook"
+                name="facebook"
+                onChange={(e) => {setfacebook(e.target.value)}}
+                required
+                value={facebook}
+                variant="outlined"
+              />
+                      </Grid>
+                      <Grid style={{paddingRight:20}} item md={3} xs={3}>
+                      <TextField
+                fullWidth
+                label="Instagram"
+                name="instagram"
+                onChange={(e) => {setinstagram(e.target.value)}}
+                required
+                value={instagram}
+                variant="outlined"
+              />
+                      </Grid>
+                      <Grid style={{paddingRight:10}} item md={3} xs={3}>
+                      <TextField
+                fullWidth
+                label="Twitter"
+                name="twitter"
+                onChange={(e) => {settwitter(e.target.value)}}
+                required
+                value={twitter}
+                variant="outlined"
+              />
+                      </Grid>
+                      <Grid style={{paddingLeft:10}} item md={3} xs={3}>
+                      <TextField
+                fullWidth
+                label="Ubicacion"
+                name="ubicacion"
+                onChange={(e) => {setubicacion(e.target.value)}}
+                required
+                value={ubicacion}
+                variant="outlined"
+              />
+                      </Grid>
+             <Grid item md={6} xs={12}>
+             <input
+        onChange={(e) => {handleImage(e)}}
+        accept="imagen/*"
+        id="contained-button-file"
+        style={{display:"none"}}
+        multiple
+        type="file"
+      />
+      <label htmlFor="contained-button-file">
+        <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
+          Subir Imagen
+        </Button>
+      </label></Grid> 
+
+      <Grid item md={6} xs={12}>
+             <input
+        onChange={(e) => {handleGalleryImage(e)}}
+        accept="imagen/*"
+        id="contained-button-image"
+        style={{display:"none"}}
+        multiple='multiple'
+        type="file"
+      />
+      <label htmlFor="contained-button-image">
+        <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
+          Subir Imagenes de la Galeria
+        </Button>
+      </label></Grid>       
+                  
+              </Grid>
+            </Grid>
+            </Grid>
+           
+           
+           
+            <Grid 
+              item
+              md={6}
+              xs={12}>
+            <Collapse in={error}>
+        <Alert severity="error"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                seterror(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+        >
+         
+            <strong>{texterror}</strong>
+            
         </Alert>
+      </Collapse>
             </Grid>
           </Grid>
         </CardContent>
@@ -266,5 +378,6 @@ export default function ModalCreateService({setOpen, asd, }) {
           </Button>
         </Box>
       </Card>
+      </BlockUi>
     )
 }

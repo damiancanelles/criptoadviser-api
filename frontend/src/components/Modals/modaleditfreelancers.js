@@ -1,4 +1,5 @@
 import React from 'react';
+
 import axios from 'axios';
 import Collapse from '@material-ui/core/Collapse';
 import Alert from '@material-ui/lab/Alert';
@@ -15,7 +16,7 @@ import {
     TextField
   } from '@material-ui/core';
   import BlockUi from 'react-block-ui';
-  import { Loader} from 'react-loaders';
+  import { Loader } from 'react-loaders';
   import 'react-block-ui/style.css';
   import 'loaders.css/loaders.min.css';
   
@@ -24,26 +25,33 @@ import {
 
 export default function ModalEditFreelancer({setOpen, asd, object}) {
     const [titulo,settitulo] = React.useState(object.titulo);
-    const [gallery,setgallery] = React.useState(object.gallery);
     const [descripcion,setdescripcion] = React.useState(object.descripcion);
     const [numero,setnumero] = React.useState(object.contactinfo.numero);
+    const [ubicacion,setubicacion] = React.useState(object.contactinfo.ubicacion);
     const [facebook,setfacebook] = React.useState(object.contactinfo.facebook);
     const [instagram,setinstagram] = React.useState(object.contactinfo.instagram);
     const [twitter,settwitter] = React.useState(object.contactinfo.twitter);
     const [cosa,setcosa] = React.useState(object.image);
+    const [cosa2,setcosa2] = React.useState(object.gallery);
     const [whatsapp,setwhatsapp] = React.useState(object.contactinfo.whatsapp);
     const [telegram,settelegram] = React.useState(object.contactinfo.telegram);
     const [error,seterror] = React.useState(false)
     const [texterror,settexterror] = React.useState(" ")
-    const [stop,setstop] = React.useState(false)
-    const [ubicacion,setubicacion] = React.useState(object.contactinfo.ubicacion);
-    
+    const [stop,setstop] = React.useState(false);
+
     function handleImage(e){
         const {files} = e.target;
         setcosa(files[0]);
        
   
       };
+
+    async function handleGalleryImage(e){
+        const {files} = e.target;
+        setcosa2(files);
+       
+  
+      };  
 
     async function register(e) {
         e.preventDefault();
@@ -53,47 +61,55 @@ export default function ModalEditFreelancer({setOpen, asd, object}) {
         data.append('file', cosa)
         let url = "https://criptoadviser.com/api/freelancers/file/";
 
-        if (cosa === object.image) {
-            const info = {
-                titulo: titulo,
-                descripcion: descripcion,
-                contactinfo: {
-                    numero: numero,
-                    whatsapp: whatsapp,
-                    telegram: telegram,
-                    facebook: facebook,
-                    instagram: instagram,
-                    twitter: twitter,
-                    ubicacion: ubicacion
-                },
-                image: object.image,
-                gallery: gallery
-              };
-          
-              axios.put(`https://criptoadviser.com/api/freelancers/${object._id}`,info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
-              .then((res) => {
-                console.log(res.data);
-                if (res.data.message === "null") {
-                  asd();
-                  setstop(false);
-                  setOpen(false);
-                  
-                  
+        if ( cosa === object.image && cosa2 === object.gallery) {
+          const info = {
+            titulo: titulo,
+            descripcion: descripcion,
+            contactinfo: {
+                numero: numero,
+                whatsapp: whatsapp,
+                telegram: telegram,
+                facebook: facebook,
+                instagram: instagram,
+                twitter: twitter,
+                ubicacion: ubicacion,
+            },
+            image: cosa,
+            gallery: cosa2
+            
+          }
+          await axios.put(`https://criptoadviser.com/api/freelancers/${object._id}`, info, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.message === "null") {
+              asd();
+              setstop(false);
+              setOpen(false);
               
-                  
-                } 
-                else {
-                  settexterror(res.data.message)
-                  setstop(false);
-                  seterror(true);
-                  
-                }
-              });
+              
+          
+              
+            } 
+            else {
+              settexterror(res.data.message)
+              setstop(false);
+              seterror(true);
+              
+            }
+          });
+           
         }
         else {
-            await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
-            .then(res => { 
-            const info = {
+          if (cosa === object.image) {
+            const data2 = new FormData()
+            Array.from(cosa2).forEach(image => {
+              data2.append('file', image)
+            })
+            let url2 = "https://criptoadviser.com/api/freelancers/manyfile/";  
+            
+            await axios.post(url2, data2, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+            .then(res => {
+              const info = {
                 titulo: titulo,
                 descripcion: descripcion,
                 contactinfo: {
@@ -103,10 +119,10 @@ export default function ModalEditFreelancer({setOpen, asd, object}) {
                     facebook: facebook,
                     instagram: instagram,
                     twitter: twitter,
-                    ubicacion: ubicacion
+                    ubicacion: ubicacion,
                 },
-                image: res.data.path,
-                gallery: gallery
+                image: cosa,
+                gallery: res.data.rutes
                 
               };
           
@@ -129,12 +145,111 @@ export default function ModalEditFreelancer({setOpen, asd, object}) {
                   
                 }
               });
+            })  
+          }
+          else {
+            if (cosa2 === object.gallery) {
+              await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+            .then(async res => {
+              const info = {
+                titulo: titulo,
+                descripcion: descripcion,
+                contactinfo: {
+                    numero: numero,
+                    whatsapp: whatsapp,
+                    telegram: telegram,
+                    facebook: facebook,
+                    instagram: instagram,
+                    twitter: twitter,
+                    ubicacion: ubicacion,
+                },
+                image: res.data.path,
+                gallery: cosa2
+                
+              }
+              axios.put(`https://criptoadviser.com/api/freelancers/${object._id}`,info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+              .then((res) => {
+                console.log(res.data);
+                if (res.data.message === "null") {
+                  asd();
+                  setstop(false);
+                  setOpen(false);
+                  
+                  
+              
+                  
+                } 
+                else {
+                  settexterror(res.data.message)
+                  setstop(false);
+                  seterror(true);
+                  
+                }
+              });
+            
             })
+            }
+            else {
+              await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+            .then(async res => { 
+            const image = res.data.path
+            const data2 = new FormData()
+            Array.from(cosa2).forEach(image => {
+              data2.append('file', image)
+            })
+            let url2 = "https://criptoadviser.com/api/freelancers/manyfile/";  
+            
+            await axios.post(url2, data2, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+            .then(res => {
+              const info = {
+                titulo: titulo,
+                descripcion: descripcion,
+                contactinfo: {
+                    numero: numero,
+                    whatsapp: whatsapp,
+                    telegram: telegram,
+                    facebook: facebook,
+                    instagram: instagram,
+                    twitter: twitter,
+                    ubicacion: ubicacion,
+                },
+                image: image,
+                gallery: res.data.rutes
+                
+              };
+          
+              axios.put(`https://criptoadviser.com/api/freelancers/${object._id}`,info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+              .then((res) => {
+                console.log(res.data);
+                if (res.data.message === "null") {
+                  asd();
+                  setstop(false);
+                  setOpen(false);
+                  
+                  
+              
+                  
+                } 
+                else {
+                  settexterror(res.data.message)
+                  setstop(false);
+                  seterror(true);
+                  
+                }
+              });
+            })  
 
-
+            
+          })
+            }
+          }
         }
+       
+      }      
+
+
         
-    }
+    
 
     return(
       <BlockUi tag="div" blocking={stop} loader={<Loader active type="line-scale" color="blue"/>}>
@@ -296,7 +411,22 @@ export default function ModalEditFreelancer({setOpen, asd, object}) {
         <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
           Subir Imagen
         </Button>
-      </label></Grid>        
+      </label></Grid> 
+
+      <Grid item md={6} xs={12}>
+             <input
+        onChange={(e) => {handleGalleryImage(e)}}
+        accept="imagen/*"
+        id="contained-button-image"
+        style={{display:"none"}}
+        multiple='multiple'
+        type="file"
+      />
+      <label htmlFor="contained-button-image">
+        <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
+          Subir Imagenes de la Galeria
+        </Button>
+      </label></Grid>       
                   
               </Grid>
             </Grid>

@@ -34,6 +34,8 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import ModalCreateNoticias from 'components/Modals/modalcreatenoticias';
 import ModalEditNoticias from 'components/Modals/modaleditnoticias';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import ModalCreateService from 'components/Modals/modalcreateservices';
+import ModalEditService from 'components/Modals/modaleditservices';
 
 const useStyles = makeStyles(styles);
 
@@ -95,15 +97,11 @@ const columns = React.useMemo(
   () => [
     
         {
-            Header: 'Imagen Carousel',
+            Header: 'Imagen',
             accessor: 'image',
         },
         {
-            Header: 'Imagen Grid',
-            accessor: 'media',
-        },
-        {
-            Header: 'Nombre',
+            Header: 'Titulo',
             accessor: 'titulo',
         },
         {
@@ -111,8 +109,8 @@ const columns = React.useMemo(
             accessor: 'descripcion',
         },
         {
-            Header: 'Precio',
-            accessor: 'price',
+            Header: 'Tipo',
+            accessor: 'type',
         },
         {
             Header: 'Informacion de Contacto',
@@ -157,7 +155,7 @@ const {globalFilter} = state
       noValidate
       
     >
-      <ModalCreateNoticias asd={asd} setOpen={setOpen} ></ModalCreateNoticias>
+      <ModalCreateService asd={asd} setOpen={setOpen}></ModalCreateService>
     </form>
           </div>
         </Fade>
@@ -181,7 +179,7 @@ const {globalFilter} = state
       noValidate
       
     >
-      <ModalEditNoticias asd={asd} setOpen={setOpen2} object={info}></ModalEditNoticias>
+      <ModalEditService asd={asd} setOpen={setOpen2} object={info}></ModalEditService>
     </form>
           </div>
         </Fade>
@@ -256,7 +254,7 @@ const {globalFilter} = state
                   {row.cells.map((cell,index) => {
                     return (
                       <TableCell key={index} {...cell.getCellProps()}>
-                        {index === 0 ? <img alt="carousel" src={cell.value} style={{height:100}}></img> : index === 1 ? <img alt="carousel" src={cell.value} style={{height:100}}></img> : index === 4 ? `${cell.value} USDT` : index === 5 ? <Grid container>
+                        {index === 0 ? <img alt="carousel" src={cell.value} style={{height:100}}></img> : index === 4 ? <Grid container>
                              <Grid md={12} sm={12}>
                              <h4 style={{display: cell.value.numero === "" ? "none" : null,margin: 0}}>Número de telefono:</h4>
                              <h4 style={{display: cell.value.numero === "" ? "none" : null,margin: 0}}> +53 {cell.value.numero}</h4> </Grid>  
@@ -271,22 +269,7 @@ const {globalFilter} = state
                       
                     )
                   })}
-                  <TableCell width="320px" align="right">
-                    <ReactPlayer
-                    config={{
-                      file: { 
-                        attributes: { 
-                          poster: row.original.image 
-                        } 
-                      } 
-                    }}
-                    controls={true}
-                    url={row.original.media}
-                    className="react-player"
-                    width="320px"
-                    height="240px"
-                    ></ReactPlayer>
-                  </TableCell>
+                  
                   <TableCell width="100px" align="right">
                   <IconButton color="secondary" onClick={(e) => {deleteelement(e,row.original._id)}} aria-label="add an alarm">
         <DeleteIcon />
