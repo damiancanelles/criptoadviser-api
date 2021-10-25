@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { useHistory } from "react-router";
 
 
 const responsive = {
@@ -135,29 +136,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const servicios = [
-    {
-        image: "servicio1.jpg",
-        titulo: "servicio1"
-    },
-    {
-        image: "servicio2.jpg",
-        titulo: "servicio2"
-    },
-    {
-        image: "servicio3.jpg",
-        titulo: "servicio3"
-    },
-    {
-        image: "servicio4.jpg",
-        titulo: "servicio4"
-    },
-]
 
-export default function CarouselServicios() {
+export default function CarouselServicios({servicios}) {
   
   const classes = useStyles();
-
+  const history = useHistory();
 
   return (
     <div className={classes.root}>
@@ -172,10 +155,11 @@ export default function CarouselServicios() {
           return (
             
               <Grid key={key} container className={classes.grid}>
-                
-              <ButtonBase
+               {image.type === 'principal' ? <ButtonBase
+          onClick={()=>{
+            history.push(`serviciosindependientes/${image._id}`);
+          }}     
           focusRipple
-          
           className={classes.image}
           focusVisibleClassName={classes.focusVisible}
           style={{
@@ -187,7 +171,7 @@ export default function CarouselServicios() {
             className={classes.imageSrc}
             style={{
            
-              backgroundImage: `url(${require(`assets/img/servicios/${a}`)})`,
+              backgroundImage: `url(${a})`,
             }}
             
           />
@@ -203,7 +187,8 @@ export default function CarouselServicios() {
               <span className={classes.imageMarked} />
             </Typography>
           </span>
-        </ButtonBase>
+        </ButtonBase> : null} 
+              
               
               </Grid>
         

@@ -35,17 +35,18 @@ import Nosotros from "views/Nosotros/Nosotros";
 import Login from "views/Login_Registro/LoginNew";
 import Register from "views/Login_Registro/RegistroNew";
 import {AuthProvider} from "auth/authprovider";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import {FreelancerProvider} from "context/freelancersprovider"
 import Servicios from "views/Servicios_Independientes/Servivios";
 import { UserView } from "views/Usuarios/UserView";
+import ServiciosIndependientes from "views/Servicios_Independientes/ServiviosIndependientes";
 
 
 
 ReactDOM.render(
   <AuthProvider>
     <FreelancerProvider>
-    <HashRouter >
+    <Router >
     <Switch>
     <Route path="/inicio" component={Home} />
     <Route path="/login" component={Login} />
@@ -57,13 +58,13 @@ ReactDOM.render(
     <Route path="/señales" component={SeñalesView} />
     <Route path="/curso" component={CursoView} />
     <Route path="/freelancersview" component={FreelancersPreView} />
-    <Route path="/servicios" component={Servicios} />
+    <Route path="/serviciosindependientes/:id" component={ServiciosIndependientes}></Route>
     <Route path="/user" component={UserView}/>
     <Route path="/admin" component={Admin} />
       <Redirect from="/" to="/inicio"></Redirect>
       
     </Switch>
-  </HashRouter>
+  </Router>
   </FreelancerProvider>
   </AuthProvider>,
   document.getElementById("root")

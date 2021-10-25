@@ -6,7 +6,7 @@ const ServiciosSchema = new Schema(
     descripcion: {type: String, require: true},
     image: {type: String, require: true},
     date:{type: Date, default:Date.now},
-    contactinfo:{type: Object, require: true},
+    contactinfo:{type: Array, require: true},
     gallery:{type: Array, require: true},
     type:{type:String, require: true}
     

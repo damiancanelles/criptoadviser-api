@@ -23,6 +23,7 @@ import CursoButton from 'components/Curso/CursoButton';
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel';
 import CarouselServicios from './CarouselServicios';
+import Butttton from './Butttton';
 
 
 
@@ -132,6 +133,7 @@ const useStyles = makeStyles((theme) => ({
 
 function LandingBody() {
     const [data, setdata] = React.useState([])
+    const [data1, setdata1] = React.useState([])
     const classes = useStyles();
     const [index,setindex] = React.useState(0);
     
@@ -139,16 +141,22 @@ function LandingBody() {
       const result = await axios.get("https://criptoadviser.com/api/noticias",{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
       setdata(result.data)  
     };
+
+    const ert = async () => {
+      const result = await axios.get("https://criptoadviser.com/api/servicios",{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
+      setdata1(result.data)  
+    };
   
     React.useEffect( () => {
       
       qwe();
+      ert();
     },[])
 
     return (
         <div  id='caja'>
          
-         <CarouselServicios/>
+         <CarouselServicios servicios={data1}/>
          <div className={classes.root2}>
       <Grid style={{"paddingLeft":"4%","paddingRight":"4%"}} container >
           <Grid item md={12} 
@@ -162,19 +170,21 @@ function LandingBody() {
       </Grid>
           </Grid>
       <Grid container justifyContent="flex-start" className={classes.buttom}>
-      <Button variant={ index === 0 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}}  onClick={() => setindex(0)}>Curso de Trading</Button>
-      <Button variant={ index === 2 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}} onClick={() => setindex(2)}>Señales</Button> 
-      <Button variant={ index === 1 ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}} onClick={() => setindex(1)}>Servicio de Lending</Button> 
+      {data1.map((cosa,i) => {
+         return(
+          <Button variant={ index === i ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none', "display": `${cosa.type === "principal" ? "none" : null}`}}  onClick={() => setindex(i)}>{cosa.titulo}</Button>
+         )
+       })}
       </Grid>
-      <Collapse in={index === 0}>
-      <CursoButton></CursoButton>
-      </Collapse>
-      <Collapse in={index === 1}>
-      <LendingButton></LendingButton>
-      </Collapse>
-      <Collapse in={index === 2}>
-      <SeñalesButton></SeñalesButton>
-      </Collapse>
+      {data1.map((cosa,i) => {
+         return(
+          <Collapse style={{"display": `${cosa.type === "principal" ? "none" : null}`}} in={index === i}>
+          <Butttton data={cosa}></Butttton>
+          </Collapse>
+          
+         )
+       })}
+      
       <Carousel>
         {data.map((noticia,index) => {
           return(
