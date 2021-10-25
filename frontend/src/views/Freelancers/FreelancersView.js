@@ -14,7 +14,8 @@ const FreelancersView = ()=> {
                 <meta name="description" content="Nuestra red de freelancers confirmados con KYC todo lo que puedas imaginar al alcance de tu mano." />
             </Helmet>
             <LandingNavBar/>
-            <FreelancersHeader></FreelancersHeader><FreelancersBody></FreelancersBody>
+            <FreelancersHeader></FreelancersHeader>
+            <FreelancersBody></FreelancersBody>
             <LandingFooter></LandingFooter>
             
         </>
