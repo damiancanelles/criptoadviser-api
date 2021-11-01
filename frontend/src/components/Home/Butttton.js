@@ -2,13 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import { useHistory } from "react-router";
 
 import "react-multi-carousel/lib/styles.css";
 
-import ModalCreateTransaccion from 'components/Modals/modalcreatetransaccion';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -63,51 +60,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttom: {
-    [theme.breakpoints.down('xs')]: {
-      margin: 10,
-    },
+    margin: 10,
   },
 
 }))
 
 export default function Butttton({data}) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const history = useHistory();
 
   return (
     <Grid container className={classes.grid} justifyContent="center" alignItems="center">
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <form
-              autoComplete="off"
-              noValidate
-
-            >
-              <ModalCreateTransaccion setOpen={setOpen} ></ModalCreateTransaccion>
-            </form>
-          </div>
-        </Fade>
-      </Modal>
+      
       <Grid className={classes.gridtext}
         item
         md={6}
@@ -116,7 +80,9 @@ export default function Butttton({data}) {
           <h1 style={{ marginBottom: "10px" }} className={classes.text}>{data.titulo}</h1>
           <h4 style={{ margin: 0 }}>{data.descripcion}
           </h4>
-          <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={() => { handleOpen() }} variant="contained" color="primary">Suscribirse</Button></Grid>
+          <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={()=>{
+            history.push(`serviciosindependientes/${data._id}`);
+          }} variant="contained" color="primary">Acceder</Button></Grid>
         </Grid>
       </Grid>
       <Grid

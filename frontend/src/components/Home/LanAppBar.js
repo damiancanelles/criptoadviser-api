@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import  PropTypes  from 'prop-types';
 import { ButtonGroup, Grid, Hidden} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu'
-import DropDownServicios from './DropDown';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { whiteColor } from 'assets/jss/material-dashboard-react';
 import useAuth from 'auth/useauth';
@@ -105,7 +105,9 @@ const useStyles = makeStyles((theme) => ({
                 <Link to="/inicio">
                 <Button color="inherit" variant='text'  className={classes.button1}  > Inicio </Button>
                 </Link>
-                <DropDownServicios></DropDownServicios>
+                {moment(user.subscription) > moment() ? <Link to="/curso">
+                <Button color="inherit" variant='text'  className={classes.button1}  > Curso de Trading </Button>
+                </Link>: null}
                 <Link to="/freelancers">
                 <Button color="inherit" variant='text'  className={classes.button1} > Freelancers </Button>
                 </Link>

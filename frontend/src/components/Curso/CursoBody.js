@@ -32,7 +32,7 @@ import moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
     gridproductos: {
-        paddingTop: 0,
+        paddingTop: 20,
         paddingLeft: 20,
         paddingRight: 20,
         paddingBottom: 0,
@@ -137,10 +137,9 @@ function CursoBody() {
         <div  id='caja'>
           
          <Grid container className={classes.gridproductos} >
-         <CursoButton></CursoButton>
         
           
-        {moment(user.subscription) > moment() ? <div>
+        <div>
         <Grid  container className={classes.gridquestions} justifyContent="center" alignItems="flex-start">
         <Grid style={{"padding":"5px"}} item md={8} sm={12} xs={12}>
         <h3 className={classes.text}>Acerca del Curso</h3>
@@ -204,7 +203,7 @@ function CursoBody() {
          
           
       </Grid>
-  </Grid> </div>: null}
+  </Grid> </div>
            
              <Grid container justifyContent="center">
       <h1 style={{margin:"0px"}} >FAQ</h1>

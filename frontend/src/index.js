@@ -40,6 +40,7 @@ import {FreelancerProvider} from "context/freelancersprovider"
 import Servicios from "views/Servicios_Independientes/Servivios";
 import { UserView } from "views/Usuarios/UserView";
 import ServiciosIndependientes from "views/Servicios_Independientes/ServiviosIndependientes";
+import ServiciosPrincipales from "views/Servicios_Independientes/ServiciosPrincipales";
 
 
 
@@ -59,6 +60,7 @@ ReactDOM.render(
     <Route path="/curso" component={CursoView} />
     <Route path="/freelancersview" component={FreelancersPreView} />
     <Route path="/serviciosindependientes/:id" component={ServiciosIndependientes}></Route>
+    <Route path="/serviciosprincipales/:id" component={ServiciosPrincipales}></Route>
     <Route path="/user" component={UserView}/>
     <Route path="/admin" component={Admin} />
       <Redirect from="/" to="/inicio"></Redirect>

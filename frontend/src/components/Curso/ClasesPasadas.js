@@ -164,7 +164,7 @@ function ClasesPasadas() {
                     <Grid style={{padding:5}} item md={4} sm={12} xs={12}>
                       <p className={classes.text}>Fecha: {clase.datestart.split("T")[0]}</p>
                       <p className={classes.text}>Duracion: de {clase.duracion}</p>
-                      <p className={classes.text}>Link del canal de voz: <a href="google.com" style={{color: infoColor[0]}}>{clase.link}</a></p>
+                      <p className={classes.text}>Link del canal de voz: <a href={clase.link} style={{color: infoColor[0]}}>{clase.link.split("t.me/")[1]}</a></p>
                   </Grid>
                     </Grid>
                   
@@ -195,10 +195,11 @@ function ClasesPasadas() {
                     <Grid style={{padding:5}} item md={4} sm={12} xs={12}>
                       <p className={classes.text}>Fecha: {clase.datestart.split("T")[0]}</p>
                       <p className={classes.text}>Duracion: de {clase.duracion}</p>
-                      <p style={{display: clase.file === "" ? 'none' : null}} className={classes.text}>Audio grabado: <IconButton><GetAppIcon style={{color:"black"}}></GetAppIcon></IconButton> <IconButton onClick={()=>{setaudio(index)}}><HearingIcon style={{color:"black"}}></HearingIcon></IconButton></p>
+                      <p style={{display: clase.file === "" ? 'none' : null}} className={classes.text}>Audio grabado: <IconButton onClick={()=>{setaudio(index)}}><HearingIcon style={{color:"black"}}></HearingIcon></IconButton></p>
                   </Grid>
                   <Grid style={{padding:5}} item md={12} sm={12} xs={12}>
                 {audio === index ? <ReactPlayer
+                config={{ file: { attributes: { controlsList: 'nodownload' } } }}
                 controls={true}
                 url={clase.file}
                 className="react-player"

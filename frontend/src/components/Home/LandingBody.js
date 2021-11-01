@@ -144,7 +144,13 @@ function LandingBody() {
 
     const ert = async () => {
       const result = await axios.get("https://criptoadviser.com/api/servicios",{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
-      setdata1(result.data)  
+      setdata1(result.data)
+      result.data.forEach((element,index) => {
+        if (element = result.data.find(e => e.type === "independiente")) {
+          setindex(index)
+        }
+      })
+      
     };
   
     React.useEffect( () => {

@@ -157,7 +157,7 @@ export default function CarouselServicios({servicios}) {
               <Grid key={key} container className={classes.grid}>
                {image.type === 'principal' ? <ButtonBase
           onClick={()=>{
-            history.push(`serviciosindependientes/${image._id}`);
+            history.push(`serviciosprincipales/${image._id}`);
           }}     
           focusRipple
           className={classes.image}
