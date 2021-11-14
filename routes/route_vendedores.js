@@ -46,10 +46,21 @@ router.post("/", async (req,res) => {
     const clase = new Vendedores({username,userid});
     check = await Vendedores.findOne({userid});
     if (check) {
-        res.json({
-            mesage: "Ya usted esta registrado como vendedor",
-            update: "no"
-        });
+        if (check.username === username) {
+            res.json({
+                mesage: "Ya usted esta registrado como vendedor",
+                update: "no"
+            });
+        }
+        else {
+            check.username = username
+            await Vendedores.findOneAndUpdate({userid},check);
+            res.json({
+                mesage: "Su nombre de usuario ha sido actualizado",
+                update: "no"
+            });
+        }
+        
     }
     else {
         await clase.save();
@@ -144,5 +155,7 @@ router.delete("/:id", async (req,res) => {
     await Vendedores.findByIdAndDelete(wallet._id);
     res.json("delete");
 })
+
+
 
 module.exports = router;
