@@ -1,5 +1,4 @@
 import React from 'react';
-
 import axios from 'axios';
 import Collapse from '@material-ui/core/Collapse';
 import Alert from '@material-ui/lab/Alert';
@@ -15,22 +14,25 @@ import {
     Grid,
     TextField
   } from '@material-ui/core';
- 
+  import BlockUi from 'react-block-ui';
+  import { Loader} from 'react-loaders';
   import 'react-block-ui/style.css';
   import 'loaders.css/loaders.min.css';
   
 
   
 
-export default function ModalEditProduct({setOpen, asd, info}) {
-    const [name,setname] = React.useState(info.name);
-    const [descripcion,setdescripcion] = React.useState(info.descripcion);
-    const [price,setprice] = React.useState(info.price);
-    const [cosa,setcosa] = React.useState(info.image);
+export default function ModalCreateCursos({setOpen, asd, }) {
+    const [name,setname] = React.useState("");
+    const [descripcion,setdescripcion] = React.useState("");
+    const [price,setprice] = React.useState("");
+    
+  
+    const [cosa,setcosa] = React.useState("");
     const [error,seterror] = React.useState(false)
     const [texterror,settexterror] = React.useState(" ")
-    const [,setstop] = React.useState(false)
-    
+    const [stop,setstop] = React.useState(false)
+
     function handleImage(e){
         const {files} = e.target;
         setcosa(files[0]);
@@ -44,41 +46,11 @@ export default function ModalEditProduct({setOpen, asd, info}) {
        
         const data = new FormData() 
         data.append('file', cosa)
-        let url = "https://criptoadviser.com/api/products/file/";
+        let url = "https://criptoadviser.com/api/products/file";
 
-        if (cosa === info.image) {
-            const qwe = {
-                name: name,
-                descripcion: descripcion,
-                price: price,
-                image: cosa,
-                
-              };
-          
-              axios.put(`https://criptoadviser.com/api/products/${info._id}`,qwe,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
-              .then((res) => {
-                console.log(res.data);
-                if (res.data.message === "null") {
-                  asd();
-                  setstop(false);
-                  setOpen(false);
-                  
-                  
-              
-                  
-                } 
-                else {
-                  settexterror(res.data.message)
-                  setstop(false);
-                  seterror(true);
-                  
-                }
-              });
-        }
-        else {
-            await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+        await axios.post(url, data, { headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
             .then(res => { 
-            const qwe = {
+            const info = {
                 name: name,
                 descripcion: descripcion,
                 price: price,
@@ -86,7 +58,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
                 
               };
           
-              axios.put(`https://criptoadviser.com/api/products/${info._id}`,qwe,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+              axios.post("https://criptoadviser.com/api/cursos/",info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
               .then((res) => {
                 console.log(res.data);
                 if (res.data.message === "null") {
@@ -107,17 +79,17 @@ export default function ModalEditProduct({setOpen, asd, info}) {
               });
             })
 
-        }
 
         
     }
 
     return(
+      <BlockUi tag="div" blocking={stop} loader={<Loader active type="line-scale" color="blue"/>}>
         <Card>
         <CardHeader
           align="center"
           subheader="Rellene la informacion necesaria"
-          name="Agregar Clase"
+          name="Agregar Producto"
         />
         <Divider />
         <CardContent>
@@ -132,7 +104,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
             >
               <TextField
                 fullWidth
-                label="Nombre"
+                label="Titulo"
                 name="name"
                 onChange={(e) => {setname(e.target.value)}}
                 required
@@ -185,8 +157,12 @@ export default function ModalEditProduct({setOpen, asd, info}) {
               md={12}
               xs={12}
             >
-              
+             
+             
+             
              <Grid item md={6} xs={12}>
+             <Grid alignItems="flex-start" container>
+             <Grid item>
              <input
         onChange={(e) => {handleImage(e)}}
         accept="imagen/*"
@@ -199,9 +175,12 @@ export default function ModalEditProduct({setOpen, asd, info}) {
         <Button  style={{marginTop:20}} variant="contained" color="primary" component="span">
           Subir Imagen
         </Button>
-      </label>       
+      </label>
+             </Grid>
+             </Grid>
+             </Grid>        
                   
-              </Grid>
+              
             </Grid>
             </Grid>
            
@@ -251,5 +230,6 @@ export default function ModalEditProduct({setOpen, asd, info}) {
           </Button>
         </Box>
       </Card>
+      </BlockUi>
     )
 }

@@ -32,7 +32,7 @@ router.post("/", async (req,res) => {
 });
 
 router.put("/:id", async (req,res) => {
-    const {userid, content} = req.body;
+    const {name, descripcion, price, image} = req.body;
     const newnoticia = {name, descripcion, price, image};
     await Cursos.findByIdAndUpdate(req.params.id,newnoticia);
     res.json({

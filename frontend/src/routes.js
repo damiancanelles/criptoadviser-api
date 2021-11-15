@@ -14,6 +14,7 @@ import Grupos from "views/Grupos/Grupos";
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import Servicios from "views/Servicios_Independientes/Servivios";
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import CursoE from "views/CursosEspecializados/CursosE";
 const dashboardRoutes = [
  
   {
@@ -35,6 +36,13 @@ const dashboardRoutes = [
     name: "Curso de Traiding",
     icon: MenuBookIcon,
     component: Curso,
+    layout: "/admin",
+  },
+  {
+    path: "/cursosE",
+    name: "Cursos Especializados",
+    icon: MenuBookIcon,
+    component: CursoE,
     layout: "/admin",
   },
   {

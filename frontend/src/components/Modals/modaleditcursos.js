@@ -16,20 +16,22 @@ import {
     TextField
   } from '@material-ui/core';
  
+  import BlockUi from 'react-block-ui';
+  import { Loader } from 'react-loaders';
   import 'react-block-ui/style.css';
   import 'loaders.css/loaders.min.css';
   
 
   
 
-export default function ModalEditProduct({setOpen, asd, info}) {
+export default function ModalEditCursos({setOpen, asd, info}) {
     const [name,setname] = React.useState(info.name);
     const [descripcion,setdescripcion] = React.useState(info.descripcion);
     const [price,setprice] = React.useState(info.price);
     const [cosa,setcosa] = React.useState(info.image);
     const [error,seterror] = React.useState(false)
     const [texterror,settexterror] = React.useState(" ")
-    const [,setstop] = React.useState(false)
+    const [stop,setstop] = React.useState(false)
     
     function handleImage(e){
         const {files} = e.target;
@@ -55,7 +57,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
                 
               };
           
-              axios.put(`https://criptoadviser.com/api/products/${info._id}`,qwe,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+              axios.put(`https://criptoadviser.com/api/cursos/${info._id}/`,qwe,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
               .then((res) => {
                 console.log(res.data);
                 if (res.data.message === "null") {
@@ -86,7 +88,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
                 
               };
           
-              axios.put(`https://criptoadviser.com/api/products/${info._id}`,qwe,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+              axios.put(`https://criptoadviser.com/api/cursos/${info._id}/`,qwe,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
               .then((res) => {
                 console.log(res.data);
                 if (res.data.message === "null") {
@@ -113,11 +115,12 @@ export default function ModalEditProduct({setOpen, asd, info}) {
     }
 
     return(
+        <BlockUi tag="div" blocking={stop} loader={<Loader active type="line-scale" color="blue"/>}>
         <Card>
         <CardHeader
           align="center"
           subheader="Rellene la informacion necesaria"
-          name="Agregar Clase"
+          name="Agregar Curso"
         />
         <Divider />
         <CardContent>
@@ -132,7 +135,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
             >
               <TextField
                 fullWidth
-                label="Nombre"
+                label="Titulo"
                 name="name"
                 onChange={(e) => {setname(e.target.value)}}
                 required
@@ -251,5 +254,6 @@ export default function ModalEditProduct({setOpen, asd, info}) {
           </Button>
         </Box>
       </Card>
+      </BlockUi>
     )
 }
