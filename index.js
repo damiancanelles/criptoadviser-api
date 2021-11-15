@@ -18,6 +18,8 @@ app.use(express.json());
 app.use("/api/noticias",require("./routes/route_noticias"));
 app.use("/api/users",require("./routes/route_users"));
 app.use("/api/clases",require("./routes/route_clases"));
+app.use("/api/clasesI",require("./routes/route_clasesI"));
+app.use("/api/cursos",require("./routes/route_cursos"));
 app.use("/api/freelancers",require("./routes/route_freelancers"));
 app.use("/api/products",require("./routes/route_products"));
 app.use("/api/wallets",require("./routes/route_walletlinks"));

@@ -3,7 +3,8 @@ const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const {protect} = require("../midlewares/auth")
-const Clases = require("../models/model_clases")
+const ClasesI = require("../models/model_clasesI")
+const Cursos = require("../models/model_cursos")
 
 const storage = multer.diskStorage({
     destination: "./frontend/build/media",
@@ -25,21 +26,24 @@ router.post("/file",upload.single("file"), (req,res) => {
 })
 
 router.get("/", async (req,res) => {
-    const clases = await Clases.find();
+    const clases = await ClasesI.find();
     console.log(clases);
     res.json(clases);
 });
 
 router.get("/:id", async (req,res) => {
-    const clases = await Clases.findById(req.params.id);
+    const clases = await ClasesI.findById(req.params.id);
     res.json(clases);
 });
 
 router.post("/", async (req,res) => {
-    console.log(req.body);
-    const {titulo, descripcion, link, datestart, duracion, file} = req.body;
-    const clase = new Clases({titulo, descripcion, link, datestart, duracion, file});
+    console.log(req.body.cursoid);
+    const {titulo, descripcion, link, datestart, duracion, file, cursoid} = req.body;
+    const clase = new ClasesI({titulo, descripcion, link, datestart, duracion, file});
     await clase.save();
+    const curso = await Cursos.findById(req.body.cursoid)
+    curso.clases.push(clase._id)
+    await Cursos.findByIdAndUpdate(curso._id,curso)
     res.json({
         message: "null",
     });
@@ -49,14 +53,14 @@ router.put("/:id", async (req,res) => {
     console.log(req.params.id);
     const {titulo, descripcion, link, datestart, duracion, file} = req.body;
     const newclase = {titulo, descripcion, link, datestart, duracion, file};
-    await Clases.findByIdAndUpdate(req.params.id,newclase);
+    await ClasesI.findByIdAndUpdate(req.params.id,newclase);
     res.json({
         message: "null"
     });
 })
 
 router.delete("/:id", async (req,res) => {
-    await Clases.findByIdAndDelete(req.params.id);
+    await ClasesI.findByIdAndDelete(req.params.id);
     res.json("delete");
 })
 
