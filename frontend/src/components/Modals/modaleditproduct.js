@@ -15,7 +15,8 @@ import {
     Grid,
     TextField
   } from '@material-ui/core';
- 
+  import BlockUi from 'react-block-ui';
+  import { Loader } from 'react-loaders';
   import 'react-block-ui/style.css';
   import 'loaders.css/loaders.min.css';
   
@@ -29,7 +30,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
     const [cosa,setcosa] = React.useState(info.image);
     const [error,seterror] = React.useState(false)
     const [texterror,settexterror] = React.useState(" ")
-    const [,setstop] = React.useState(false)
+    const [stop,setstop] = React.useState(false)
     
     function handleImage(e){
         const {files} = e.target;
@@ -113,6 +114,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
     }
 
     return(
+      <BlockUi tag="div" blocking={stop} loader={<Loader active type="line-scale" color="blue"/>}>
         <Card>
         <CardHeader
           align="center"
@@ -251,5 +253,6 @@ export default function ModalEditProduct({setOpen, asd, info}) {
           </Button>
         </Box>
       </Card>
+      </BlockUi>
     )
 }

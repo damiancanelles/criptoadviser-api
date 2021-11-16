@@ -17,6 +17,8 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/Logo.png";
 import {Helmet} from "react-helmet"
+import Usuarios from "views/Usuarios/Usuarios";
+import Clases from "views/CursosEspecializados/Clases";
 
 let ps;
 
@@ -34,6 +36,10 @@ const switchRoutes = (
       }
       return null;
     })}
+    <Route
+            path={"/admin/clases/:id"}
+            component={Clases}
+          />
     <Redirect from="/admin" to="/admin/dashboard" />
   </Switch>
 );

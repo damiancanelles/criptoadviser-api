@@ -39,8 +39,8 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/cursosE",
-    name: "Cursos Especializados",
+    path: "/cursosE/",
+    name: "Cursos",
     icon: MenuBookIcon,
     component: CursoE,
     layout: "/admin",

@@ -19,7 +19,7 @@ router.get("/:id", async (req,res) => {
 
 router.get("/clases/:id", async (req,res) => {
     const noticia = await Cursos.findById(req.params.id).populate('clases');
-    res.json(noticia);
+    res.json(noticia.clases);
 });
 
 router.post("/", async (req,res) => {
