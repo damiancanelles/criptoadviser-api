@@ -24,6 +24,7 @@ import axios from 'axios';
 import Carousel from 'react-material-ui-carousel';
 import CarouselServicios from './CarouselServicios';
 import Butttton from './Butttton';
+import ButtttonE from './ButtttonE';
 
 
 
@@ -136,6 +137,13 @@ function LandingBody() {
     const [data1, setdata1] = React.useState([])
     const classes = useStyles();
     const [index,setindex] = React.useState(0);
+    const [data3,setdata3] = React.useState([])
+  
+  const tyu = async () => {
+    const result = await axios.get("https://criptoadviser.com/api/cursos",{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
+    setdata3(result.data)  
+  };
+
     
     const qwe = async () => {
       const result = await axios.get("https://criptoadviser.com/api/noticias",{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
@@ -157,6 +165,7 @@ function LandingBody() {
       
       qwe();
       ert();
+      tyu();
     },[])
 
     return (
@@ -181,6 +190,11 @@ function LandingBody() {
           <Button variant={ index === i ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none', "display": `${cosa.type === "principal" ? "none" : null}`}}  onClick={() => setindex(i)}>{cosa.titulo}</Button>
          )
        })}
+       {data3.map((cosa,i) => {
+         return(
+          <Button variant={ index === i + data1.length ? 'contained' : 'text'} style={{"marginLeft":"30px","marginRight":"30px", 'textTransform':'none'}}  onClick={() => setindex(i+ data1.length)}>{cosa.name}</Button>
+         )
+       })}
       </Grid>
       {data1.map((cosa,i) => {
          return(
@@ -190,7 +204,14 @@ function LandingBody() {
           
          )
        })}
-      
+      {data3.map((cosa,i) => {
+         return(
+          <Collapse in={index === i + data1.length}>
+          <ButtttonE data={cosa}></ButtttonE>
+          </Collapse>
+          
+         )
+       })}
       <Carousel>
         {data.map((noticia,index) => {
           return(

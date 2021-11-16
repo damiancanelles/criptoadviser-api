@@ -12,7 +12,7 @@ import Card from "components/Card/Card.js";
 
 import CardBody from "components/Card/CardBody.js";
 
-import {TextField, InputAdornment, SvgIcon, Grid} from "@material-ui/core";
+import {TextField, InputAdornment, SvgIcon, Grid, Button} from "@material-ui/core";
 
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -247,6 +247,7 @@ const {globalFilter} = state
                     )
                   })}
                   <TableCell align="right">
+                  <Button href={`/admin/clases/${row.original._id}`} style={{color:"blue"}}>Clases</Button>
                   <IconButton color="secondary" onClick={(e) => {deleteelement(e,row.original._id)}} aria-label="add an alarm">
         <DeleteIcon />
       </IconButton>

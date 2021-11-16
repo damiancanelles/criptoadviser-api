@@ -12,7 +12,7 @@ import Card from "components/Card/Card.js";
 
 import CardBody from "components/Card/CardBody.js";
 
-import {TextField, InputAdornment, SvgIcon, Grid} from "@material-ui/core";
+import {TextField, InputAdornment, SvgIcon, Grid, Button} from "@material-ui/core";
 
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -26,6 +26,8 @@ import ModalCreateClase from 'components/Modals/modalcreateclase';
 import Edit from '@material-ui/icons/Edit';
 import ModalEditClase from 'components/Modals/modaleditclase';
 import { infoColor } from 'assets/jss/material-dashboard-react';
+import ModalCreateClaseI from 'components/Modals/modalcreateclasesI';
+import ModalEditClaseI from 'components/Modals/modaleditclasesI';
 
 const useStyles = makeStyles(styles);
 
@@ -57,7 +59,7 @@ export default function ClasesItable({id}) {
 
 
   const asd = async () => {
-    const result = await axios.get("https://criptoadviser.com/api/clases",{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
+    const result = await axios.get(`https://criptoadviser.com/api/cursos/clases/${id}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
     setdata(result.data)  
   };
 
@@ -68,7 +70,7 @@ export default function ClasesItable({id}) {
 
 function deleteelement(e,id2) {
     e.preventDefault();
-    axios.delete(`https://criptoadviser.com/api/clases/${id2}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+    axios.delete(`https://criptoadviser.com/api/clasesI/${id2}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
     .then(() => {
       asd()
       })
@@ -148,7 +150,7 @@ const {globalFilter} = state
       noValidate
       
     >
-      <ModalCreateClase asd={asd} setOpen={setOpen} ></ModalCreateClase>
+      <ModalCreateClaseI asd={asd} setOpen={setOpen} id={id} ></ModalCreateClaseI>
     </form>
           </div>
         </Fade>
@@ -172,7 +174,7 @@ const {globalFilter} = state
       noValidate
       
     >
-      <ModalEditClase asd={asd} setOpen={setOpen2} info={info}></ModalEditClase>
+      <ModalEditClaseI asd={asd} setOpen={setOpen2} info={info} id={id}></ModalEditClaseI>
     </form>
           </div>
         </Fade>
@@ -258,6 +260,7 @@ const {globalFilter} = state
                     )
                   })}
                   <TableCell align="right">
+                      
                   <IconButton color="secondary" onClick={(e) => {deleteelement(e,row.original._id)}} aria-label="add an alarm">
         <DeleteIcon />
       </IconButton>

@@ -5,10 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import { useParams } from 'react-router-dom';
-import Clasestable from "components/Table/clasestable";
-import Cursostable from "components/Table/cursostabe";
 import ClasesItable from "components/Table/clasesItable";
 import { Button } from "@material-ui/core";
+import { useHistory } from 'react-router';
+import { primaryColor } from "assets/jss/material-dashboard-react";
 const styles = {
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
@@ -44,10 +44,11 @@ const useStyles = makeStyles(styles);
 export default function Clases() {
   const classes = useStyles();
   const {id} = useParams();
+  const history = useHistory();
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
-        <Button>Atras</Button>
+        <Button style={{color:"black"}} href="/admin/cursosE/">Atras</Button>
       <ClasesItable cardstyle={classes} id={id}></ClasesItable>
         
       </GridItem>

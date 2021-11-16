@@ -6,7 +6,7 @@ import { Grid } from '@material-ui/core';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useHistory } from "react-router";
-
+import axios from 'axios';
 
 const responsive = {
   
@@ -141,6 +141,7 @@ export default function CarouselServicios({servicios}) {
   
   const classes = useStyles();
   const history = useHistory();
+  
 
   return (
     <div className={classes.root}>
@@ -150,6 +151,7 @@ export default function CarouselServicios({servicios}) {
             responsive={responsive}
             containerClass={classes.carousel}
             itemClass={classes.carouselitems}>
+              
             {servicios.map((image,key) => {
            const a = image.image
           return (
