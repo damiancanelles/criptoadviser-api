@@ -14,9 +14,13 @@
     font-family: CriptoAdviserAceSans;
     src: url(assets/fonts/AceSans-Demo.otf);
 }
+@font-face {
+    font-family: CriptoAdviserCentury;
+    src: url(assets/fonts/CENTURY.TTF);
+}
 
 h1, h2 {
-    font-family: CriptoAdviserAceSans !important;
+    font-family: CriptoAdviserCentury !important;
 
 }
 h3, h4, p, button{
