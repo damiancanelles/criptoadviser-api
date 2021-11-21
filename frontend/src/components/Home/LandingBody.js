@@ -204,7 +204,7 @@ function LandingBody() {
           
          )
        })}
-      {data3.map((cosa,i) => {
+      {data3.map((cosa,i) => { 
          return(
           <Collapse in={index === i + data1.length}>
           <ButtttonE data={cosa}></ButtttonE>

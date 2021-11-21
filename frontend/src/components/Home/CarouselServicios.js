@@ -91,6 +91,7 @@ anuncio:{
  justifyContent: 'center',
  alignContent: 'center',
  alignItems: 'center',
+ marginTop: '20px',
  marginBottom: '20px',
  [theme.breakpoints.down('md')]: {
   height: 150,
@@ -233,6 +234,48 @@ export default function CarouselServicios({ servicios }) {
   return (
     <div className={classes.root}>
 
+      
+
+        <Anuncio container className={classes.anuncio} spacing={2}>
+          <Hidden smDown>
+          <Grid item  md={3} lg={4} xl={4}>
+           <img className={classes.logo} alt="logo" src={require("assets/img/logoblanco1.png")}/>
+          </Grid>
+          </Hidden>
+          <Grid item xs={12} md={5} lg={4} xl={4}>
+              <Typography  variant='h3' className={classes.accede}>
+                Accede a nuestros servicios y conviértase en <b>Miembro Oficial</b>
+              </Typography>
+          </Grid>
+          <Grid item xs={12} md={4} lg={4} xl={4}>
+            <Grid container style= {{justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
+            <Button variant='outlined' size='large' className={classes.boton}>Accede Ahora</Button>
+           </Grid>
+          </Grid>
+
+        </Anuncio>
+
+ 
+
+      <Grid
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
+
+        <Typography
+          className={classes.subtitle}
+          color="inherit"
+        >
+          CriptoADVISER es un proyecto Fintech del tipo 3 pensada para facilitarle la vida
+          a los criptoactivos debido a la cantidad de servicios que ofrecemos. Nos especializamos
+          en la rama de la capacitación, el Trading con criptomonedas y la industria de los servicios.
+          Tiene como objetivo principal dar a conocer el uso de las criptomonedas y mostrar la funcionalidad
+          de las mismas, que poco a poco comienzan a abrirse paso en el mundo financiero, convirtiéndose en
+          la principal estrategia económica de algunos países. Contamos con un excelente y preparado equipo
+          de profesionales capaces de guiarlos por el camino del éxito para que alcancen la verdadera libertad financiera.
+        </Typography>
+      </Grid>
       <Carousel
         ssr
         responsive={responsive}
@@ -283,48 +326,6 @@ export default function CarouselServicios({ servicios }) {
           )
         })}
       </Carousel>
-
-        <Anuncio container className={classes.anuncio} spacing={2}>
-          <Hidden smDown>
-          <Grid item  md={3} lg={4} xl={4}>
-           <img className={classes.logo} alt="logo" src={require("assets/img/logoblanco1.png")}/>
-          </Grid>
-          </Hidden>
-          <Grid item xs={12} md={5} lg={4} xl={4}>
-              <Typography  variant='h3' className={classes.accede}>
-                Accede a nuestros servicios y conviértase en <b>Miembro Oficial</b>
-              </Typography>
-          </Grid>
-          <Grid item xs={12} md={4} lg={4} xl={4}>
-            <Grid container style= {{justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
-            <Button variant='outlined' size='large' className={classes.boton}>Accede Ahora</Button>
-           </Grid>
-          </Grid>
-
-        </Anuncio>
-
- 
-
-      <Grid
-        container
-        direction="row"
-        justifyContent="center"
-        alignItems="center">
-
-        <Typography
-          className={classes.subtitle}
-          color="inherit"
-        >
-          CriptoADVISER es un proyecto Fintech del tipo 3 pensada para facilitarle la vida
-          a los criptoactivos debido a la cantidad de servicios que ofrecemos. Nos especializamos
-          en la rama de la capacitación, el Trading con criptomonedas y la industria de los servicios.
-          Tiene como objetivo principal dar a conocer el uso de las criptomonedas y mostrar la funcionalidad
-          de las mismas, que poco a poco comienzan a abrirse paso en el mundo financiero, convirtiéndose en
-          la principal estrategia económica de algunos países. Contamos con un excelente y preparado equipo
-          de profesionales capaces de guiarlos por el camino del éxito para que alcancen la verdadera libertad financiera.
-        </Typography>
-      </Grid>
-
     </div>
   );
 }

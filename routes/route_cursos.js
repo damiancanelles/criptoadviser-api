@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const {protect} = require("../midlewares/auth")
 const Cursos = require("../models/model_cursos")
-const mongoose = require("mongoose");
-const ClasesI = require("../models/model_clasesI")
-
+const UC = require("../models/model_user_clases")
+const User = require("../models/model_users");
 
 
 router.get("/", async (req,res) => {
@@ -20,6 +19,31 @@ router.get("/:id", async (req,res) => {
 router.get("/clases/:id", async (req,res) => {
     const noticia = await Cursos.findById(req.params.id).populate('clases');
     res.json(noticia.clases);
+});
+
+router.post("/", async (req,res) => {
+    const {name, descripcion, price, image} = req.body;
+    const noticia = new Cursos({name, descripcion, price, image});
+    await noticia.save();
+    res.json({
+        message: "null"
+    });
+});
+
+router.post("/adduser/", async (req,res) => {
+    const {userid, cursoid} = req.body;
+    const usuario = await User.findById({userid})
+    const curso = await Cursos.findById({cursoid})
+    const noticia = new UC({user: usuario._id, curso: curso._id});
+    await noticia.save();
+    res.json({
+        message: "null"
+    });
+});
+
+router.get("/users/:id", async (req,res) => {
+    const noticia = await UC.find({curso: req.params.id}).populate('user');
+    res.json(noticia);
 });
 
 router.post("/", async (req,res) => {

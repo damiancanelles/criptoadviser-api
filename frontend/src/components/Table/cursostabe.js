@@ -29,6 +29,7 @@ import ModalCreateProduct from 'components/Modals/modalcreateproduct';
 import ModalEditProduct from 'components/Modals/modaleditproduct';
 import ModalCreateCursos from 'components/Modals/modalcreatecursos';
 import ModalEditCursos from 'components/Modals/modaleditcursos';
+import { useHistory } from 'react-router';
 
 const useStyles = makeStyles(styles);
 
@@ -40,7 +41,7 @@ export default function Cursostable() {
   const [open, setOpen] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   const [info, setinfo] = React.useState({});
- 
+  const history = useHistory()
  
   const handleOpen = () => {
     setOpen(true);
@@ -247,7 +248,7 @@ const {globalFilter} = state
                     )
                   })}
                   <TableCell align="right">
-                  <Button href={`/admin/clases/${row.original._id}`} style={{color:"blue"}}>Clases</Button>
+                  <Button style={{color:"blue"}} onClick={()=> {history.push(`/admin/clases/${row.original._id}`);}}>Clases</Button>
                   <IconButton color="secondary" onClick={(e) => {deleteelement(e,row.original._id)}} aria-label="add an alarm">
         <DeleteIcon />
       </IconButton>

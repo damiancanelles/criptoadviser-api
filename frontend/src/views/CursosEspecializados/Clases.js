@@ -48,7 +48,7 @@ export default function Clases() {
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
-        <Button style={{color:"black"}} href="/admin/cursosE/">Atras</Button>
+        <Button style={{color:"black"}} onClick={()=>{history.push("/admin/cursosE/")}}>Atras</Button>
       <ClasesItable cardstyle={classes} id={id}></ClasesItable>
         
       </GridItem>

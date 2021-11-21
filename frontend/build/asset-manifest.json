@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.c5734efa.chunk.css",
-    "main.js": "/static/js/main.3d849f2e.chunk.js",
-    "main.js.map": "/static/js/main.3d849f2e.chunk.js.map",
+    "main.css": "/static/css/main.86808b82.chunk.css",
+    "main.js": "/static/js/main.da537e55.chunk.js",
+    "main.js.map": "/static/js/main.da537e55.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.730ad540.js",
     "runtime-main.js.map": "/static/js/runtime-main.730ad540.js.map",
     "static/css/2.cc6799f7.chunk.css": "/static/css/2.cc6799f7.chunk.css",
-    "static/js/2.bc2d33e7.chunk.js": "/static/js/2.bc2d33e7.chunk.js",
-    "static/js/2.bc2d33e7.chunk.js.map": "/static/js/2.bc2d33e7.chunk.js.map",
+    "static/js/2.123957cd.chunk.js": "/static/js/2.123957cd.chunk.js",
+    "static/js/2.123957cd.chunk.js.map": "/static/js/2.123957cd.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.5913460be5761918888abfa2e02fcadf.js": "/precache-manifest.5913460be5761918888abfa2e02fcadf.js",
+    "precache-manifest.2375b439d5739ad62705802792453403.js": "/precache-manifest.2375b439d5739ad62705802792453403.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.cc6799f7.chunk.css.map": "/static/css/2.cc6799f7.chunk.css.map",
-    "static/css/main.c5734efa.chunk.css.map": "/static/css/main.c5734efa.chunk.css.map",
-    "static/js/2.bc2d33e7.chunk.js.LICENSE.txt": "/static/js/2.bc2d33e7.chunk.js.LICENSE.txt",
-    "static/js/main.3d849f2e.chunk.js.LICENSE.txt": "/static/js/main.3d849f2e.chunk.js.LICENSE.txt",
+    "static/css/main.86808b82.chunk.css.map": "/static/css/main.86808b82.chunk.css.map",
+    "static/js/2.123957cd.chunk.js.LICENSE.txt": "/static/js/2.123957cd.chunk.js.LICENSE.txt",
+    "static/js/main.da537e55.chunk.js.LICENSE.txt": "/static/js/main.da537e55.chunk.js.LICENSE.txt",
     "static/media/sadi.css": "/static/media/lending.f21e81d4.jpg",
     "static/media/Adrian.png": "/static/media/Adrian.ba9f5603.png",
     "static/media/Ernesto.png": "/static/media/Ernesto.c83bf6c2.png",
@@ -76,13 +76,15 @@
     "static/media/sidebar-4.jpg": "/static/media/sidebar-4.88f77981.jpg",
     "static/media/sidebar-41.jpg": "/static/media/sidebar-41.fc9cb053.jpg",
     "static/media/tienda2.jpg": "/static/media/tienda2.95fc719f.jpg",
-    "static/media/tienda21.jpg": "/static/media/tienda21.37540a51.jpg"
+    "static/media/tienda21.jpg": "/static/media/tienda21.37540a51.jpg",
+    "static/media/ya1.png": "/static/media/ya1.4836c584.png",
+    "static/media/ya2.png": "/static/media/ya2.a805b2c3.png"
   },
   "entrypoints": [
     "static/js/runtime-main.730ad540.js",
     "static/css/2.cc6799f7.chunk.css",
-    "static/js/2.bc2d33e7.chunk.js",
-    "static/css/main.c5734efa.chunk.css",
-    "static/js/main.3d849f2e.chunk.js"
+    "static/js/2.123957cd.chunk.js",
+    "static/css/main.86808b82.chunk.css",
+    "static/js/main.da537e55.chunk.js"
   ]
 }
