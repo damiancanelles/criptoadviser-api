@@ -47,6 +47,11 @@ router.get("/users/:id", async (req,res) => {
     res.json(noticia);
 });
 
+router.get("/cursos/:id", async (req,res) => {
+    const noticia = await UC.find({user: req.params.id}).populate('curso');
+    res.json(noticia);
+});
+
 router.post("/", async (req,res) => {
     const {name, descripcion, price, image} = req.body;
     const noticia = new Cursos({name, descripcion, price, image});

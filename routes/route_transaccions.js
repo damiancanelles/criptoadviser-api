@@ -15,8 +15,8 @@ router.get("/:id", async (req,res) => {
 });
 
 router.post("/", async (req,res) => {
-    const {username, hash, monto, subscription, idwallet} = req.body;
-    const clase = new Transaccions({username, hash, monto, subscription, idwallet});
+    const {username, hash, monto, subscription, idwallet, ref} = req.body;
+    const clase = new Transaccions({username, hash, monto, subscription, idwallet, ref});
     await clase.save();
     res.json({
         mesage: null
@@ -24,8 +24,8 @@ router.post("/", async (req,res) => {
 });
 
 router.put("/:id", async (req,res) => {
-    const {username, hash, monto, subscription, idwallet} = req.body;
-    const newclase = {username, hash, monto, subscription, idwallet};
+    const {username, hash, monto, subscription, idwallet, ref} = req.body;
+    const newclase = {username, hash, monto, subscription, idwallet, ref};
     await Transaccions.findByIdAndUpdate(req.params.id,newclase);
     res.json("update");
 })

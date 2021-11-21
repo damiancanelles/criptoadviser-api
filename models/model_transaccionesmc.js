@@ -9,6 +9,7 @@ const TransacSchema = new Schema(
     subscription: {type:Date, require: true},
     moneda:{type:String, require: true},
     confirmation:{type:Boolean, default:false},
+    ref:{type:String, require: true},
     }
 );
 

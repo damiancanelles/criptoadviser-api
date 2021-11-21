@@ -9,6 +9,7 @@ const TransaccionsSchema = new Schema(
     subscription: {type:Date, require: true},
     idwallet:{type:String, require: true},
     confirmation:{type:Boolean, default:false},
+    ref:{type:String, require: true},
     }
 );
 

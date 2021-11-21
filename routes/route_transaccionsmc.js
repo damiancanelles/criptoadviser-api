@@ -35,8 +35,8 @@ router.get("/:id", async (req,res) => {x
 });
 
 router.post("/", async (req,res) => {
-    const {username, image, monto, subscription, moneda} = req.body;
-    const clase = new TransaccionsMC({username, image, monto, subscription, moneda});
+    const {username, image, monto, subscription, moneda, ref} = req.body;
+    const clase = new TransaccionsMC({username, image, monto, subscription, moneda, ref});
     await clase.save();
     res.json({
         mesage: null
@@ -44,8 +44,8 @@ router.post("/", async (req,res) => {
 });
 
 router.put("/:id", async (req,res) => {
-    const {username, image, monto, subscription, moneda} = req.body;
-    const newclase = {username, image, monto, subscription, moneda};
+    const {username, image, monto, subscription, moneda, ref} = req.body;
+    const newclase = {username, image, monto, subscription, moneda, ref};
     await TransaccionsMC.findByIdAndUpdate(req.params.id,newclase);
     res.json("update");
 })
