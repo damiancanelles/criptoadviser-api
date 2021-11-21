@@ -32,8 +32,9 @@ router.post("/", async (req,res) => {
 
 router.post("/adduser/", async (req,res) => {
     const {userid, cursoid} = req.body;
-    const usuario = await User.findById({userid})
-    const curso = await Cursos.findById({cursoid})
+    console.log(userid)
+    const usuario = await User.findById(userid)
+    const curso = await Cursos.findById(cursoid)
     const noticia = new UC({user: usuario._id, curso: curso._id});
     await noticia.save();
     res.json({
