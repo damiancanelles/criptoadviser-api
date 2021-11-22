@@ -20,9 +20,12 @@ import Fade from '@material-ui/core/Fade';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import Edit from '@material-ui/icons/Edit';
+import ModalEditClase from 'components/Modals/modaleditclase';
 
 
 import styles from "assets/jss/material-dashboard-react/components/tableStyle.js";
+import ModalEditUser from 'components/Modals/modal_lending_señales';
 
 const useStyles = makeStyles(styles);
 
@@ -32,6 +35,8 @@ export default function Usertable() {
   const [data, setdata] = React.useState([])
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+  const [info, setinfo] = React.useState({});
  
  
   const handleOpen = () => {
@@ -42,6 +47,13 @@ export default function Usertable() {
     setOpen(false);
   };
 
+  const handleOpen2 = () => {
+    setOpen2(true);
+  };
+
+  const handleClose2 = () => {
+    setOpen2(false);
+  };
 
   const asd = async () => {
     const result = await axios.get("https://criptoadviser.com/api/users",{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
@@ -152,6 +164,30 @@ const {globalFilter} = state
           </div>
         </Fade>
       </Modal>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open2}
+        onClose={handleClose2}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open2}>
+        <div className={classes.paper}>
+        <form
+      autoComplete="off"
+      noValidate
+      
+    >
+      <ModalEditUser asd={asd} setOpen={setOpen2} info={info}></ModalEditUser>
+    </form>
+          </div>
+        </Fade>
+      </Modal>
      
             <Grid container alignItems="center" style={{padding:5}}>
               <Grid xs={12} sm={12} md={9} >
@@ -227,6 +263,9 @@ const {globalFilter} = state
                   <TableCell align="right">
                   <IconButton color="secondary" onClick={(e) => {deleteelement(e,row.original._id)}} aria-label="add an alarm">
         <DeleteIcon />
+      </IconButton>
+      <IconButton color="primary" onClick={() => {handleOpen2();setinfo(row.original)}} aria-label="add an alarm">
+       <Edit></Edit> 
       </IconButton>
                         </TableCell>
                   
