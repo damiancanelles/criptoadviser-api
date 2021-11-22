@@ -10,6 +10,11 @@ import { styled } from '@material-ui/styles';
 import imaAnuncio from 'assets/img/ya2.png'
 import imaAnuncio2 from 'assets/img/ya1.png'
 
+import ModalCreateTransaccion from 'components/Modals/modalcreatetransaccion';
+import Modal from '@material-ui/core/Modal';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
+
 const AnuncioMobil = styled(Grid)(({ theme }) => ({
   backgroundImage: `url(${imaAnuncio2})`,
   backgroundSize: 'none',
@@ -221,6 +226,15 @@ anuncio:{
         border: 'solid 2px white',
       },
   },
+  modal: {
+    overflow: "scroll",
+    padding: '80px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    [theme.breakpoints.down('xs')]: {
+      padding: "2%",
+    },
+  },
   
 
 }));
@@ -230,13 +244,47 @@ export default function CarouselServicios({ servicios }) {
 
   const classes = useStyles();
   const history = useHistory();
+  const [open, setOpen] = React.useState(false);
+  
+  const handleOpen = () => {
+    setOpen(true);
+    };
+
+    const handleClose = () => {
+    setOpen(false);
+    };
 
   return (
     <div className={classes.root}>
 
       
-
+    
         <Anuncio container className={classes.anuncio} spacing={2}>
+        
+        <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <form
+              autoComplete="off"
+              noValidate
+
+            >
+              <ModalCreateTransaccion price={10} data={'subscription'} setOpen={setOpen} ></ModalCreateTransaccion>
+            </form>
+          </div>
+        </Fade>
+      </Modal>
           <Hidden smDown>
           <Grid item  md={3} lg={4} xl={4}>
            <img className={classes.logo} alt="logo" src={require("assets/img/logoblanco1.png")}/>
@@ -249,7 +297,7 @@ export default function CarouselServicios({ servicios }) {
           </Grid>
           <Grid item xs={12} md={4} lg={4} xl={4}>
             <Grid container style= {{justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
-            <Button variant='outlined' size='large' className={classes.boton}>Accede Ahora</Button>
+            <Button onClick={()=>{handleOpen()}} variant='outlined' size='large' className={classes.boton}>Accede Ahora</Button>
            </Grid>
           </Grid>
 

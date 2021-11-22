@@ -76,7 +76,7 @@ export default function ModalCreateTransaccion({setOpen, asd, price, data}) {
     const [data2,setdata2] = React.useState("");
     const [index,setindex] = React.useState(0);
     const [meses,setmeses] = React.useState("1");
-    const [monto,setmonto] = React.useState(5);
+    const [monto,setmonto] = React.useState(price);
     const [hash,sethash] = React.useState("");
   
     const [subscription,setsubscription] = React.useState(moment().add(1,'months'));
@@ -407,7 +407,7 @@ export default function ModalCreateTransaccion({setOpen, asd, price, data}) {
                         md={11}
                         sm={12}
                         xs={12}>
-                          <h5 style={{margin:0}}> Para realizar la recargar envie {meses * 5} USD en {wallet.name} a la siguiente direccion  y coloque el hash de la transaccion en el campo indicado.</h5>
+                          <h5 style={{margin:0}}> Para realizar la recargar envie {meses * price} USD en {wallet.name} a la siguiente direccion  y coloque el hash de la transaccion en el campo indicado.</h5>
                        <Grid container alignContent="center">
                        <Grid item md={6} sm={12} xs={12}>
                        <Grid container alignContent="center">
@@ -533,7 +533,7 @@ export default function ModalCreateTransaccion({setOpen, asd, price, data}) {
                         md={12}
                         sm={12}
                         xs={12}>
-                          <h5 style={{margin:0}}> Para realizar la recargar envie {meses * 5} {tarjeta.moneda} a la siguiente cuenta  y suba una foto del comprobante de pago.</h5>
+                          <h5 style={{margin:0}}> Para realizar la recargar envie {meses * price} {tarjeta.moneda} a la siguiente cuenta  y suba una foto del comprobante de pago.</h5>
                        <Grid container alignContent="center">
                        <Grid item md={6} sm={12} xs={12}>
                        <Grid container alignContent="center">
