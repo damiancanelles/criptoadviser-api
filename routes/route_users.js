@@ -213,7 +213,7 @@ router.post("/editA/", async (req,res) => {
     const usuario = await User.findById(user);
     usuario.lending = lending;
     usuario.señales = señales;
-    await User.findOneAndUpdate({user},usuario);
+    await User.findByIdAndUpdate(user,usuario);
 
     
 })
