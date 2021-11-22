@@ -69,7 +69,7 @@ import {
   const defaultWallet = {"_id":"60f5f344cd1cc715f83f702f","name":"Bitcoins","link":"1LzuqyixZkV1XKAfNMnkSfZ3MBDgtuAwgx","image":"bitcoin.png","date":"2021-07-19T21:48:52.887Z","__v":0};
   const defaultTarjeta = {"_id":"612a9cddd104e90016b71a91","name":"Transfermovil MLC","moneda":"MLC","numero":"798 456 132 987","date":"2021-08-28T20:30:21.856Z","__v":0}
   
-export default function ModalCreateTransaccion({setOpen, asd}) {
+export default function ModalCreateTransaccion({setOpen, asd, price, data}) {
     const classes = useStyles();
     const [user] = useAuth();
     const [data1,setdata1] = React.useState("");
@@ -140,7 +140,7 @@ export default function ModalCreateTransaccion({setOpen, asd}) {
 
     const handleChange = (event, newValue) => {
       setmeses(newValue);
-      setmonto(`${newValue * 5}`);
+      setmonto(`${newValue * price}`);
       setsubscription(moment().add(newValue,'months'));
     };
 
@@ -164,7 +164,8 @@ export default function ModalCreateTransaccion({setOpen, asd}) {
           monto: monto,
           hash: hash,
           subscription: subscription,
-          idwallet: wallet.image
+          idwallet: wallet.image,
+          ref: data
         };
     
     
@@ -242,7 +243,8 @@ export default function ModalCreateTransaccion({setOpen, asd}) {
           monto: monto,
           image: res.data.path,
           subscription: subscription,
-          moneda: tarjeta.moneda
+          moneda: tarjeta.moneda,
+          ref: data
         };
     
     

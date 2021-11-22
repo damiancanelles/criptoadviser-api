@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
 
 }))
 
-export default function CursoButton() {
+export default function CursoButton({title,text,image,price,id}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -103,7 +103,7 @@ export default function CursoButton() {
               noValidate
 
             >
-              <ModalCreateTransaccion setOpen={setOpen} ></ModalCreateTransaccion>
+              <ModalCreateTransaccion setOpen={setOpen} price={price} data={`curso_${id}`} ></ModalCreateTransaccion>
             </form>
           </div>
         </Fade>
@@ -113,11 +113,8 @@ export default function CursoButton() {
         md={6}
         xs={12}>
         <Grid container alignItems="center" justifyContent="center">
-          <h1 style={{ marginBottom: "10px" }} className={classes.text}>Curso de Trading</h1>
-          <h4 style={{ margin: 0 }}>En nuestro curso le brindamos un acercamiento a los principios básicos
-            del análisis técnico y charlista, gestión de riesgo, acción del precio, trabajo en spot en Binance, 
-            Futuros en BingBong y trading semiautomático con los bots de Pionex. Las clases tienen una
-            duración de 2h y las damos con una frecuencia de 3 clases semanales.
+          <h1 style={{ marginBottom: "10px" }} className={classes.text}>{title}</h1>
+          <h4 style={{ margin: 0 }}>{text}
           </h4>
           <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={() => { handleOpen() }} variant="contained" color="primary">Suscribirse</Button></Grid>
         </Grid>
@@ -129,7 +126,7 @@ export default function CursoButton() {
         <Grid container justifyContent="center">
           <img alt="img"
             className={classes.image2}
-            src={require(`assets/img/lending.jpg`)}
+            src={image}
           />
         </Grid>
       </Grid>

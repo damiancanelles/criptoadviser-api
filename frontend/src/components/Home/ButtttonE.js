@@ -81,7 +81,7 @@ export default function ButtttonE({data}) {
           <h4 style={{ margin: 0 }}>{data.descripcion}
           </h4>
           <Grid container justifyContent="flex-end"><Button className={classes.buttom} onClick={()=>{
-            history.push(`serviciosindependientes/${data._id}`);
+            history.push(`cursoE/${data._id}`);
           }} variant="contained" color="primary">Acceder</Button></Grid>
         </Grid>
       </Grid>

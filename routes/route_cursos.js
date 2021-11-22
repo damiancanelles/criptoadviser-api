@@ -42,6 +42,18 @@ router.post("/adduser/", async (req,res) => {
     });
 });
 
+router.post("/adduserN/", async (req,res) => {
+    const {user, cursoid} = req.body;
+    console.log(userid)
+    const usuario = await User.findOne(user)
+    const curso = await Cursos.findById(cursoid)
+    const noticia = new UC({user: usuario._id, curso: curso._id});
+    await noticia.save();
+    res.json({
+        message: "null"
+    });
+});
+
 router.get("/users/:id", async (req,res) => {
     const noticia = await UC.find({curso: req.params.id}).populate('user');
     res.json(noticia);

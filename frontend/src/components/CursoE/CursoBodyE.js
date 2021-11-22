@@ -24,6 +24,7 @@ import useAuth from 'auth/useauth';
 import moment from 'moment';
 import ClasesPasadasE from './ClasesPasadasE';
 import axios from 'axios';
+import CursoButton from 'components/Curso/CursoButton';
 
 
 
@@ -147,7 +148,7 @@ function CursoBodyE({id}) {
         <div  id='caja'>
           
          <Grid container className={classes.gridproductos} >
-        
+        <CursoButton title={data.name} text={data.descripcion} id={data._id} image={data.image} price={data.price}></CursoButton>
           
         <div>
         <Grid  container className={classes.gridquestions} justifyContent="center" alignItems="flex-start">

@@ -30,11 +30,10 @@ export default function Transaccionstable() {
   
   
  
-  async function confirm(e,idd,acc,qwe) {
+  async function confirm(e,idd,acc,qwe,ref) {
     e.preventDefault();
-
-    
-    axios.get(`https://criptoadviser.com/api/transaccions/confirm/${qwe}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+    if (ref === "subscription") {
+      axios.get(`https://criptoadviser.com/api/transaccions/confirm/${qwe}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
     .then((res) => {
       if (res.data.mesage === null) {
         asd();
@@ -53,6 +52,28 @@ export default function Transaccionstable() {
         console.log(res.data);
        
       }); 
+    }
+    else {
+      axios.get(`https://criptoadviser.com/api/transaccionsmc/confirm/${qwe}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+    .then((res) => {
+      if (res.data.mesage === null) {
+        asd();
+         
+      }
+
+      })
+      const cosa = {
+        user: idd,
+        cursoid: ref.split("_")[1],
+    };
+      axios.post(`https://criptoadviser.com/api/cursos/adduserN/`,cosa,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+      .then((res) => {
+        console.log(res.data);
+      
+      }); 
+    }
+
+    
   }
 
   const asd = async () => {
@@ -100,6 +121,10 @@ const columns = React.useMemo(
          {
             Header: 'Confirmation',
             accessor: 'confirmation',
+          },
+          {
+            Header: 'Ref',
+            accessor: 'ref',
           },
           
       
@@ -193,7 +218,7 @@ const {globalFilter} = state
                   })}
                   <TableCell align="right">
                   <Button color="primary" onClick={(e) => {
-                      confirm(e,row.original.username,row.original.subscription,row.original._id)
+                      confirm(e,row.original.username,row.original.subscription,row.original._id,row.original.ref)
                     }}>Confirmar</Button>
                   <IconButton color="secondary" onClick={(e) => {deleteelement(e,row.original._id)}} aria-label="add an alarm">
         <DeleteIcon />

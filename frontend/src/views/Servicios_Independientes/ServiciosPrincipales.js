@@ -195,7 +195,7 @@ const ServiciosPrincipales = (props)=> {
               noValidate
 
             >
-              <ModalCreateTransaccion setOpen={setOpen} ></ModalCreateTransaccion>
+              <ModalCreateTransaccion price={10} data={'subscription'} setOpen={setOpen} ></ModalCreateTransaccion>
             </form>
           </div>
         </Fade>
