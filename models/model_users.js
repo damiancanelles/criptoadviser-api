@@ -11,7 +11,10 @@ const UsersSchema = new Schema(
     role: {type:String, default:"user"},
     subscription: {type: Date, default: Date.now},
    date:{type:Date, default:Date.now},
-   activate:{type:Boolean, default:false}
+   activate:{type:Boolean, default:false},
+   referido: {type: String, default:""},
+   lending: {type: Number, default:0},
+   señales: {type: String, default:""},
      }
 );
 

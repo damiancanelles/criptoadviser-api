@@ -99,6 +99,18 @@ const columns = React.useMemo(
           Header: 'Estado',
           accessor: 'activate',
         },
+        {
+          Header: 'Link de Referido',
+          accessor: 'referido',
+        },
+        {
+          Header: 'Lending',
+          accessor: 'lending',
+        },
+        {
+          Header: 'Señales',
+          accessor: 'señales',
+        },
         
       
   ],

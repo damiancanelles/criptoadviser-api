@@ -110,6 +110,7 @@ export default function Register() {
   const [username, setusername] = React.useState("");
   const [password, setpassword] = React.useState("");
   const [tusername, settusername] = React.useState("");
+  const [referido, setreferido] = React.useState("");
   const [stop, setstop] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [ipon , set_Open] = React.useState(false);
@@ -138,7 +139,8 @@ export default function Register() {
       user: username,
       password: password,
       telegramuser: tusername,
-      email: email
+      email: email,
+      referido: referido
     }
 
     await axios.post("https://criptoadviser.com/api/users/",info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
@@ -237,6 +239,19 @@ export default function Register() {
                 value={email}
                 onChange={(e) => {setemail(e.target.value)}}
                 autoComplete="email"
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                name="referido"
+                variant="outlined"
+                required
+                fullWidth
+                id="referido"
+                label="Link de Referidos"
+                value={referido}
+                onChange={(e) => {setreferido(e.target.value)}}
+                autoFocus
               />
             </Grid>
             <Grid item xs={12} >

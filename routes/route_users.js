@@ -121,8 +121,8 @@ router.get("/admin/:id", async (req,res) => {
 
 router.post("/", async (req,res) => {
     
-    const {user, password, email, telegramuser} = req.body;
-    const usuario = new User({user, password, email, telegramuser});
+    const {user, password, email, telegramuser, referido} = req.body;
+    const usuario = new User({user, password, email, telegramuser, referido});
     const check = await User.findOne({user});
     if(check) {
         res.json({

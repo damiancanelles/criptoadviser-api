@@ -132,15 +132,22 @@ function CursoBodyE({id}) {
     const classes = useStyles();
     const [user] = useAuth();
     const [data,setdata] = React.useState([])
+    const [data2,setdata2] = React.useState([])
     
     const asd = async () => {
         const result = await axios.get(`https://criptoadviser.com/api/cursos/${id}/`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
         setdata(result.data)  
       };
+
+      const asd2 = async () => {
+        const result = await axios.get(`https://criptoadviser.com/api/cursos/users/${id}/`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
+        console.log(result.data)
+        setdata2(result.data)  
+      };  
     
       React.useEffect( () => {
-        
         asd();
+        asd2();
       },[])
 
     return (
@@ -148,9 +155,7 @@ function CursoBodyE({id}) {
         <div  id='caja'>
           
          <Grid container className={classes.gridproductos} >
-        <CursoButton title={data.name} text={data.descripcion} id={data._id} image={data.image} price={data.price}></CursoButton>
-          
-        <div>
+           {data2.some((element) => element.user._id === user.userid) ? <div>
         <Grid  container className={classes.gridquestions} justifyContent="center" alignItems="flex-start">
         <Grid style={{"padding":"5px"}} item md={8} sm={12} xs={12}>
         <h3 className={classes.text}>{data.name}</h3>
@@ -214,7 +219,10 @@ function CursoBodyE({id}) {
          
           
       </Grid>
-  </Grid> </div>
+  </Grid> </div> : <CursoButton title={data.name} text={data.descripcion} id={data._id} image={data.image} price={data.price}></CursoButton>}
+        
+          
+        
            
              <Grid container justifyContent="center">
       <h1 style={{margin:"0px"}} >FAQ</h1>

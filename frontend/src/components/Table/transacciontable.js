@@ -34,7 +34,7 @@ export default function Transaccionstable() {
     e.preventDefault();
     if (ref === "subscription") {
       axios.get(`https://criptoadviser.com/api/transaccions/confirm/${qwe}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
-    .then((res) => {
+      .then((res) => {
       if (res.data.mesage === null) {
         asd();
          
@@ -54,8 +54,8 @@ export default function Transaccionstable() {
       }); 
     }
     else {
-      axios.get(`https://criptoadviser.com/api/transaccionsmc/confirm/${qwe}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
-    .then((res) => {
+      axios.get(`https://criptoadviser.com/api/transaccions/confirm/${qwe}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+      .then((res) => {
       if (res.data.mesage === null) {
         asd();
          
