@@ -214,7 +214,10 @@ router.post("/editA/", async (req,res) => {
     usuario.lending = lending;
     usuario.señales = señales;
     await User.findByIdAndUpdate(user,usuario);
-
+    res.json({
+        user: usuario,
+        message: "null"
+    });
     
 })
 
