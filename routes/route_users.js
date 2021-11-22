@@ -210,7 +210,7 @@ router.post("/edit/", async (req,res) => {
 router.post("/editA/", async (req,res) => {
     console.log(req.body);
     const { user, lending, señales} = req.body;
-    const usuario = await User.findOne({user});
+    const usuario = await User.findById(user);
     usuario.lending = lending;
     usuario.señales = señales;
     await User.findOneAndUpdate({user},usuario);
