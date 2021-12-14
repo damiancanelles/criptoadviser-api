@@ -127,6 +127,29 @@ router.post("/dislike/:id", async (req,res) => {
     
 });
 
+router.post("/dislike_menos/:id", async (req,res) => {
+    
+    const {username} = req.body;
+    const wallet = await Vendedores.findOne({username: req.params.id});
+    const check = wallet.usersdislikes.find(element => element === username);
+    if (check) {
+        res.json({
+            mesage: "Usted ya le ha dado su dislike a este vendedor",
+            update: "no"
+        }); 
+    }
+    else {
+        wallet.dislikes = wallet.dislikes - 1;
+        wallet.usersdislikes.push(username);
+        await Vendedores.findByIdAndUpdate(wallet._id,wallet);
+        res.json({
+            mesage: "ok",
+            update: "si"
+        });
+    }
+    
+});
+
 router.post("/reference/:id", async (req,res) => {
     
     const {username} = req.body;
