@@ -155,7 +155,7 @@ function CursoBodyE({id}) {
         <div  id='caja'>
           
          <Grid container className={classes.gridproductos} >
-           {data2.some((element) => element.user._id === user.userid) ? <div>
+           {user.name != null ? data2.some((element) => element.user._id === user.userid) ? <div>
         <Grid  container className={classes.gridquestions} justifyContent="center" alignItems="flex-start">
         <Grid style={{"padding":"5px"}} item md={8} sm={12} xs={12}>
         <h3 className={classes.text}>{data.name}</h3>
@@ -219,7 +219,7 @@ function CursoBodyE({id}) {
          
           
       </Grid>
-  </Grid> </div> : <CursoButton title={data.name} text={data.descripcion} id={data._id} image={data.image} price={data.price}></CursoButton>}
+  </Grid> </div> : <CursoButton title={data.name} text={data.descripcion} id={data._id} image={data.image} price={data.price}></CursoButton>: <CursoButton title={data.name} text={data.descripcion} id={data._id} image={data.image} price={data.price}></CursoButton>}
         
           
         

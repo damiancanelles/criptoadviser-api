@@ -1,11 +1,10 @@
 import { Grid, makeStyles, Paper, Button, TextField } from '@material-ui/core';
-import UserTrans from 'components/Table/transaccionusermc';
-
-
+import useAuth from 'auth/useauth';
+import axios from 'axios';
 import React from 'react'
 import { AccountBotInfo } from './AccountBotInfo';
-import AccountProfile from './AccountProfile';
 import AccountProfileDetails from './AccountProfileDetails';
+import { Cursos } from './Cursos';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,17 +20,29 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const VistaUser = () => {
+    const [user,] = useAuth();
     const classes = useStyles()
+    const [values, setValues] = React.useState({});
+
+  const asd = async () => {
+    const result = await axios.get(`https://criptoadviser.com/api/users/${user.userid}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
+    setValues(result.data.user)
+  };
+
+  React.useEffect( () => {
+    
+    asd();
+  },[])
     return (
         <Grid container style={{marginTop:'10px', marginBottom:'10px'}}>
             <Grid item xs={12} xl={6} lg={6} md={6} className={classes.grid}>
-                <AccountProfileDetails/>
+                <AccountProfileDetails values={values} />
             </Grid>
             <Grid item xs={12} xl={4} lg={6} md={6} className={classes.grid}>
                 <AccountBotInfo/>
             </Grid>
-            <Grid item xs={12} className={classes.grid}>
-                <UserTrans/>
+            <Grid item xs={12} xl={4} lg={6} md={6} className={classes.grid}>
+                <Cursos id={user.userid}/>
             </Grid>
         </Grid>
 

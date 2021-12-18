@@ -21,7 +21,6 @@ import { Loader } from 'react-loaders';
 import 'react-block-ui/style.css';
 import 'loaders.css/loaders.min.css';
 import {Helmet} from "react-helmet"
-import { ImportantDevices } from '@material-ui/icons';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
