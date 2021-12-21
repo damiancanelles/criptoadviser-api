@@ -178,11 +178,11 @@ function CursoBody() {
           <Grid style={{"marginBottom":"10px"}} direction="column" container alignItems="center" justifyContent="center">
           <h3 className={classes.text}>Instructor</h3>
           <img className={classes.instructor} alt="instructor" src={require("assets/img/contacto.png")}></img>
-          <h4 className={classes.text}>Adrian Lopez</h4>
-          <h4 className={classes.text}>Director Creativo</h4>
+          <h4 className={classes.text}>Luis Ernesto</h4>
+          <h4 className={classes.text}>Director Ejecutivo</h4>
           <Hidden mdUp>
           <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero de Telefono:</h4>
-          <h4 alignItems="center" justifyContent="center" className={classes.text}>+5355188776</h4>
+          <h4 alignItems="center" justifyContent="center" className={classes.text}>+5358518508</h4>
           <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon></WhatsAppIcon></IconButton>
           <IconButton className={classes.text}><TelegramIcon></TelegramIcon></IconButton>
           </h4>
@@ -192,7 +192,7 @@ function CursoBody() {
           <IconButton className={classes.text}><TwitterIcon></TwitterIcon></IconButton></h4>     
           </Hidden>
           <Hidden smDown>
-          <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero: +5355188776</h4>
+          <h4 alignItems="center" justifyContent="center" className={classes.text}>Numero: +5358518508</h4>
           <h4 className={classes.text}>Redes: <IconButton className={classes.text}><WhatsAppIcon style={{color:"black"}}></WhatsAppIcon></IconButton>
   <IconButton className={classes.text}><TelegramIcon style={{color:"black"}}></TelegramIcon></IconButton>
   <IconButton className={classes.text}><FacebookIcon style={{color:"black"}}></FacebookIcon></IconButton>
@@ -259,7 +259,7 @@ function CursoBody() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>Que es el Treiding?</Typography>
+          <Typography className={classes.heading}>Que es el Trading?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

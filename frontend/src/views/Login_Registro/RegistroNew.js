@@ -109,8 +109,8 @@ export default function Register() {
   const [email, setemail] = React.useState("");
   const [username, setusername] = React.useState("");
   const [password, setpassword] = React.useState("");
-  const [tusername, settusername] = React.useState("");
-  const [referido, setreferido] = React.useState("");
+  const [tusername, settusername] = React.useState(" ");
+  const [referido, setreferido] = React.useState(" ");
   const [stop, setstop] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [ipon , set_Open] = React.useState(false);

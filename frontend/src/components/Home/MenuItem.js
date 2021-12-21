@@ -2,7 +2,8 @@ import React from 'react';
 import{
     List
    ,ListItem
-   ,Divider
+   ,Divider,
+   IconButton
 } from '@material-ui/core'
 
 import useAuth from 'auth/useauth';
@@ -11,6 +12,7 @@ import { whiteColor } from 'assets/jss/material-dashboard-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import Notificaciones from './Notificaciones';
+import UserIcon from '@material-ui/icons/PersonOutlined'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -116,9 +118,14 @@ function MenuItem (){
                  </Link> 
                  </ListItem></div> : <div> 
                  <ListItem button>
-                   <Link style={{color:"white"}}>
-                 <Notificaciones ></Notificaciones> 
-                 </Link>
+                  <span style={{color: 'white'}}>
+                 <Notificaciones/>
+                 </span>
+                 </ListItem>
+                 <ListItem button>
+                    <Link to='/user' style={{color: "white"}}>
+                      <Button variant='text' style={{textTransform: 'none'}} color='inherit' endIcon={<UserIcon/>}>Perfil</Button>
+                    </Link>
                  </ListItem>
                    {user.role === "admin" ? <ListItem button>
                  <Link to="/admin/users">

@@ -159,7 +159,7 @@ const {globalFilter} = state
           <Grid container alignItems="center" style={{padding:5}}>
               <Grid  item xs={12} sm={12} md={9} >
               <Grid style={{paddingLeft:10}} container alignItems="center" justifyContent="flex-start">
-              <h3 style={{margin:0}}>Transacciones Monedas Cubanas</h3>
+              <h3 style={{margin:0}}>Transacciones Moneda Nacional</h3>
               
               </Grid>
               </Grid>

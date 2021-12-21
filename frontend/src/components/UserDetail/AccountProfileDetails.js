@@ -57,7 +57,7 @@ const AccountProfileDetails = ({values}) => {
             <Grid
               item
               md={6}
-              xs={6}
+              xs={12}
             >
               <h4 style={{margin:0}}>Email</h4>
               <TextField
@@ -71,7 +71,7 @@ const AccountProfileDetails = ({values}) => {
             <Grid
               item
               md={6}
-              xs={6}
+              xs={12}
             >
               <h4 style={{margin:0}}>Link de Referido</h4>
               <TextField
@@ -85,7 +85,7 @@ const AccountProfileDetails = ({values}) => {
             <Grid
               item
               md={6}
-              xs={6}
+              xs={12}
             >
               <h4 style={{margin:0}}>Dinero del Lending (USDT)</h4>
               <TextField
@@ -99,7 +99,7 @@ const AccountProfileDetails = ({values}) => {
             <Grid
               item
               md={6}
-              xs={6}
+              xs={12}
             >
               <h4 style={{margin:0}}>Canal de Señales</h4>
               <TextField
