@@ -55,7 +55,7 @@ export default function ModalCreateClase({setOpen, asd, }) {
             titulo: title,
             descripcion: descripcion,
             link: link,
-            datestart: datestart,
+            datestart: `${datestart}`,
             duracion: `${inicio} - ${final}`,
             file: cosa,
             
@@ -88,7 +88,7 @@ export default function ModalCreateClase({setOpen, asd, }) {
                 titulo: title,
                 descripcion: descripcion,
                 link: link,
-                datestart: datestart,
+                datestart: `${datestart}`,
                 duracion: `${inicio} - ${final}`,
                 file: res.data.path,
                 

@@ -123,13 +123,15 @@ function ClasesPasadas() {
     const classes = useStyles();
     const [audio,setaudio] = React.useState(-1);
     const [data, setdata] = React.useState([]);
-    const [date] = React.useState(moment())
+    const [date] = React.useState(moment().subtract(1, 'days'))
     
     const asd = async () => {
       const result = await axios.get("https://criptoadviser.com/api/clases",{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
       setdata(result.data);
-
-    };
+      console.log(result.data)
+      console.log(moment(result.data[2].datestart))
+      console.log(moment())
+    };  
   
     React.useEffect( () => {
       
