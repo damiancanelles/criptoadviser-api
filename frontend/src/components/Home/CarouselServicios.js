@@ -9,11 +9,12 @@ import { useHistory } from "react-router";
 import { styled } from '@material-ui/styles';
 import imaAnuncio from 'assets/img/ya2.png'
 import imaAnuncio2 from 'assets/img/ya1.png'
-
+import ModalNotificaciones from 'components/Modals/modalnotificaciones';
 import ModalCreateTransaccion from 'components/Modals/modalcreatetransaccion';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Usertable from 'components/Table/usertable';
 
 const AnuncioMobil = styled(Grid)(({ theme }) => ({
   backgroundImage: `url(${imaAnuncio2})`,
@@ -235,6 +236,15 @@ anuncio:{
       padding: "2%",
     },
   },
+  modal2: {
+    display: 'flex',
+    padding: 300,
+    alignItems: 'center',
+    justifyContent: 'center',
+    [theme.breakpoints.down('xs')]: {
+      padding: "2%",
+    },
+  },
   
 
 }));
@@ -245,6 +255,7 @@ export default function CarouselServicios({ servicios }) {
   const classes = useStyles();
   const history = useHistory();
   const [open, setOpen] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
   
   const handleOpen = () => {
     setOpen(true);
@@ -254,13 +265,44 @@ export default function CarouselServicios({ servicios }) {
     setOpen(false);
     };
 
+    const handleOpen2 = () => {
+      setOpen2(true);
+      };
+  
+  const handleClose2 = () => {
+      setOpen2(false);
+      };
+
   return (
     <div className={classes.root}>
 
       
     
         <Anuncio container className={classes.anuncio} spacing={2}>
-        
+        <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal2}
+        open={open2}
+        onClose={handleClose2}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open2}>
+          <div className={classes.paper}>
+            <form
+              autoComplete="off"
+              noValidate
+
+            >
+              <ModalNotificaciones notificaciones={{content: "Para acceder a nuestro paquete de servicios usted necesita estar registrado en nuestro sitio web en caso de ya de estar registrado inicie sesion gracias por su visita."}}></ModalNotificaciones>
+            </form>
+          </div>
+        </Fade>
+      </Modal>
         <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -297,7 +339,7 @@ export default function CarouselServicios({ servicios }) {
           </Grid>
           <Grid item xs={12} md={4} lg={4} xl={4}>
             <Grid container style= {{justifyContent: 'center', alignItems: 'center', alignContent: 'center'}}>
-            <Button onClick={()=>{handleOpen()}} variant='outlined' size='large' className={classes.boton}>Accede Ahora</Button>
+            {sessionStorage.getItem('name') != null ? <Button onClick={()=>{handleOpen()}} variant='outlined' size='large' className={classes.boton}>Accede Ahora</Button> : <Button onClick={()=>{handleOpen2()}} variant='outlined' size='large' className={classes.boton}>Accede Ahora</Button>}
            </Grid>
           </Grid>
 

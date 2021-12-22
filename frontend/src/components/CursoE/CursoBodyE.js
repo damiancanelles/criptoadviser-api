@@ -142,7 +142,14 @@ function CursoBodyE({id}) {
       const asd2 = async () => {
         const result = await axios.get(`https://criptoadviser.com/api/cursos/users/${id}/`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }});
         console.log(result.data)
-        setdata2(result.data)  
+        const newdata = []
+        result.data.map((element) => {
+          if (element.user != null) {
+            newdata.push(element)
+          }
+        })
+        console.log(newdata)
+        setdata2(newdata)  
       };  
     
       React.useEffect( () => {
@@ -155,7 +162,7 @@ function CursoBodyE({id}) {
         <div  id='caja'>
           
          <Grid container className={classes.gridproductos} >
-           {user.name != null ? data2.some((element) => element.user._id === user.userid) ? <div>
+           {user.name != null ? data2.some((element) => element.user._id === sessionStorage.getItem('userid')) ? <div>
         <Grid  container className={classes.gridquestions} justifyContent="center" alignItems="flex-start">
         <Grid style={{"padding":"5px"}} item md={8} sm={12} xs={12}>
         <h3 className={classes.text}>{data.name}</h3>

@@ -7,10 +7,24 @@ import {
   Grid,
   TextField
 } from '@material-ui/core';
+import axios from 'axios';
 
-
-const AccountProfileDetails = ({values}) => {
+function AccountProfileDetails({id}){
   
+  const [values, setValues] = React.useState({});
+
+  const asd = () => {
+    axios.get(`https://criptoadviser.com/api/users/${id}`,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
+    .then((result) => {
+      console.log(result.data.user)
+      setValues(result.data.user)
+      })
+  };
+
+  React.useLayoutEffect ( () => {
+    console.log("Hola")
+    asd();
+  },[])
 
   return (
     <Grid container justifyContent='center' alignItems='center' alignContent='center'>
@@ -57,7 +71,7 @@ const AccountProfileDetails = ({values}) => {
             <Grid
               item
               md={6}
-              xs={12}
+              xs={6}
             >
               <h4 style={{margin:0}}>Email</h4>
               <TextField
@@ -71,7 +85,7 @@ const AccountProfileDetails = ({values}) => {
             <Grid
               item
               md={6}
-              xs={12}
+              xs={6}
             >
               <h4 style={{margin:0}}>Link de Referido</h4>
               <TextField
@@ -85,7 +99,7 @@ const AccountProfileDetails = ({values}) => {
             <Grid
               item
               md={6}
-              xs={12}
+              xs={6}
             >
               <h4 style={{margin:0}}>Dinero del Lending (USDT)</h4>
               <TextField
@@ -99,7 +113,7 @@ const AccountProfileDetails = ({values}) => {
             <Grid
               item
               md={6}
-              xs={12}
+              xs={6}
             >
               <h4 style={{margin:0}}>Canal de Señales</h4>
               <TextField
