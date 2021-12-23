@@ -86,7 +86,7 @@ function MenuItem (){
                  </ListItem>
                  <ListItem button>
                  <Link to="/curso">
-                 <Button color="inherit" variant='text'  className={classes.button1}  > Curso de Traiding </Button>
+                 <Button color="inherit" variant='text'  className={classes.button1}  > Curso de Trading </Button>
                  </Link>
                  </ListItem> 
                  <ListItem button>

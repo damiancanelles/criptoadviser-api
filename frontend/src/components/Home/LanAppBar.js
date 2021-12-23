@@ -93,7 +93,7 @@ function LanAppBar(props) {
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
           <Grid container alignContent='center' alignItems='center'>
-            <Grid item xs={6} sm={4} md={2} lg={1} xl={2}>
+            <Grid item xs={6} sm={4} md={2} lg={2} xl={2}>
               <Link to="/inicio">
                 <img className={classes.logo} alt="logo" src={require("assets/img/logonavbar.png")}></img>
               </Link>
@@ -101,7 +101,7 @@ function LanAppBar(props) {
             <Hidden smDown>
               <Grid item xl={8} lg={8} md={7} >
 
-                <Grid container alignItems="center" justifyContent='center'>
+                <Grid container alignItems="center" justifyContent='flex-start'>
                   <Link to="/inicio">
                     <Button color="inherit" variant='text' className={classes.button1}  > Inicio </Button>
                   </Link>
@@ -122,7 +122,7 @@ function LanAppBar(props) {
               </Grid>
             </Hidden>
             <Hidden xsDown>
-              <Grid item xl={2} lg={3} md={3} sm={6} >
+              <Grid item xl={2} lg={2} md={3} sm={6} >
                 <Grid container  direction='row' justifyContent='flex-end' >
                   {user.name == null ?
                     <div className={classes.grupo}>
