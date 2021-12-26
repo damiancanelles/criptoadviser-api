@@ -317,7 +317,7 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
         <CardContent style={{ padding: 0, paddingLeft: 10, paddingRight: 10, paddingTop: 10 }}>
           <Grid container alignItems="center" justifyContent="center">
             <Button style={{ color: index === 0 ? "blue" : null }} onClick={() => { setindex(0) }}>Criptomonedas</Button>
-            <Button style={{ color: index === 1 ? "blue" : null }} onClick={() => { setindex(1) }}>Monedas Cubanas</Button>
+            <Button style={{ color: index === 1 ? "blue" : null }} onClick={() => { setindex(1) }}>Moneda Nacional</Button>
           </Grid>
           <Divider style={{ marginBottom: 20 }}></Divider>
           <Collapse in={index === 0}>
@@ -332,7 +332,7 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
                 md={6} sm={12} xs={12}>
                 <div className={classes.root}>
                   <Typography id="discrete-slider-restrict" gutterBottom>
-                    Elija la duracion del servicio en meses
+                    Elija la duración del servicio en meses
                   </Typography>
                   <Slider
                     value={meses}
@@ -407,7 +407,7 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
                       md={11}
                       sm={12}
                       xs={12}>
-                      <h5 style={{ margin: 0 }}> Para realizar la recargar envie {meses * price} USD en {wallet.name} a la siguiente direccion  y coloque el hash de la transaccion en el campo indicado.</h5>
+                      <h5 style={{ margin: 0 }}> Para realizar la recargar envíe {meses * price} USD en {wallet.name} a la siguiente dirección  y coloque el hash de la transacción en el campo indicado.</h5>
                       <Grid container alignContent="center">
                         <Grid item md={6} sm={12} xs={12}>
                           <Grid container alignContent="center">
@@ -470,7 +470,7 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
                 md={6} sm={12} xs={12}>
                 <div className={classes.root}>
                   <Typography id="discrete-slider-restrict" gutterBottom>
-                    Elija la duracion del servicio en meses
+                    Elija la duración del servicio en meses
                   </Typography>
                   <Slider
                     value={meses}

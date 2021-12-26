@@ -297,12 +297,21 @@ function LandingBody() {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography className={classes.heading}>Como suscribirse?</Typography>
+                <Typography className={classes.heading}>Todos sus servicios requieren el pago de la membresia ?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                  sit amet blandit leo lobortis eget.
+                  No, tenemos también otros servicios independientes a los que puede acceder sin haber comprado el paquete del trader, en los que se incluyen:<br/>
+
+                  📌 Servicio de descarga: podrá solicitar la descarga de archivos, multimedia y otros para luego descargarlo desde la WiFi nauta o la red de datos de Etecsa sin consumir su cuota de datos, el tamaño conjunto de los archivos no debe superar los 10 Gb y tiene un valor de 2 USDT<br/>
+
+                  📌 Reserva de vuelos comerciales: En este servicio nosotros reservamos cualquier  vuelo comercial que desee, contando con un descuento de hasta un 10%, si paga con criptomonedas.<br/>
+
+                  📌 Compras onlines por envió: Con este servicio nosotros lo referimos a usted a una prestigiosa tienda latinoamericana que hace envíos a Cuba, para que pueda beneficiarte de nuestro código de descuentos.<br/>
+
+                  📌 Módulos especializados: Estos módulos están diseñados para tratar temas específicos de trading o del mundo cripto, no es necesario haber participado en el curso básico, tiene un valor de 5 USDT.<br/>
+
+                  📌 Reserva de hoteles en cualquier parte del mundo, con una rebaja de hasta un 20% si paga en criptomonedas.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -317,12 +326,17 @@ function LandingBody() {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography className={classes.heading}>Como contactarnos?</Typography>
+                <Typography className={classes.heading}>Qué beneficios tiene ser un miembro oficial de CriptoADVISER ?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-                  sit amet blandit leo lobortis eget.
+                  Tiene acceso a nuestro sistema de compensación.<br/>
+
+                  ✅ Puede participar en 1 módulo especializado de su elección de manera gratuita.<br/>
+
+                  ✅ Puede usar el servicio de descargas para solicitar un compendio de 4Gb de su elección para ayudarlos en su formación como trader.<br/>
+
+                  ✅ Tiene acceso a nuestro sistema de promociones y regalías.
                 </Typography>
               </AccordionDetails>
             </Accordion >
@@ -360,7 +374,7 @@ function LandingBody() {
               </AccordionSummary>
               <AccordionDetails >
                 <Typography>
-                Con las criptomonedas existes diversas formas de ganar dinero o hacer inversiones. Existen plataformas HYIP que se aprovechan de las características de las criptomonedas para conformar sus estafas piramidales prometiendo ganancias inimaginables, como un 200% de tu inversión mensual, para atraer clientes, lo que ha traído mucha mala publicidad, pero en las criptomonedas no todo es tinieblas, existen infinidades de posibilidades que te harán ganar dinero.
+                  Con las criptomonedas existes diversas formas de ganar dinero o hacer inversiones. Existen plataformas HYIP que se aprovechan de las características de las criptomonedas para conformar sus estafas piramidales prometiendo ganancias inimaginables, como un 200% de tu inversión mensual, para atraer clientes, lo que ha traído mucha mala publicidad, pero en las criptomonedas no todo es tinieblas, existen infinidades de posibilidades que te harán ganar dinero.
                 </Typography>
               </AccordionDetails>
             </Accordion>

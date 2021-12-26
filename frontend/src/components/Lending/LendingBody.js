@@ -157,7 +157,7 @@ function LendingBody() {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography className={classes.heading}>Que es el Treiding?</Typography>
+          <Typography className={classes.heading}>Que es el Trading?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
