@@ -533,7 +533,7 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
                       md={12}
                       sm={12}
                       xs={12}>
-                      <h5 style={{ margin: 0 }}> Para realizar la recargar envíe {tarjeta.moneda === 'CUP' ? meses * price * 70 : meses * price} {tarjeta.moneda} a la siguiente cuenta  y suba una foto del comprobante de pago.</h5>
+                      <h5 style={{ margin: 0 }}> Para realizar la recargar envíe {tarjeta.moneda === 'CUP' ? meses * price * 73 : meses * price} {tarjeta.moneda} a la siguiente cuenta  y suba una foto del comprobante de pago.</h5>
                       <Grid container alignContent="center">
                         <Grid item md={6} sm={12} xs={12}>
                           <Grid container alignContent="center">
