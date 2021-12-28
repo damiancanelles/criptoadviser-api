@@ -109,7 +109,7 @@ export default function ModalEditUser({setOpen, asd, info}) {
                 name="referidos"
                 onChange={(e) => {setlink(e.target.value)}}
                 required
-                value={info}
+                value={link}
                 variant="outlined"
               />
             </Grid>
