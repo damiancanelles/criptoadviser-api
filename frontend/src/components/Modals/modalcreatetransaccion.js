@@ -231,11 +231,11 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
     e.preventDefault();
     setstop(true);
 
-    const data = new FormData()
-    data.append('file', cosa)
-    let url = "https://criptoadviser.com/api/transaccionsmc/file";
+    const datac = new FormData()
+    datac.append('file', cosa)
+    let url = "https://criptoadviser.com/api/noticias/file/";
 
-    await axios.post(url, data, { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } })
+    await axios.post(url, datac, { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } })
       .then(res => {
         const info = {
           username: user.name,
@@ -533,7 +533,7 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
                       md={12}
                       sm={12}
                       xs={12}>
-                      <h5 style={{ margin: 0 }}> Para realizar la recargar envíe {meses * price} {tarjeta.moneda} a la siguiente cuenta  y suba una foto del comprobante de pago.</h5>
+                      <h5 style={{ margin: 0 }}> Para realizar la recargar envíe {tarjeta.moneda === 'CUP' ? meses * price * 70 : meses * price} {tarjeta.moneda} a la siguiente cuenta  y suba una foto del comprobante de pago.</h5>
                       <Grid container alignContent="center">
                         <Grid item md={6} sm={12} xs={12}>
                           <Grid container alignContent="center">
