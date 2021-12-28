@@ -28,10 +28,24 @@ router.get("/user/:username", async (req,res) => {
 
 router.post("/notificaciones/", async (req,res) => {
     const {telegramuser, content} = req.body;
-    if (telegramuser.include('@')) {
-        telegramuser = telegramuser.split('@')[1]
+    if (telegramuser.includes('@')) {
+        const ntelegramuser = telegramuser.split('@')[1]
+        const usuario = await Telegram.findOne({telegramuser: ntelegramuser})
+        if (usuario) {
+            axios.post(`${url}${token}/sendMessage`,{chat_id: usuario.chatid, text: content})
+            .then(() => {
+                res.json({
+                    message: "send"
+                });
+            })
+        }
+        else {
+            res.json({
+                message: "error"
+            });
+        }
     }
-    const usuario = await Telegram.findOne({telegramuser})
+    const usuario = await Telegram.findOne(telegramuser)
     if (usuario) {
         axios.post(`${url}${token}/sendMessage`,{chat_id: usuario.chatid, text: content})
         .then(() => {
