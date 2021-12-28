@@ -84,6 +84,8 @@ function LanAppBar(props) {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('name');
     sessionStorage.removeItem('subscription');
+    sessionStorage.removeItem('telegramuser');
+    sessionStorage.removeItem('role');
 
 
   }
