@@ -66,7 +66,7 @@ router.post("/admin/", async (req,res) => {
     const {content} = req.body;
     
     
-    axios.post(`${url}${token}/sendMessage`,{chat_id: 950513110, text: content})
+    axios.post(`${url}${token}/sendMessage`,{chat_id: 693058895, text: content})
     .then(() => {
         res.json({
             message: "send"
