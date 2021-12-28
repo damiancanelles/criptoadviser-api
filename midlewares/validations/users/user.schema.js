@@ -7,6 +7,7 @@ const schema = {
     email: joi.string().email().message("Introduzca una direccion email valida").required(),
     telegramuser: joi.string(),
     referido: joi.string(),
+    link: joi.string(),
    
    
      
