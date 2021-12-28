@@ -65,20 +65,14 @@ router.post("/notificaciones/", async (req,res) => {
 router.post("/admin/", async (req,res) => {
     const {content} = req.body;
     
-    const usuario = await Telegram.findOne({telegramuser:"RedDragonTH"})
-    if (usuario) {
-        axios.post(`${url}${token}/sendMessage`,{chat_id: usuario.chatid, text: content})
-        .then(() => {
-            res.json({
-                message: "send"
-            });
-        })
-    }
-    else {
+    
+    axios.post(`${url}${token}/sendMessage`,{chat_id: 950513110, text: content})
+    .then(() => {
         res.json({
-            message: "error"
+            message: "send"
         });
-    }
+    })
+    
 
 });
 
