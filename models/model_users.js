@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken")
+const uuidv4 = require("uuid/v4");
 
 const UsersSchema = new Schema(
     {user: {type: String, required: true},
@@ -13,6 +14,7 @@ const UsersSchema = new Schema(
    date:{type:Date, default:Date.now},
    activate:{type:Boolean, default:false},
    referido: {type: String, default:""},
+   link: {type: String, default:uuidv4()},
    lending: {type: Number, default:0},
    señales: {type: String, default:""},
      }

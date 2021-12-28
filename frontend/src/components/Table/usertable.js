@@ -112,8 +112,12 @@ const columns = React.useMemo(
           accessor: 'activate',
         },
         {
-          Header: 'Link de Referido',
+          Header: 'Link de Invitador',
           accessor: 'referido',
+        },
+        {
+          Header: 'Link de Referido',
+          accessor: 'link',
         },
         {
           Header: 'Lending',
