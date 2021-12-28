@@ -86,9 +86,16 @@ router.post("/", async (req,res) => {
         const usuario = new Telegram({telegramuser, chatid});
         const check = await Telegram.findOne({telegramuser});
         if (check) {
-
+            axios.post(`${url}${token}/sendMessage`,{
+                chat_id: chatid,
+                text: 'Ya estas registrado'
+           })
         }
         else {
+            axios.post(`${url}${token}/sendMessage`,{
+                chat_id: chatid,
+                text: 'Registro completado ya puedes recibir notificaciones'
+           })
             await usuario.save();
         }
     }
