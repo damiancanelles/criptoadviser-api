@@ -225,6 +225,24 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
 
         }
       });
+      axios.post("https://criptoadviser.com/api/telegrambot/admin/", { content: `El usuario ${user.telegramuser} ha enviado una transaccion` }, { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.message == null) {
+              setOpen(false);
+              setstop(false);
+
+
+
+
+            }
+            else {
+              settexterror(res.data.message)
+              setstop(false);
+              seterror(true);
+
+            }
+          });
   }
 
   async function register2(e) {
@@ -287,6 +305,24 @@ export default function ModalCreateTransaccion({ setOpen, asd, price, data }) {
           });
 
         axios.post("https://criptoadviser.com/api/telegrambot/notificaciones/", { telegramuser: `${user.telegramuser}`, content: "Gracias por comprar nuentro paquete VIP su transaccion a sido enviada correctamente esta sera confirmada lo mas rapido posible." }, { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.message == null) {
+              setOpen(false);
+              setstop(false);
+
+
+
+
+            }
+            else {
+              settexterror(res.data.message)
+              setstop(false);
+              seterror(true);
+
+            }
+          });
+          axios.post("https://criptoadviser.com/api/telegrambot/admin/", { content: `El usuario ${user.telegramuser} ha enviado una transaccion` }, { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } })
           .then((res) => {
             console.log(res.data);
             if (res.data.message == null) {
