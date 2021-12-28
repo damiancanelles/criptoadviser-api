@@ -25,6 +25,7 @@ import {
 export default function ModalEditUser({setOpen, asd, info}) {
     const [señales,setseñales] = React.useState(info.señales);
     const [lending,setlending] = React.useState(info.lending);
+    const [link,setlink] = React.useState(info.link);
     const [error,seterror] = React.useState(false)
     const [texterror,settexterror] = React.useState(" ")
     const [stop,setstop] = React.useState(false);
@@ -39,7 +40,8 @@ export default function ModalEditUser({setOpen, asd, info}) {
             const qwe = {
                 user: info._id,
                 señales: señales,
-                lending: lending
+                lending: lending,
+                link: link
                 
               };
           
@@ -93,6 +95,21 @@ export default function ModalEditUser({setOpen, asd, info}) {
                 onChange={(e) => {setlending(e.target.value)}}
                 required
                 value={lending}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                fullWidth
+                label="Link de referidos"
+                name="referidos"
+                onChange={(e) => {setlink(e.target.value)}}
+                required
+                value={info}
                 variant="outlined"
               />
             </Grid>
