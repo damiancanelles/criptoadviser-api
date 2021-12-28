@@ -5,7 +5,7 @@ const {protect} = require("../midlewares/auth")
 const Telegram = require("../models/model_telegramusers")
 const axios = require("axios")
 const url = 'https://api.telegram.org/bot';
-const token = "1855628452:AAHzvZoA1fVp-Pex7vIPOxr9dma_zFdv7oA"
+const token = "1855628452:AAGLQxVZTAdL1tdmQrlchdigQIA6hNn6Hk4"
 
 router.get("/", async (req,res) => {
     const clases = await Telegram.find();
