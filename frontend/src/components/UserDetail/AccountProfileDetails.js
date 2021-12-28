@@ -92,7 +92,7 @@ function AccountProfileDetails({id}){
                 fullWidth
                 name="email"
                 required
-                value={values.referido}
+                value={values.link}
                 variant="outlined"
               />
             </Grid>
@@ -106,7 +106,7 @@ function AccountProfileDetails({id}){
                 fullWidth
                 name="email"
                 required
-                value={values.link}
+                value={values.lending}
                 variant="outlined"
               />
             </Grid>
