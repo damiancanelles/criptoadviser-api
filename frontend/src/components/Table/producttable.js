@@ -104,6 +104,10 @@ const columns = React.useMemo(
           Header: 'Precio',
           accessor: 'price',
         },
+        {
+          Header: 'Link',
+          accessor: 'link',
+        },
         
         
       
@@ -239,7 +243,7 @@ const {globalFilter} = state
                   {row.cells.map((cell,index) => {
                     return (
                       <TableCell key={index} {...cell.getCellProps()}>
-                        {index === 0 ? <img alt="img" src={cell.value} style={{width:200}}></img> : index === 3 ? `${cell.value} $` : cell.render('Cell')}
+                        {index === 0 ? <img alt="img" src={cell.value} style={{width:200}}></img> : index === 3 ? `${cell.value} $` : index === 4 ? <a href={cell.value}>{cell.value}</a> : cell.render('Cell')}
                       </TableCell>
                       
                     )
