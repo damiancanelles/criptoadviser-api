@@ -20,7 +20,7 @@ import { useHistory } from 'react-router';
 import { Collapse, IconButton } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import CloseIcon from '@material-ui/icons/Close';
-
+import { v4 as uuidv4 } from 'uuid';
 import { InputAdornment } from '@material-ui/core';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import Modal from '@material-ui/core/Modal';
@@ -140,7 +140,8 @@ export default function Register() {
       password: password,
       telegramuser: tusername,
       email: email,
-      referido: referido
+      referido: referido,
+      link: uuidv4()
     }
 
     await axios.post("https://criptoadviser.com/api/users/",info,{ headers: {'Accept': 'application/json','Content-Type': 'application/json' }})
