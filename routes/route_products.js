@@ -35,8 +35,8 @@ router.get("/:id", async (req,res) => {
 });
 
 router.post("/", async (req,res) => {
-    const { name, descripcion, price, date, image} = req.body;
-    const clase = new Products({ name, descripcion, price, date, image});
+    const { name, descripcion, price, date, image, link} = req.body;
+    const clase = new Products({ name, descripcion, price, date, image, link});
     await clase.save();
     res.json({
         message: "null"
@@ -44,8 +44,8 @@ router.post("/", async (req,res) => {
 });
 
 router.put("/:id", async (req,res) => {
-    const { name, descripcion, price, date, image} = req.body;
-    const newclase = { name, descripcion, price, date, image};
+    const { name, descripcion, price, date, image, link} = req.body;
+    const newclase = { name, descripcion, price, date, image, link};
     await Products.findByIdAndUpdate(req.params.id,newclase);
     res.json({
         message: "null"

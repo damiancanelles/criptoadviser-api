@@ -8,7 +8,8 @@ const ProductsSchema = new Schema(
     descripcion:{type: String, required: true},
     price: {type: Number, require: true},
     date:{type: Date, default:Date.now},
-    image:{type: String, require: true}
+    image:{type: String, require: true},
+    link:{type: String, require: true},
 
     }
 );

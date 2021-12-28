@@ -39,7 +39,7 @@ const ColorButton = withStyles((theme) => ({
     },
   }))(Button);
 
-export default function ModalProduct({setOpen,img,name,price,descripcion }) {
+export default function ModalProduct({setOpen,img,name,price,descripcion,link }) {
     const classes = useStyles();
     
 
@@ -59,7 +59,7 @@ export default function ModalProduct({setOpen,img,name,price,descripcion }) {
                 <h4 className={classes.text}>Precio: {price}$</h4>
                 <Grid item md={12} sm={12} xm={12}>
                 <Grid container justifyContent="flex-end">
-                <ColorButton variant="contained" color="primary">
+                <ColorButton variant="contained" color="primary" href={link}>
                     Contactar<WhatsAppIcon className={classes.icon}></WhatsAppIcon>
                 </ColorButton>
                 </Grid>

@@ -27,6 +27,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
     const [name,setname] = React.useState(info.name);
     const [descripcion,setdescripcion] = React.useState(info.descripcion);
     const [price,setprice] = React.useState(info.price);
+    const [link,setlink] = React.useState(info.link);
     const [cosa,setcosa] = React.useState(info.image);
     const [error,seterror] = React.useState(false)
     const [texterror,settexterror] = React.useState(" ")
@@ -53,6 +54,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
                 descripcion: descripcion,
                 price: price,
                 image: cosa,
+                link: link
                 
               };
           
@@ -84,6 +86,7 @@ export default function ModalEditProduct({setOpen, asd, info}) {
                 descripcion: descripcion,
                 price: price,
                 image: res.data.path,
+                link: link
                 
               };
           
@@ -155,6 +158,21 @@ export default function ModalEditProduct({setOpen, asd, info}) {
                 onChange={(e) => {setprice(e.target.value)}}
                 required
                 value={price}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                fullWidth
+                label="Link"
+                name="link"
+                onChange={(e) => {setlink(e.target.value)}}
+                required
+                value={link}
                 variant="outlined"
               />
             </Grid>

@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CardProduct({img,name,price,descripcion}) {
+export default function CardProduct({img,name,price,descripcion,link}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
  
@@ -100,7 +100,7 @@ export default function CardProduct({img,name,price,descripcion}) {
         <Fade in={open}>
         <div className={classes.paper}>
        
-      <ModalProduct img={img} price={price} name={name} descripcion={descripcion} setOpen={setOpen} ></ModalProduct>
+      <ModalProduct link={link} img={img} price={price} name={name} descripcion={descripcion} setOpen={setOpen} ></ModalProduct>
     
           </div>
         </Fade>

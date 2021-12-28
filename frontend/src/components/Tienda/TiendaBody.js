@@ -77,7 +77,7 @@ function TiendaBody() {
           return (
             <Grid key={key} pagi item className={classes.productos} lg={3} md={4} xs={12} sm={6} xl={3}  >
 
-              <CardProduct descripcion={product.descripcion} img={product.image} name={product.name} price={product.price}></CardProduct>
+              <CardProduct link={product.link} descripcion={product.descripcion} img={product.image} name={product.name} price={product.price}></CardProduct>
 
             </Grid>
 

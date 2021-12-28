@@ -26,6 +26,7 @@ export default function ModalCreateProduct({setOpen, asd, }) {
     const [name,setname] = React.useState("");
     const [descripcion,setdescripcion] = React.useState("");
     const [price,setprice] = React.useState("");
+    const [link,setlink] = React.useState("");
     
   
     const [cosa,setcosa] = React.useState("");
@@ -55,6 +56,7 @@ export default function ModalCreateProduct({setOpen, asd, }) {
                 descripcion: descripcion,
                 price: price,
                 image: res.data.path,
+                link: link
                 
               };
           
@@ -125,6 +127,21 @@ export default function ModalCreateProduct({setOpen, asd, }) {
                 onChange={(e) => {setprice(e.target.value)}}
                 required
                 value={price}
+                variant="outlined"
+              />
+            </Grid>
+            <Grid
+              item
+              md={6}
+              xs={12}
+            >
+              <TextField
+                fullWidth
+                label="Link"
+                name="link"
+                onChange={(e) => {setlink(e.target.value)}}
+                required
+                value={link}
                 variant="outlined"
               />
             </Grid>
